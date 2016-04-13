@@ -487,6 +487,22 @@ class Sql extends \Sql {
                 $cadenaSql .= " WHERE id_elemento='" . $variable ['id_elemento'] . "' ;";
                 break;
             
+            case "insertar_version_tipo_bien" :
+                $cadenaSql = " INSERT INTO arka_inventarios.tipo_cambio_bien ";
+                $cadenaSql .= "( ";
+                $cadenaSql .= "id_elemento, ";
+                $cadenaSql .= "id_tipo_bienes, ";
+                $cadenaSql .= "observacion ";
+                $cadenaSql .= ") ";
+                $cadenaSql .= "VALUES ";
+                $cadenaSql .= "( ";
+                $cadenaSql .= $variable ['id_elemento'] . ", ";
+                $cadenaSql .= "" . $variable ['tipo_bien'] . ", ";
+                $cadenaSql .= "'" . $variable ['observacion'] . "' ";
+                $cadenaSql .= ")";
+                break;
+            
+            
             case "funcionario_informacion" :
                 $cadenaSql = "SELECT FUN_IDENTIFICACION,  FUN_NOMBRE  ";
                 $cadenaSql .= "FROM FUNCIONARIOS ";
