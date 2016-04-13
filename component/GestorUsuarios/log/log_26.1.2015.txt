@@ -1,0 +1,72 @@
+Cliente: ::1 - January 26, 2015, 12:49 pm
+Intento: Fallo
+Usuario: 11
+Codigo: 54c6a873d57b4
+-------------------------
+
+Cliente: ::1 - January 26, 2015, 12:50 pm
+Intento: Fallo
+Usuario: 11
+Codigo: 54c6a89ded882
+-------------------------
+
+Cliente: ::1 - January 26, 2015, 12:52 pm
+Intento: Fallo
+Usuario: 11
+Codigo: 54c6a90030842
+-------------------------
+
+Cliente: ::1 - January 26, 2015, 12:55 pm
+Intento: Fallo
+Usuario: 11
+Codigo: 54c6a9dca1a5d
+-------------------------
+
+Cliente: ::1 - January 26, 2015, 12:56 pm
+Intento: Fallo
+Usuario: 11
+Codigo: 54c6aa0a2bb4b
+-------------------------
+
+Cliente: ::1 - January 26, 2015, 12:58 pm
+Intento: Fallo
+Usuario: 11
+Codigo: 54c6aa62920ab
+-------------------------
+
+Cliente: ::1 - January 26, 2015, 12:59 pm
+Intento: Fallo
+Usuario: 11
+Codigo: 54c6aab5b2989
+-------------------------
+
+Cliente: ::1 - January 26, 2015, 1:00 pm
+Intento: Fallo
+Usuario: 11
+Codigo: 54c6aad60837a
+-------------------------
+
+Cliente: ::1 - January 26, 2015, 1:00 pm
+Intento: Fallo
+Usuario: 11
+Codigo: 54c6ab09d49ec
+-------------------------
+
+Cliente: ::1 - January 26, 2015, 1:01 pm
+Intento: Fallo
+Usuario: 11
+Codigo: 54c6ab0ebf1b7
+-------------------------
+
+Cliente: ::1 - January 26, 2015, 1:01 pm
+Intento: Fallo
+Usuario: 11
+Codigo: 54c6ab24a4972
+-------------------------
+
+Cliente: ::1 - January 26, 2015, 1:01 pm
+Intento: Exito
+Usuario: 11
+Codigo: 54c6ab3b7b46e
+-------------------------
+

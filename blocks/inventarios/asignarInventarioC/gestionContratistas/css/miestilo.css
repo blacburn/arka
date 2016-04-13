@@ -1,0 +1,18 @@
+#divMensaje {
+	position: fixed;
+	z-index: 1;
+	left: 15%;
+	top: 50%;
+	word-wrap: break-word;
+}
+
+#VentanaA {
+	position: fixed;
+	z-index: 1;
+	top: 25%;
+	left: 25%;
+	background-color: white;
+	border-style: groove;
+	height: 362px; 
+}
+

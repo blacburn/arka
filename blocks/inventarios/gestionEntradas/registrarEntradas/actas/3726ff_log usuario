@@ -1,0 +1,5 @@
+$valorCodificado .= "&usuario=".$_REQUEST['usuario'];
+$variable .= "&usuario=".$_REQUEST['usuario'];
+$variable .= "&usuario=".$valor[1];
+
+
