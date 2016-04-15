@@ -39,13 +39,23 @@ class RegistradorOrden {
         $rutaBloque .= $esteBloque ['nombre'];
 
         $host = $this->miConfigurador->getVariableConfiguracion("host") . $this->miConfigurador->getVariableConfiguracion("site") . "/blocks/inventarios/gestionElementos/" . $esteBloque ['nombre'];
-
-        $optDependencia='';
-        $optubicacion='';
+        
+        $optDepen='';
+        $optubica='';
+        
+        
+        if((isset($_REQUEST['dependencia']) && $_REQUEST['dependencia'])!=''){
+            $optDepen=$_REQUEST['dependencia'];
+        }
+        if((isset($_REQUEST['ubicacion']) && $_REQUEST['ubicacion'])!=''){
+            $optubica=$_REQUEST['ubicacion'];
+        }
+       
+        
 
         if(isset($_REQUEST['sede']) && $_REQUEST['sede']!=''){
-            $optDependencia=$_REQUEST['dependencia'];
-            $optubicacion=$_REQUEST['ubicacion'];
+            $optDependencia=$optDepen;
+            $optubicacion=$optubica;
             
         }
      
@@ -54,8 +64,8 @@ class RegistradorOrden {
         $arreglo = array(
             'responsable' => $_REQUEST['responsable'],
             'sede' => $_REQUEST['sede'],
-            'dependencia' => $optDependencia,
-            'ubicacion' => $optubicacion,
+            'dependencia' => $optDepen,
+            'ubicacion' => $optubica,
             'selec_placa' => $_REQUEST['selec_placa'],
             'placa' => $_REQUEST['placa'],
             'campoSeguro' => $_REQUEST['campoSeguro'],
@@ -67,14 +77,16 @@ class RegistradorOrden {
         if(($_REQUEST['responsable'] || $_REQUEST['responsable'])!=''){
             $aux=1;
         }
+        if(($_REQUEST['sede'] || $_REQUEST['sede'])!=''){
+            $aux=1;
+        }
+        
+       
         if(($_REQUEST['selec_placa'] || $_REQUEST['placa'])!=''){
             $aux=2;
-            
         }
-
-
-
-
+          
+        
 
         if ($aux==1) {
             redireccion::redireccionar('vElementos', $arreglo);

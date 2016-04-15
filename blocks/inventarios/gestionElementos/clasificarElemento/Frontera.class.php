@@ -66,12 +66,18 @@ class Frontera {
                 case "elemento" :
                     include_once ($this->ruta . "/formulario/resultadoElemento.php");
                     break;
-//				case "ConsultarElemento" :
-//					include_once ($this->ruta . "/formulario/resultado.php");
-//					break;
+		case "ConsultarElemento" :
+                    include_once ($this->ruta . "/formulario/resultadoElemento.php");
+                    
+                    break;
+                case "paginaPrincipal" :
+                    include_once ($this->ruta . "/formulario/consulta.php");
+                    
+                    break;
 
                 
-                   
+
+
                     break;
             }
         } else {

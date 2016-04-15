@@ -333,7 +333,7 @@ class registrarForm {
 
             $atributos ['obligatorio'] = true;
             $atributos ['etiquetaObligatorio'] = true;
-            $atributos ['validar'] = 'required, minSize[1]';
+            $atributos ['validar'] = 'required, minSize[1], maxSize[200]';
 
             if (isset($_REQUEST [$esteCampo])) {
                 $atributos ['valor'] = $_REQUEST [$esteCampo];

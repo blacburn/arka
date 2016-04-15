@@ -47,9 +47,6 @@ class RegistradorOrden {
 
 
 
-
-      
-
         $arreglo = array(
             'id_elemento' => $_REQUEST['idElemento'],
             'tipo_bien' => $_REQUEST['tipo_bien_select'],
@@ -58,16 +55,14 @@ class RegistradorOrden {
 
         $cadenaSql = $this->miSql->getCadenaSql('actualizar_tipo_bien', $arreglo);
         $contratista = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", $arreglo, "actualizar_tipo_bien");
-        
-        
-        $cadenaSql = $this->miSql->getCadenaSql('insertar_version_tipo_bien', $arreglo);
-        $esteRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
-      
-        exit;
 
+        $cadenaSql = $this->miSql->getCadenaSql('insertar_version_tipo_bien', $arreglo);
+        $contratista=$esteRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
+
+        
 
         if ($contratista) {
-            redireccion::redireccionar('inserto', array($count, $_REQUEST['usuario']));
+            redireccion::redireccionar('inserto', $_REQUEST['usuario']);
             exit();
         } else {
 

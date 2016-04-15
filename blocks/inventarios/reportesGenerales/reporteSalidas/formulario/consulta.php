@@ -74,6 +74,10 @@ class registrarForm {
         $atributos ['tipoEtiqueta'] = 'inicio';
         $atributos ["leyenda"] = "Criterios de Búsqueda";
         echo $this->miFormulario->marcoAgrupacion('inicio', $atributos);
+        
+        
+        
+
 
         // ---------------------- CONTROL LISTA DESPLEGABLE ---------------------//
         // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------

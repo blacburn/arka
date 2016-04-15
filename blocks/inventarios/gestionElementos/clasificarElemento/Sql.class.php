@@ -327,6 +327,8 @@ class Sql extends \Sql {
                 $cadenaSql .= ' dependencias."ESF_DEP_ENCARGADA" dependencia, ';
                 $cadenaSql .= ' espacios."ESF_NOMBRE_ESPACIO" ubicacion, tipo_falt_sobr.descripcion estado_elemento,';
                 // $cadenaSql.= " tipo_bienes.descripcion, ";
+                $cadenaSql .= " tipo_bienes.descripcion tipo_bien, ";
+                $cadenaSql .= " catalogo.catalogo_elemento.elemento_nombre nivel,   ";
                 $cadenaSql .= " elemento_nombre, elemento.descripcion descripcion_elemento, marca, elemento.serie, cantidad, valor, iva, ajuste, total_iva_con, bodega,(elemento_individual.id_salida || '-('|| salida.vigencia || ')') salidas ";
 
                 $cadenaSql .= " FROM arka_inventarios.elemento  ";

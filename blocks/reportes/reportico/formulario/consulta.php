@@ -59,8 +59,9 @@ class consulta {
         isset($_REQUEST['reporte'])?$reporte.="&reporte=".$_REQUEST['reporte']:'';
         ?>
         <div style='width:100%; height: 650px'>
-            <iframe src="<?php echo $ruta.$reporte;?>" style="width: 100%; height: 100%"></iframe>
+         <iframe src="<?php echo $ruta.$reporte;?>" style="width: 100%; height: 100%"></iframe>
          </div>
+         
         <?php
  
 
