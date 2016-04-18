@@ -45,12 +45,13 @@ class RegistradorOrden {
 
 
 
-
+        $fechaActual = date('Y-m-d');
 
         $arreglo = array(
             'id_elemento' => $_REQUEST['idElemento'],
             'tipo_bien' => $_REQUEST['tipo_bien_select'],
-            'observacion' => $_REQUEST['observacion']
+            'observacion' => $_REQUEST['observacion'],
+            'fecha' => $fechaActual
         );
 
         $cadenaSql = $this->miSql->getCadenaSql('actualizar_tipo_bien', $arreglo);

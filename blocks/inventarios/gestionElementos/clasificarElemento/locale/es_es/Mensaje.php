@@ -13,6 +13,8 @@ $this->idioma ["tipoBajaTitulo"] ="Seleccione Tipo de  Baja";
 $this->idioma ["sede"] ="Sede : ";
 $this->idioma ["sedeTitulo"] ="Seleccione Sede";
 
+$this->idioma ["observacion"] ="Observaciones: ";
+$this->idioma ["observacionTitulo"] ="Ingrese Observaciones ";
 
 $this->idioma ["observaciones"] ="Observaciones: ";
 $this->idioma ["observacionesTitulo"] ="Ingrese Observaciones ";

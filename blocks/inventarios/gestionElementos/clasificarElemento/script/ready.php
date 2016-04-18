@@ -28,6 +28,7 @@
 
         
  $("#<?php echo $this->campoSeguro('tipoBaja')?>").select2();
+ $("#<?php echo $this->campoSeguro('nivel')?>").select2();
                
               
 $("#<?php echo $this->campoSeguro('inexistencia')?>").select2();

@@ -3,6 +3,27 @@
  *
  * Los datos del bloque se encuentran en el arreglo $esteBloque.
  */
+$url = $this->miConfigurador->getVariableConfiguracion("host");
+$url .= $this->miConfigurador->getVariableConfiguracion("site");
+$url .= "/index.php?";
+
+// Variables
+$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
+$cadenaACodificar .= "&procesarAjax=true";
+$cadenaACodificar .= "&action=index.php";
+$cadenaACodificar .= "&bloqueNombre=" . $esteBloque ["nombre"];
+$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+$cadenaACodificar .= "&funcion=SeleccionTipoBien";
+$cadenaACodificar .="&tiempo=" . $_REQUEST['tiempo'];
+
+
+// Codificar las variables
+$enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
+$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
+
+// URL definitiva
+$urlFinal = $url . $cadena;
+
 // URL base
 $url = $this->miConfigurador->getVariableConfiguracion("host");
 $url .= $this->miConfigurador->getVariableConfiguracion("site");
@@ -58,7 +79,8 @@ $urlFinalPlaca = $url . $cadena;
 ?>
 
 
-<script type='text/javascript'>
+<script>
+
 
 
     function marcar(obj) {
@@ -153,6 +175,40 @@ $urlFinalPlaca = $url . $cadena;
     }
     ;
 
+    function tipo_bien(elem, request, response) {
+        $.ajax({
+            url: "<?php echo $urlFinal ?>",
+            dataType: "json",
+            data: {valor: $("#<?php echo $this->campoSeguro('nivel') ?>").val()},
+            success: function (data) {
+
+                var opcion = 0;
+                if (data[1] == 'Consumo') {
+                    opcion = 1;
+                }
+                if (data[1] == 'Consumo Controlado') {
+                    opcion = 2;
+                }
+                if (data[1] == 'Devolutivo') {
+                    opcion = 3;
+                }
+
+              
+                $("select#<?php echo $this->campoSeguro('tipo_bien_select') ?>").val(opcion);
+                $("#<?php echo $this->campoSeguro('tipo_bien_select') ?>").removeAttr('disabled');
+
+                $('#<?php echo $this->campoSeguro('tipo_bien_select') ?>').width(250);
+                $("#<?php echo $this->campoSeguro('tipo_bien_select') ?>").select2();
+
+
+
+
+            }
+
+        });
+    }
+    ;
+
     $(function () {
 
 
@@ -206,7 +262,7 @@ $urlFinalPlaca = $url . $cadena;
             if ($("#<?php echo $this->campoSeguro('responsable') ?>").val() != '') {
                 $("#<?php echo $this->campoSeguro('sede') ?>").attr("class", "selectboxdiv  validate[ ]  select2-hidden-accessible");
                 consultarDependencia();
-            } 
+            }
 
         });
 
@@ -221,6 +277,27 @@ $urlFinalPlaca = $url . $cadena;
         });
 
 
+        $("#<?php echo $this->campoSeguro('nivel') ?>").change(function () {
+
+            if ($("#<?php echo $this->campoSeguro('nivel') ?>").val() != '') {
+
+
+                tipo_bien();
+
+            } else {
+            }
+
+
+
+        });
+
+
     });
+
+
+
+
+
+
 
 </script>

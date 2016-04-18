@@ -43,7 +43,15 @@ class Sql extends \Sql {
                 $cadenaSql .= "WHERE ";
                 $cadenaSql .= "`PRIMER_NOMBRE` ='" . $variable . "' ";
                 break;
+            case "ConsultaTipoBien" :
 
+                $cadenaSql = "SELECT ge.elemento_tipobien , tb.descripcion  ";
+                $cadenaSql .= "FROM  catalogo.catalogo_elemento ce ";
+                $cadenaSql .= "JOIN  grupo.catalogo_elemento ge  ON (ge.elemento_id)::text =ce .elemento_grupoc  ";
+                $cadenaSql .= "JOIN  arka_inventarios.tipo_bienes tb ON tb.id_tipo_bienes = ge.elemento_tipobien  ";
+                $cadenaSql .= "WHERE ce.elemento_id = '" . $variable . "';";
+                
+                break;
             case "insertarRegistro" :
                 $cadenaSql = "INSERT INTO ";
                 $cadenaSql .= $prefijo . "registradoConferencia ";
@@ -97,6 +105,18 @@ class Sql extends \Sql {
 
             case "cancelarTransaccion" :
                 $cadenaSql = "ROLLBACK";
+                break;
+
+            case "consultar_nivel_inventario" :
+
+                $cadenaSql = "SELECT ce.elemento_id, ce.elemento_codigo||' - '||ce.elemento_nombre ";
+                $cadenaSql .= "FROM catalogo.catalogo_elemento  ce ";
+                $cadenaSql .= "JOIN catalogo.catalogo_lista cl ON cl.lista_id = ce.elemento_catalogo  ";
+                $cadenaSql .= "WHERE cl.lista_activo = 1  ";
+                $cadenaSql .= "AND  ce.elemento_id > 0  ";
+                $cadenaSql .= "AND  ce.elemento_padre > 0  ";
+                $cadenaSql .= "ORDER BY ce.elemento_codigo ASC ;";
+
                 break;
 
             case "eliminarTemp" :
@@ -413,7 +433,6 @@ class Sql extends \Sql {
 
                 $cadenaSql .= " AND elemento_individual.id_elemento_ind NOT IN (SELECT id_elemento_ind FROM  arka_inventarios.baja_elemento) ";
 
-
                 if ($variable != '') {
                     $cadenaSql .= " AND  elemento_individual.placa= '" . $variable . "'";
                 }
@@ -485,26 +504,28 @@ class Sql extends \Sql {
 
             case "actualizar_tipo_bien" :
                 $cadenaSql = " UPDATE arka_inventarios.elemento ";
-                $cadenaSql .= "SET tipo_bien=".$variable['tipo_bien'];
+                $cadenaSql .= "SET tipo_bien=" . $variable['tipo_bien'];
                 $cadenaSql .= " WHERE id_elemento='" . $variable ['id_elemento'] . "' ;";
                 break;
-            
+
             case "insertar_version_tipo_bien" :
                 $cadenaSql = " INSERT INTO arka_inventarios.tipo_cambio_bien ";
                 $cadenaSql .= "( ";
                 $cadenaSql .= "id_elemento, ";
                 $cadenaSql .= "id_tipo_bienes, ";
-                $cadenaSql .= "observacion ";
+                $cadenaSql .= "observacion, ";
+                $cadenaSql .= "date_cambio ";
                 $cadenaSql .= ") ";
                 $cadenaSql .= "VALUES ";
                 $cadenaSql .= "( ";
                 $cadenaSql .= $variable ['id_elemento'] . ", ";
                 $cadenaSql .= "" . $variable ['tipo_bien'] . ", ";
-                $cadenaSql .= "'" . $variable ['observacion'] . "' ";
+                $cadenaSql .= "'" . $variable ['observacion'] . "', ";
+                $cadenaSql .= "'" . $variable ['fecha'] . "' ";
                 $cadenaSql .= ")";
                 break;
-            
-            
+
+
             case "funcionario_informacion" :
                 $cadenaSql = "SELECT FUN_IDENTIFICACION,  FUN_NOMBRE  ";
                 $cadenaSql .= "FROM FUNCIONARIOS ";
