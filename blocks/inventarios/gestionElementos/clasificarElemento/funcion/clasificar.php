@@ -44,13 +44,16 @@ class RegistradorOrden {
         $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 
 
-
         $fechaActual = date('Y-m-d');
 
         $arreglo = array(
-            'id_elemento' => $_REQUEST['idElemento'],
+            'marca' => $_REQUEST['marca'],
+            'serie' => $_REQUEST['serie'],
+            'nivel' => $_REQUEST['nivel'],
             'tipo_bien' => $_REQUEST['tipo_bien_select'],
+            'descripcion' => $_REQUEST['descripcion'],
             'observacion' => $_REQUEST['observacion'],
+            'id_elemento' => $_REQUEST['idElemento'],
             'fecha' => $fechaActual
         );
 
@@ -58,9 +61,8 @@ class RegistradorOrden {
         $contratista = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", $arreglo, "actualizar_tipo_bien");
 
         $cadenaSql = $this->miSql->getCadenaSql('insertar_version_tipo_bien', $arreglo);
-        $contratista=$esteRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
+        $contratista = $esteRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
 
-        
 
         if ($contratista) {
             redireccion::redireccionar('inserto', $_REQUEST['usuario']);

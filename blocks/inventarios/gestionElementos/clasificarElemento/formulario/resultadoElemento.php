@@ -218,7 +218,6 @@ class registrarForm {
             $esteCampo = 'nivel';
             $atributos ['nombre'] = $esteCampo;
             $atributos ['id'] = $esteCampo;
-            $atributos ['seleccion'] = - 1;
             $atributos ['evento'] = '';
             $atributos ['deshabilitado'] = false;
             $atributos ["etiquetaObligatorio"] = true;
@@ -231,6 +230,11 @@ class registrarForm {
             $atributos ['anchoCaja'] = 60;
             $atributos ['etiqueta'] = $this->lenguaje->getCadena($esteCampo);
             $atributos ['anchoEtiqueta'] = 200;
+            if (isset($_REQUEST [$esteCampo])) {
+                $atributos ['seleccion'] = $_REQUEST [$esteCampo];
+            } else {
+                $atributos ['seleccion'] = $elemento[0]['id_catalogo'];
+            }
 
             $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("consultar_nivel_inventario");
 
@@ -264,7 +268,7 @@ class registrarForm {
             if (isset($_REQUEST [$esteCampo])) {
                 $atributos ['seleccion'] = $_REQUEST [$esteCampo];
             } else {
-                $atributos ['seleccion'] = - 1;
+                $atributos ['seleccion'] = $opt;
             }
 
             $matrizTipo = array(

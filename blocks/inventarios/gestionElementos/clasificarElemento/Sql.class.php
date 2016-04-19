@@ -364,7 +364,7 @@ class Sql extends \Sql {
                 $cadenaSql .= ' JOIN arka_parametros.arka_funcionarios ON arka_parametros.arka_funcionarios."FUN_IDENTIFICACION" = elemento_individual.funcionario ';
                 $cadenaSql .= " LEFT JOIN arka_inventarios.estado_elemento ON arka_inventarios.estado_elemento.id_elemento_ind=elemento_individual.id_elemento_ind ";
                 $cadenaSql .= " LEFT JOIN arka_inventarios.tipo_falt_sobr ON tipo_falt_sobr.id_tipo_falt_sobr=estado_elemento.tipo_faltsobr ";
-                $cadenaSql .= " WHERE elemento.estado='1'  AND elemento.tipo_bien <> 1 ";
+                $cadenaSql .= " WHERE elemento.estado='TRUE'  AND elemento.tipo_bien <> 1 ";
                 $cadenaSql .= " AND elemento_individual.id_elemento_ind NOT IN (SELECT id_elemento_ind FROM arka_inventarios.estado_elemento WHERE estado_registro='t' AND id_reposicion=0 AND tipo_faltsobr in (2,3))";
                 // $cadenaSql .= "AND entrada.cierre_contable='f' ";
                 // $cadenaSql .= "AND entrada.estado_entrada = 1 ";
@@ -398,6 +398,7 @@ class Sql extends \Sql {
 
                 $cadenaSql .= ' ORDER BY elemento_individual.id_elemento_ind DESC ;';
                 // $cadenaSql .= " LIMIT 10 ;";
+               
                 break;
 
             case "consultarElementoxPlaca" :
@@ -410,6 +411,8 @@ class Sql extends \Sql {
                 // $cadenaSql.= " tipo_bienes.descripcion, ";
                 $cadenaSql .= " tipo_bienes.descripcion tipo_bien, ";
                 $cadenaSql .= " catalogo.catalogo_elemento.elemento_nombre nivel,   ";
+                $cadenaSql .= " catalogo.catalogo_elemento.elemento_id id_catalogo,   ";
+                $cadenaSql .= " catalogo.catalogo_elemento.elemento_codigo codigo_elemento,   ";
                 $cadenaSql .= " elemento_nombre, elemento.descripcion descripcion_elemento, marca, elemento.serie, cantidad, valor, iva, ajuste, total_iva_con, bodega,(elemento_individual.id_salida || '-('|| salida.vigencia || ')') salidas ";
 
                 $cadenaSql .= " FROM arka_inventarios.elemento  ";
@@ -504,7 +507,11 @@ class Sql extends \Sql {
 
             case "actualizar_tipo_bien" :
                 $cadenaSql = " UPDATE arka_inventarios.elemento ";
-                $cadenaSql .= "SET tipo_bien=" . $variable['tipo_bien'];
+                $cadenaSql .= "SET marca='" . $variable['marca'] . "',";
+                $cadenaSql .= " serie='" . $variable['serie'] . "',";
+                $cadenaSql .= " nivel=" . $variable['nivel'] . ",";
+                $cadenaSql .= " tipo_bien=" . $variable['tipo_bien'] . ",";
+                $cadenaSql .= " descripcion='" . $variable['descripcion'] . "'";
                 $cadenaSql .= " WHERE id_elemento='" . $variable ['id_elemento'] . "' ;";
                 break;
 
