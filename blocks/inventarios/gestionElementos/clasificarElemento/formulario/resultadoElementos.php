@@ -179,8 +179,8 @@ class registrarForm {
 			    <th>Descripción</th>
                             <th>Marca</th>
                             <th>Serie</th>
-			    <th>Tipo Bien</th>
 			    <th>Nivel inventarios</th>
+			    <th>Tipo Bien</th>
 			    <th>Clasificar</th>
                         </tr>
                         </thead>
@@ -193,8 +193,8 @@ class registrarForm {
                                 <td><center>" . $elemento [$i] ['descripcion_elemento'] . "</center></td>
 		  		<td><center>" . $elemento [$i] ['marca'] . "</center></td>
                                 <td><center>" . $elemento [$i] ['serie'] . "</center></td>
-                                <td><center>" . $elemento [$i] ['tipo_bien'] . "</center></td>
-                                <td><center>" . $elemento [$i] ['nivel'] . "</center></td>";
+                                <td><center>" . $elemento [$i] ['nivel'] . "</center></td>
+                                <td><center>" . $elemento [$i] ['tipo_bien'] . "</center></td>";
                 $variableMOD = "pagina=" . $this->miConfigurador->getVariableConfiguracion('pagina');
                 ; // pendiente la pagina para modificar parametro
                 $variableMOD .= "&opcion=ConsultarElemento";
