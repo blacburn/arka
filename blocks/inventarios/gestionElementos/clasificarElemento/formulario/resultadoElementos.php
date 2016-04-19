@@ -1,7 +1,5 @@
 <?php
 
-
-
 if (!isset($GLOBALS ["autorizado"])) {
     include ("../index.php");
     exit();
@@ -38,7 +36,7 @@ class registrarForm {
 
         $rutaBloque = $this->miConfigurador->getVariableConfiguracion("host");
         $rutaBloque .= $this->miConfigurador->getVariableConfiguracion("site") . "/blocks/";
-        $rutaBloque .= $esteBloque ['grupo'] . $esteBloque ['nombre'];
+        $rutaBloque .= $esteBloque ['grupo'] . "/" . $esteBloque ['nombre'];
 
         // ---------------- SECCION: Parámetros Globales del Formulario ----------------------------------
         /**
@@ -181,7 +179,7 @@ class registrarForm {
 			    <th>Descripción</th>
                             <th>Marca</th>
                             <th>Serie</th>
-			    <th>Tipo Bien<br>Funcionario</th>
+			    <th>Tipo Bien</th>
 			    <th>Nivel inventarios</th>
 			    <th>Clasificar</th>
                         </tr>
@@ -206,11 +204,11 @@ class registrarForm {
                 $variableMOD = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($variableMOD, $directorio);
 
                 echo "<td><center><a href='" . $variableMOD . "'>
-                          <img src='" . $rutaBloque . "/css/images/modificar.png' width='25px'>
+                          <img src='" . $rutaBloque . "/css/images/item.png' width='25px'>
                           </a></center> </td>
                     </tr>";
-                
-               
+
+
                 unset($atributos);
             }
 
@@ -223,7 +221,7 @@ class registrarForm {
             $atributos ["estilo"] = "marcoBotones";
             echo $this->miFormulario->division("inicio", $atributos);
             unset($atributos);
-           
+
             // -----------------FIN CONTROL: Botón -----------------------------------------------------------
 
             echo $this->miFormulario->division('fin');
