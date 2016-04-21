@@ -236,9 +236,21 @@ class Sql extends \Sql {
                 $cadenaSql .= ' left JOIN arka_parametros.arka_dependencia dependencia ON dependencia."ESF_ID_ESPACIO"=ubicacion."ESF_ID_ESPACIO" ';
                 $cadenaSql .= " WHERE 1=1 ";
                 $cadenaSql .= " AND elemento_individual.id_elemento_ind= '" . $variable . "'";
-               
+                
                 break;
-
+            case "consultar_clasificacion":
+                $cadenaSql = " SELECT ";
+                $cadenaSql .= " tipo_cambio_bien.observacion Observación, ";
+                $cadenaSql .= " tipo_cambio_bien.date_cambio Fecha_cambio ";
+                $cadenaSql .= " FROM arka_inventarios.elemento   ";
+                $cadenaSql .= " JOIN arka_inventarios.elemento_individual ON arka_inventarios.elemento_individual.id_elemento_gen=arka_inventarios.elemento.id_elemento ";
+                $cadenaSql .= " JOIN arka_inventarios.tipo_cambio_bien ON arka_inventarios.tipo_cambio_bien.id_elemento=arka_inventarios.elemento.id_elemento ";
+                $cadenaSql .= " WHERE 1=1 ";
+                $cadenaSql .= " AND elemento_individual.id_elemento_ind= '" . $variable . "'";
+                $cadenaSql .= " ORDER BY tipo_cambio_bien.id_tipo_cambio DESC";
+                
+                
+                break;
             case "consultarElementoParticular_dep" :
                 $cadenaSql = " SELECT DISTINCT ";
                 $cadenaSql .= " elemento_individual.funcionario as funcionario_Documento, ";
