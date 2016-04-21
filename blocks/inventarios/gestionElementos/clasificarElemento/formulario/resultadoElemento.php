@@ -68,16 +68,7 @@ class registrarForm {
         $elemento = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
 
 
-        $opt = 0;
-        if ($elemento[0]['tipo_bien'] == 'Devolutivo') {
-            $opt = 3;
-        }
-        if ($elemento[0]['tipo_bien'] == 'Consumo') {
-            $opt = 1;
-        }
-        if ($elemento[0]['tipo_bien'] == 'Consumo Controlado') {
-            $opt = 2;
-        }
+
 
         // ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
         $esteCampo = $esteBloque ['nombre'];
@@ -208,13 +199,8 @@ class registrarForm {
             $atributos = array_merge($atributos, $atributosGlobales);
             echo $this->miFormulario->campoCuadroTexto($atributos);
             unset($atributos);
-            echo '<br>';
 
 
-
-
-            // --------------- FIN CONTROL : Select --------------------------------------------------
-            echo '<br>';
             $esteCampo = 'nivel';
             $atributos ['nombre'] = $esteCampo;
             $atributos ['id'] = $esteCampo;
@@ -227,7 +213,7 @@ class registrarForm {
             $atributos ['estilo'] = 'jqueryui';
             $atributos ['validar'] = 'required';
             $atributos ['limitar'] = false;
-            $atributos ['anchoCaja'] = 60;
+            $atributos ['anchoCaja'] = 50;
             $atributos ['etiqueta'] = $this->lenguaje->getCadena($esteCampo);
             $atributos ['anchoEtiqueta'] = 200;
             if (isset($_REQUEST [$esteCampo])) {
@@ -248,6 +234,7 @@ class registrarForm {
             $tab ++;
             $atributos = array_merge($atributos, $atributosGlobales);
             echo $this->miFormulario->campoCuadroLista($atributos);
+            echo '<br/>';
             unset($atributos);
             // ---------------- CONTROL: Select --------------------------------------------------------
             $esteCampo = 'tipo_bien_select';
@@ -264,27 +251,24 @@ class registrarForm {
             $atributos ['validar'] = 'required';
             $atributos ['limitar'] = true;
             $atributos ['etiqueta'] = $this->lenguaje->getCadena($esteCampo);
-            $atributos ['anchoEtiqueta'] = 200;
+            $atributos ['anchoEtiqueta'] = 202;
+            
+          
+            
             if (isset($_REQUEST [$esteCampo])) {
-                $atributos ['seleccion'] = $_REQUEST [$esteCampo];
+                $atributos ['valor'] = $_REQUEST [$esteCampo];
             } else {
-                $atributos ['seleccion'] = $opt;
+                $atributos ['valor'] = $elemento[0]['tipo_bien'];
             }
 
-            $matrizTipo = array(
-                array(1, 'Consumo '),
-                array(2, 'Consumo Controlado'),
-                array(3, 'Devolutivo')
-            );
 
-            $atributos ['matrizItems'] = $matrizTipo;
 
             // Utilizar lo siguiente cuando no se pase un arreglo:
             // $atributos['baseDatos']='ponerAquiElNombreDeLaConexión';
             // $atributos ['cadena_sql']='ponerLaCadenaSqlAEjecutar';
             $tab ++;
             $atributos = array_merge($atributos, $atributosGlobales);
-            echo $this->miFormulario->campoCuadroLista($atributos);
+            echo $this->miFormulario->campoCuadroTexto($atributos);
 
             unset($atributos);
 

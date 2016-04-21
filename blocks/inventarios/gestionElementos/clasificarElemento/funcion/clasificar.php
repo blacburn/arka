@@ -43,6 +43,17 @@ class RegistradorOrden {
         $conexion = "inventarios";
         $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 
+     
+        $opcion = 0;
+        if (isset($_REQUEST['tipo_bien_select']) && $_REQUEST['tipo_bien_select'] == 'Devolutivo') {
+            $opcion = 3;
+        }
+        if (isset($_REQUEST['tipo_bien_select']) && $_REQUEST['tipo_bien_select'] == 'Consumo') {
+            $opcion = 1;
+        }
+        if (isset($_REQUEST['tipo_bien_select']) && $_REQUEST['tipo_bien_select'] == 'Consumo Controlado') {
+            $opcion = 2;
+        }
 
         $fechaActual = date('Y-m-d');
 
@@ -50,7 +61,7 @@ class RegistradorOrden {
             'marca' => $_REQUEST['marca'],
             'serie' => $_REQUEST['serie'],
             'nivel' => $_REQUEST['nivel'],
-            'tipo_bien' => $_REQUEST['tipo_bien_select'],
+            'tipo_bien' => $opcion,
             'descripcion' => $_REQUEST['descripcion'],
             'observacion' => $_REQUEST['observacion'],
             'id_elemento' => $_REQUEST['idElemento'],

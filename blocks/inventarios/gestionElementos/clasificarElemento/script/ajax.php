@@ -182,23 +182,8 @@ $urlFinalPlaca = $url . $cadena;
             data: {valor: $("#<?php echo $this->campoSeguro('nivel') ?>").val()},
             success: function (data) {
 
-                var opcion = 0;
-                if (data[1] == 'Consumo') {
-                    opcion = 1;
-                }
-                if (data[1] == 'Consumo Controlado') {
-                    opcion = 2;
-                }
-                if (data[1] == 'Devolutivo') {
-                    opcion = 3;
-                }
+                $("#<?php echo $this->campoSeguro('tipo_bien_select') ?>").val(data[1]);
 
-              
-                $("select#<?php echo $this->campoSeguro('tipo_bien_select') ?>").val(opcion);
-                $("#<?php echo $this->campoSeguro('tipo_bien_select') ?>").removeAttr('disabled');
-
-                $('#<?php echo $this->campoSeguro('tipo_bien_select') ?>').width(250);
-                $("#<?php echo $this->campoSeguro('tipo_bien_select') ?>").select2();
 
 
 
