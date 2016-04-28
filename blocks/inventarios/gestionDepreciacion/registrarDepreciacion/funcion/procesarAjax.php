@@ -89,7 +89,7 @@ if ($_REQUEST ['funcion'] == 'Consulta') {
         if ($numero === '31') {
             $fecha_nueva = date('Y-m-d', (strtotime('-1 day', strtotime($items[$key]['fecha_registro']))));
         }
-
+      
         $diferencia = (new \DateTime($fecha_nueva))->diff(new \DateTime($arreglo['fecha_corte']));
         $periodos_fecha = ($diferencia->y * 12 ) + $diferencia->m;
         $valor_ajustado = $items[$key]['valor'] + $items[$key]['ajuste_inflacionario'];
@@ -98,7 +98,7 @@ if ($_REQUEST ['funcion'] == 'Consulta') {
             $cuota = 0;
             $periodos_fecha = 0;
             $dep_acumulada = 0;
-            $cuota_inflacion = 0;
+            $cuota_inflacion = 0; 
             $api_acumulada = 0;
         } else {
             $cuota_inflacion = $items[$key]['ajuste_inflacionario'] / $meses;

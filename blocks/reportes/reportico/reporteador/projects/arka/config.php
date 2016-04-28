@@ -57,7 +57,7 @@ else
 define('SW_DB_DRIVER', SW_DB_TYPE);
 define('SW_DB_USER', 'arka_inventarios');
 define('SW_DB_PASSWORD', 'Inventarios2014=OAS');
-define('SW_DB_HOST', '10.20.0.38');
+define('SW_DB_HOST', 'localhost');
 define('SW_DB_DATABASE', 'arka');
 }
 define('SW_DB_CONNECT_FROM_CONFIG', true);

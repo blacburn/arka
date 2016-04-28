@@ -236,6 +236,7 @@ class registrarForm {
             echo $this->miFormulario->campoCuadroLista($atributos);
             echo '<br/>';
             unset($atributos);
+           
             // ---------------- CONTROL: Select --------------------------------------------------------
             $esteCampo = 'tipo_bien_select';
             $atributos ['columnas'] = 5;
@@ -387,6 +388,7 @@ class registrarForm {
             $valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
             $valorCodificado .= "&opcion=solicitarClasificacion";
             $valorCodificado .= "&idElemento=" . $elemento[0]['id_elemento'];
+            $valorCodificado .= "&nivelAnterior=" . $elemento[0]['id_catalogo'];
             $valorCodificado .= "&usuario=" . $_REQUEST['usuario'];
 
             /*

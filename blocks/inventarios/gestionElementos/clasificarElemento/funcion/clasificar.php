@@ -43,7 +43,7 @@ class RegistradorOrden {
         $conexion = "inventarios";
         $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 
-     
+
         $opcion = 0;
         if (isset($_REQUEST['tipo_bien_select']) && $_REQUEST['tipo_bien_select'] == 'Devolutivo') {
             $opcion = 3;
@@ -65,16 +65,38 @@ class RegistradorOrden {
             'descripcion' => $_REQUEST['descripcion'],
             'observacion' => $_REQUEST['observacion'],
             'id_elemento' => $_REQUEST['idElemento'],
+            'nivelAnterior' => (int) $_REQUEST['nivelAnterior'],
             'fecha' => $fechaActual
         );
+
+        $cadenaSql = $this->miSql->getCadenaSql('buscarCuenta', $arreglo);
+        $cuentaOrigen = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
 
         $cadenaSql = $this->miSql->getCadenaSql('actualizar_tipo_bien', $arreglo);
         $contratista = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", $arreglo, "actualizar_tipo_bien");
 
-        $cadenaSql = $this->miSql->getCadenaSql('insertar_version_tipo_bien', $arreglo);
+
+
+        $arreglo2 = array(
+            'marca' => $_REQUEST['marca'],
+            'serie' => $_REQUEST['serie'],
+            'nivel' => $_REQUEST['nivel'],
+            'tipo_bien' => $opcion,
+            'descripcion' => $_REQUEST['descripcion'],
+            'observacion' => $_REQUEST['observacion'],
+            'id_elemento' => $_REQUEST['idElemento'],
+            'nivelAnterior' => (int) $_REQUEST['nivelAnterior'],
+            'cuentaAnterior' => $cuentaOrigen[0]['cuenta_salida'],
+            'fecha' => $fechaActual
+        );
+        $cadenaSql = $this->miSql->getCadenaSql('actualizar_version_tipo_bien', $arreglo2);
+        $versionBien = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", $arreglo, "actualizar_version_tipo_bien");
+
+        $cadenaSql = $this->miSql->getCadenaSql('insertar_version_tipo_bien', $arreglo2);
         $contratista = $esteRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
 
 
+      
         if ($contratista) {
             redireccion::redireccionar('inserto', $_REQUEST['usuario']);
             exit();

@@ -50,7 +50,7 @@ class Sql extends \Sql {
                 $cadenaSql .= "JOIN  grupo.catalogo_elemento ge  ON (ge.elemento_id)::text =ce .elemento_grupoc  ";
                 $cadenaSql .= "JOIN  arka_inventarios.tipo_bienes tb ON tb.id_tipo_bienes = ge.elemento_tipobien  ";
                 $cadenaSql .= "WHERE ce.elemento_id = '" . $variable . "';";
-                
+
                 break;
             case "insertarRegistro" :
                 $cadenaSql = "INSERT INTO ";
@@ -398,7 +398,7 @@ class Sql extends \Sql {
 
                 $cadenaSql .= ' ORDER BY elemento_individual.id_elemento_ind DESC ;';
                 // $cadenaSql .= " LIMIT 10 ;";
-               
+
                 break;
 
             case "consultarElementoxPlaca" :
@@ -514,6 +514,20 @@ class Sql extends \Sql {
                 $cadenaSql .= " descripcion='" . $variable['descripcion'] . "'";
                 $cadenaSql .= " WHERE id_elemento='" . $variable ['id_elemento'] . "' ;";
                 break;
+            case "buscarCuenta" :
+                $cadenaSql = " SELECT DISTINCT  id_elemento_ind as id_elemento,  grupo_cuentasalida as cuenta_salida ";
+                $cadenaSql .= " FROM arka_inventarios.elemento_individual ";
+                $cadenaSql .= " JOIN arka_inventarios.elemento ON elemento.id_elemento=elemento_individual.id_elemento_gen ";
+                $cadenaSql .= " JOIN arka_inventarios.salida ON salida.id_salida=elemento_individual.id_salida  ";
+                $cadenaSql .= " JOIN catalogo.catalogo_elemento ON catalogo.catalogo_elemento.elemento_id=nivel ";
+                $cadenaSql .= " JOIN grupo.catalogo_elemento ON cast(grupo.catalogo_elemento.elemento_id as character varying)=catalogo.catalogo_elemento.elemento_grupoc ";
+                $cadenaSql .= " JOIN grupo.grupo_descripcion ON grupo.grupo_descripcion.grupo_id=cast(grupo.catalogo_elemento.elemento_id as character varying)  ";
+                $cadenaSql .= " WHERE catalogo.catalogo_elemento.elemento_id>0";
+                $cadenaSql .= " AND elemento.estado=TRUE ";
+                $cadenaSql .= " AND id_elemento_ind NOT IN (  SELECT id_elemento_ind FROM estado_elemento )   ";
+                $cadenaSql .= " AND id_elemento_gen=" . $variable ['id_elemento'] . " ;";
+
+                break;
 
             case "insertar_version_tipo_bien" :
                 $cadenaSql = " INSERT INTO arka_inventarios.tipo_cambio_bien ";
@@ -521,18 +535,26 @@ class Sql extends \Sql {
                 $cadenaSql .= "id_elemento, ";
                 $cadenaSql .= "id_tipo_bienes, ";
                 $cadenaSql .= "observacion, ";
-                $cadenaSql .= "date_cambio ";
+                $cadenaSql .= "id_cuenta_anterior, ";
+                $cadenaSql .= "date_cambio, ";
+                $cadenaSql .= "estado ";
                 $cadenaSql .= ") ";
                 $cadenaSql .= "VALUES ";
                 $cadenaSql .= "( ";
                 $cadenaSql .= $variable ['id_elemento'] . ", ";
                 $cadenaSql .= "" . $variable ['tipo_bien'] . ", ";
                 $cadenaSql .= "'" . $variable ['observacion'] . "', ";
-                $cadenaSql .= "'" . $variable ['fecha'] . "' ";
+                $cadenaSql .= $variable ['cuentaAnterior'] . ", ";
+                $cadenaSql .= "'" . $variable ['fecha'] . "', ";
+                $cadenaSql .= "'Activo' ";
                 $cadenaSql .= ")";
                 break;
 
-
+            case "actualizar_version_tipo_bien" :
+                $cadenaSql = " UPDATE arka_inventarios.tipo_cambio_bien ";
+                $cadenaSql .= "SET estado='Inactivo' ";
+                $cadenaSql .= " WHERE id_elemento='" . $variable ['id_elemento'] . "' ;";
+                break;
             case "funcionario_informacion" :
                 $cadenaSql = "SELECT FUN_IDENTIFICACION,  FUN_NOMBRE  ";
                 $cadenaSql .= "FROM FUNCIONARIOS ";
