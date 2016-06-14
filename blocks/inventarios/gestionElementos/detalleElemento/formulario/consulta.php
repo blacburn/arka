@@ -247,6 +247,39 @@ class registrarForm {
 		
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
+                // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+		
+		$esteCampo = 'serie';
+		$atributos ['id'] = $esteCampo;
+		$atributos ['nombre'] = $esteCampo;
+		$atributos ['tipo'] = 'text';
+		$atributos ['estilo'] = 'jqueryui';
+		$atributos ['marco'] = true;
+		$atributos ['estiloMarco'] = '';
+		$atributos ["etiquetaObligatorio"] = false;
+		$atributos ['columnas'] = 1;
+		$atributos ['dobleLinea'] = 0;
+		$atributos ['tabIndex'] = $tab;
+		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+		$atributos ['validar'] = '';
+		
+		if (isset ( $_REQUEST [$esteCampo] )) {
+			$atributos ['valor'] = $_REQUEST [$esteCampo];
+		} else {
+			$atributos ['valor'] = '';
+		}
+		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+		$atributos ['deshabilitado'] = false;
+		$atributos ['tamanno'] = 27;
+		$atributos ['maximoTamanno'] = '';
+		$atributos ['anchoEtiqueta'] = 120;
+		$tab ++;
+		
+		// Aplica atributos globales al control
+		$atributos = array_merge ( $atributos, $atributosGlobales );
+		
+		echo $this->miFormulario->campoCuadroTexto ( $atributos );
+		unset ( $atributos );
 		// ---------------------------------------------------------------------------------
 		$atributos ["id"] = "id_placa"; // No cambiar este nombre
 		$atributos ["tipo"] = "hidden";

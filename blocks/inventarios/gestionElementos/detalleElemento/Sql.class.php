@@ -164,10 +164,11 @@ class Sql extends \Sql {
                 $cadenaSql = "SELECT DISTINCT ";
                 $cadenaSql .= " entrada.consecutivo, id_elemento_ind,";
                 $cadenaSql .= " placa, ";
+                $cadenaSql .= " elemento.serie serie, ";
                 $cadenaSql .= " elemento.descripcion, ";
                 $cadenaSql .= ' sedes."ESF_SEDE" sede_nombre, ';
                 $cadenaSql .= ' dependencias."ESF_DEP_ENCARGADA" dependencia_nombre, ';
-
+                
                 $cadenaSql .= ' funcionarios."FUN_NOMBRE" fun_nombre ';
                 $cadenaSql .= ' FROM arka_inventarios.elemento   ';
                 $cadenaSql .= ' JOIN arka_inventarios.entrada ON entrada.id_entrada = elemento.id_entrada  ';
@@ -195,6 +196,10 @@ class Sql extends \Sql {
                 if ($variable ['entrada'] != '') {
                     $cadenaSql .= " AND entrada.id_entrada = '" . $variable ['entrada'] . "'";
                 }
+                
+                if ($variable ['serie'] != '') {
+                    $cadenaSql .= " AND elemento.serie ilike '" . $variable ['serie'] . "'";
+                }
 
                 if ($variable['fechainicial'] != '' && $variable ['fechafinal'] != '') {
                     $cadenaSql .= " AND entrada.fecha_registro BETWEEN CAST ( '" . $variable ['fechainicial'] . "' AS DATE) ";
@@ -204,7 +209,7 @@ class Sql extends \Sql {
                 if ($variable['elemento'] != '') {
                     $cadenaSql .= " AND elemento_individual.id_elemento_ind='" . $variable ['elemento'] . "' ";
                 }
-
+              
                 break;
 
             case "consultarElementoParticular" :

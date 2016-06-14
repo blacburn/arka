@@ -20,6 +20,9 @@ $this->idioma ["tipo_bienTitulo"] ="Seleccione Tipo de Bien";
 $this->idioma ["serie"] ="Serie : ";
 $this->idioma ["serieTitulo"] ="Ingrese Serie Elemento";
 
+$this->idioma ["ubicacion"] ="Ubicación Especifica : ";
+$this->idioma ["ubicacionTitulo"] ="Seleccione Ubicación";
+
 $this->idioma ["marca"] ="Marca : ";
 $this->idioma ["marcaTitulo"] ="Ingrese Marca Elemento";
 

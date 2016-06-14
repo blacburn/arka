@@ -77,7 +77,7 @@ $urlFinal4 = $url . $cadena4;
 
 
 // Variables
-$cadenaACodificar6 = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+$cadenaACodificar6 = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
 $cadenaACodificar6 .= "&procesarAjax=true";
 $cadenaACodificar6 .= "&action=index.php";
 $cadenaACodificar6 .= "&bloqueNombre=" . $esteBloque ["nombre"];
@@ -86,8 +86,8 @@ $cadenaACodificar6 .= $cadenaACodificar . "&funcion=SeleccionOrdenador";
 $cadenaACodificar6 .= "&tiempo=" . $_REQUEST ['tiempo'];
 
 // Codificar las variables
-$enlace6 = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
-$cadena6 = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar6, $enlace6 );
+$enlace6 = $this->miConfigurador->getVariableConfiguracion("enlace");
+$cadena6 = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar6, $enlace6);
 
 // URL definitiva
 $urlFinal6 = $url . $cadena6;
@@ -95,7 +95,7 @@ $urlFinal6 = $url . $cadena6;
 
 
 // Variables
-$cadenaACodificar16 = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+$cadenaACodificar16 = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
 $cadenaACodificar16 .= "&procesarAjax=true";
 $cadenaACodificar16 .= "&action=index.php";
 $cadenaACodificar16 .= "&bloqueNombre=" . $esteBloque ["nombre"];
@@ -104,8 +104,8 @@ $cadenaACodificar16 .= $cadenaACodificar16 . "&funcion=consultarDependencia";
 $cadenaACodificar16 .= "&tiempo=" . $_REQUEST ['tiempo'];
 
 // Codificar las variables
-$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
-$cadena16 = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar16, $enlace );
+$enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
+$cadena16 = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar16, $enlace);
 
 // URL definitiva
 $urlFinal16 = $url . $cadena16;
@@ -113,7 +113,7 @@ $urlFinal16 = $url . $cadena16;
 
 
 // Variables
-$cadenaACodificar17 = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+$cadenaACodificar17 = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
 $cadenaACodificar17 .= "&procesarAjax=true";
 $cadenaACodificar17 .= "&action=index.php";
 $cadenaACodificar17 .= "&bloqueNombre=" . $esteBloque ["nombre"];
@@ -122,8 +122,8 @@ $cadenaACodificar17 .= $cadenaACodificar17 . "&funcion=consultarInfoContrato";
 $cadenaACodificar17 .= "&tiempo=" . $_REQUEST ['tiempo'];
 
 // Codificar las variables
-$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
-$cadena17 = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar17, $enlace );
+$enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
+$cadena17 = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar17, $enlace);
 
 // URL definitiva
 $urlFinal17 = $url . $cadena17;
@@ -135,7 +135,7 @@ $urlFinal17 = $url . $cadena17;
 
 
 // Variables
-$cadenaACodificarProveedor = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+$cadenaACodificarProveedor = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
 $cadenaACodificarProveedor .= "&procesarAjax=true";
 $cadenaACodificarProveedor .= "&action=index.php";
 $cadenaACodificarProveedor .= "&bloqueNombre=" . $esteBloque ["nombre"];
@@ -146,26 +146,26 @@ $cadenaACodificarProveedor .= "&tiempo=" . $_REQUEST ['tiempo'];
 
 
 // Codificar las variables
-$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
-$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificarProveedor, $enlace );
+$enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
+$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificarProveedor, $enlace);
 
 // URL definitiva
 $urlFinalProveedor = $url . $cadena;
 
 
 // Variables
-$cadenaACodificarTipoBien = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+$cadenaACodificarTipoBien = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
 $cadenaACodificarTipoBien .= "&procesarAjax=true";
 $cadenaACodificarTipoBien .= "&action=index.php";
 $cadenaACodificarTipoBien .= "&bloqueNombre=" . $esteBloque ["nombre"];
 $cadenaACodificarTipoBien .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 $cadenaACodificarTipoBien .= "&funcion=SeleccionTipoBien";
-$cadenaACodificarTipoBien .="&tiempo=".$_REQUEST['tiempo'];
+$cadenaACodificarTipoBien .="&tiempo=" . $_REQUEST['tiempo'];
 
 
 // Codificar las variables
-$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
-$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificarTipoBien, $enlace );
+$enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
+$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificarTipoBien, $enlace);
 
 // URL definitiva
 $urlFinalTipoBien = $url . $cadena;
@@ -173,7 +173,7 @@ $urlFinalTipoBien = $url . $cadena;
 
 
 // Variables
-$cadenaACodificariva = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+$cadenaACodificariva = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
 $cadenaACodificariva .= "&procesarAjax=true";
 $cadenaACodificariva .= "&action=index.php";
 $cadenaACodificariva .= "&bloqueNombre=" . $esteBloque ["nombre"];
@@ -182,113 +182,108 @@ $cadenaACodificariva .= "&funcion=consultarIva";
 $cadenaACodificariva .= "&tiempo=" . $_REQUEST ['tiempo'];
 
 // Codificar las variables
-$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
-$cadenaiva = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificariva, $enlace );
+$enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
+$cadenaiva = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificariva, $enlace);
 
 // URL definitiva
 $urlFinaliva = $url . $cadenaiva;
- 
-
-
-
-
 ?>
 
 
 <script lenguage="JavaScript">
-function regresar()
-{
-window.history.go(-1)	
-}
+    function regresar()
+    {
+        window.history.go(-1)	
+    }
 </script>
 
 <script type='text/javascript'>
 
-function resetIva(elem, request, response){
-	  $.ajax({
-	    url: "<?php echo $urlFinaliva?>",
-	    dataType: "json",
-	    success: function(data){ 
+    function resetIva(elem, request, response){
+        $.ajax({
+            url: "<?php echo $urlFinaliva ?>",
+            dataType: "json",
+            success: function(data){ 
 
 
 
 
-	        if(data[0]!=" "){
+                if(data[0]!=" "){
 
-	            $("#<?php echo $this->campoSeguro('iva')?>").html('');
-	            $("<option value=''>Seleccione  ....</option>").appendTo("#<?php echo $this->campoSeguro('iva')?>");
-	            $.each(data , function(indice,valor){
+                    $("#<?php echo $this->campoSeguro('iva') ?>").html('');
+                    $("<option value=''>Seleccione  ....</option>").appendTo("#<?php echo $this->campoSeguro('iva') ?>");
+                    $.each(data , function(indice,valor){
 
-	            	$("<option value='"+data[ indice ].id_iva+"'>"+data[ indice ].descripcion+"</option>").appendTo("#<?php echo $this->campoSeguro('iva')?>");
+                        $("<option value='"+data[ indice ].id_iva+"'>"+data[ indice ].descripcion+"</option>").appendTo("#<?php echo $this->campoSeguro('iva') ?>");
 	            	
-	            });
+                    });
 	            
 	            
-	            $('#<?php echo $this->campoSeguro('iva')?>').width(150);
-	            $("#<?php echo $this->campoSeguro('iva')?>").select2();
+                    $('#<?php echo $this->campoSeguro('iva') ?>').width(150);
+                    $("#<?php echo $this->campoSeguro('iva') ?>").select2();
 	            
 	          
 	            
-		        }
+                }
 	    			
 
-	    }
+            }
 		                    
-	   });
-	}; 
+        });
+    }; 
 
-function tipo_bien(elem, request, response){
-	  $.ajax({
-	    url: "<?php echo $urlFinalTipoBien?>",
-	    dataType: "json",
-	    data: { valor:$("#<?php echo $this->campoSeguro('nivel')?>").val()},
-	    success: function(data){ 
+    function tipo_bien(elem, request, response){
+        $.ajax({
+            url: "<?php echo $urlFinalTipoBien ?>",
+            dataType: "json",
+            data: { valor:$("#<?php echo $this->campoSeguro('nivel') ?>").val()},
+            success: function(data){ 
 
 
-	    			$("#<?php echo $this->campoSeguro('id_tipo_bien')?>").val(data[0]);
-	    			$("#<?php echo $this->campoSeguro('tipo_bien')?>").val(data[1]);
+                $("#<?php echo $this->campoSeguro('id_tipo_bien') ?>").val(data[0]);
+                $("#<?php echo $this->campoSeguro('tipo_bien') ?>").val(data[1]);
 
-	    			  switch($("#<?php echo $this->campoSeguro('id_tipo_bien')?>").val())
-	    	            {
+                switch($("#<?php echo $this->campoSeguro('id_tipo_bien') ?>").val())
+                {
 	    	                           
 	    	                
-	    	                case '2':
+                    case '2':
 
 
-	    	                    $("#<?php echo $this->campoSeguro('devolutivo')?>").css('display','none');
-	    	                    $("#<?php echo $this->campoSeguro('consumo_controlado')?>").css('display','block');   
-	    	                 $("#<?php echo $this->campoSeguro('cantidad')?>").val('1');
-	    	                 $('#<?php echo $this->campoSeguro('cantidad')?>').attr('disabled','');
+                        $("#<?php echo $this->campoSeguro('devolutivo') ?>").css('display','none');
+                        $("#<?php echo $this->campoSeguro('consumo_controlado') ?>").css('display','block');   
+                        $("#<?php echo $this->campoSeguro('cantidad') ?>").val('1');
+                        $('#<?php echo $this->campoSeguro('cantidad') ?>').attr('disabled','');
 
-	    	                 break;
+                        break;
 	    	                
-	    	                case '3':
+                    case '3':
 
-	    	                    $("#<?php echo $this->campoSeguro('devolutivo')?>").css('display','block');
-	    	                    $("#<?php echo $this->campoSeguro('consumo_controlado')?>").css('display','none');
-	    	                    $("#<?php echo $this->campoSeguro('tipo_poliza')?>").select2();
+                        $("#<?php echo $this->campoSeguro('devolutivo') ?>").css('display','block');
+                        $("#<?php echo $this->campoSeguro('consumo_controlado') ?>").css('display','none');
+                        $("#<?php echo $this->campoSeguro('tipo_poliza') ?>").select2();
 	    	         
-	    	                 $("#<?php echo $this->campoSeguro('cantidad')?>").val('1');
-	    	                 $('#<?php echo $this->campoSeguro('cantidad')?>').attr('disabled','');
+                        $("#<?php echo $this->campoSeguro('cantidad') ?>").val('1');
+                        $('#<?php echo $this->campoSeguro('cantidad') ?>').attr('disabled','');
 	    	                    
-	    	                break;
+                        break;
 	    	                                
 	    	           
-	    	                break;
+                        break;
 	    	                
 
-	    	                default:
+                    default:
 
-	    	                    $("#<?php echo $this->campoSeguro('devolutivo')?>").css('display','none');
-	    	                    $("#<?php echo $this->campoSeguro('consumo_controlado')?>").css('display','none');   
+                        $("#<?php echo $this->campoSeguro('devolutivo') ?>").css('display','none');
+                        $("#<?php echo $this->campoSeguro('consumo_controlado') ?>").css('display','none');   
 	    	                    
 	    	                 
-	    	                 $("#<?php echo $this->campoSeguro('cantidad')?>").val('');
-	    	                 $('#<?php echo $this->campoSeguro('cantidad')?>').removeAttr('disabled');
+                        $("#<?php echo $this->campoSeguro('cantidad') ?>").val('');
+                        $('#<?php echo $this->campoSeguro('cantidad') ?>').removeAttr('disabled');
 	    	                 
-	    	                break;
+                        break;
 	    	                
-	    	                }
+                    }
 
 
 
@@ -297,326 +292,340 @@ function tipo_bien(elem, request, response){
 
 	    			
 
-	    }
+                }
 		                    
-	   });
-	};
+            });
+        };
 
 
 
-function consultarContrato(elem, request, response){
-	  $.ajax({
-	    url: "<?php echo $urlFinal17?>",
-	    dataType: "json",
-	    data: { valor:$("#<?php echo $this->campoSeguro('numeroContrato')?>").val()},
-	    success: function(data){ 
+        function consultarContrato(elem, request, response){
+            $.ajax({
+                url: "<?php echo $urlFinal17 ?>",
+                dataType: "json",
+                data: { valor:$("#<?php echo $this->campoSeguro('numeroContrato') ?>").val()},
+                success: function(data){ 
 
 
 
-	        if(data[0]!=" "){
+                    if(data[0]!=" "){
 
-	        	$("#documentoContrato").attr("href",data['documento_ruta']);
-	        	$("#documentoContrato").attr("target","_blank");
+                        $("#documentoContrato").attr("href",data['documento_ruta']);
+                        $("#documentoContrato").attr("target","_blank");
 
 
 	        	
-	        	$("#<?php echo $this->campoSeguro('nitproveedor')?> option[value="+ data['nombre_contratista'] +"]").attr("selected",true);
-	        	$("#<?php echo $this->campoSeguro('nitproveedor')?>").select2();
+                        $("#<?php echo $this->campoSeguro('nitproveedor') ?> option[value="+ data['nombre_contratista'] +"]").attr("selected",true);
+                        $("#<?php echo $this->campoSeguro('nitproveedor') ?>").select2();
 	        	
-		        }
+                    }
 	    			
 
-	    }
+                }
 		                    
-	   });
-};
+            });
+        };
 
 
 
-function consultarDependenciaConsultada(elem, request, response){
-	  $.ajax({
-	    url: "<?php echo $urlFinal16?>",
-	    dataType: "json",
-	    data: { valor:$("#<?php echo $this->campoSeguro('sedeConsulta')?>").val()},
-	    success: function(data){ 
+        function consultarDependenciaConsultada(elem, request, response){
+            $.ajax({
+                url: "<?php echo $urlFinal16 ?>",
+                dataType: "json",
+                data: { valor:$("#<?php echo $this->campoSeguro('sedeConsulta') ?>").val()},
+                success: function(data){ 
 
 
 
 
-	        if(data[0]!=" "){
+                    if(data[0]!=" "){
 
-	            $("#<?php echo $this->campoSeguro('dependenciaConsulta')?>").html('');
-	            $("<option value=''>Seleccione  ....</option>").appendTo("#<?php echo $this->campoSeguro('dependenciaConsulta')?>");
-	            $.each(data , function(indice,valor){
+                        $("#<?php echo $this->campoSeguro('dependenciaConsulta') ?>").html('');
+                        $("<option value=''>Seleccione  ....</option>").appendTo("#<?php echo $this->campoSeguro('dependenciaConsulta') ?>");
+                        $.each(data , function(indice,valor){
 
-	            	$("<option value='"+data[ indice ].ESF_CODIGO_DEP+"'>"+data[ indice ].ESF_DEP_ENCARGADA+"</option>").appendTo("#<?php echo $this->campoSeguro('dependenciaConsulta')?>");
+                            $("<option value='"+data[ indice ].ESF_CODIGO_DEP+"'>"+data[ indice ].ESF_DEP_ENCARGADA+"</option>").appendTo("#<?php echo $this->campoSeguro('dependenciaConsulta') ?>");
 	            	
-	            });
+                        });
 	            
-	            $("#<?php echo $this->campoSeguro('dependenciaConsulta')?>").removeAttr('disabled');
+                        $("#<?php echo $this->campoSeguro('dependenciaConsulta') ?>").removeAttr('disabled');
 	            
-	            $('#<?php echo $this->campoSeguro('dependenciaConsulta')?>').width(300);
-	            $("#<?php echo $this->campoSeguro('dependenciaConsulta')?>").select2();
+                        $('#<?php echo $this->campoSeguro('dependenciaConsulta') ?>').width(300);
+                        $("#<?php echo $this->campoSeguro('dependenciaConsulta') ?>").select2();
 	            
 	          
 	            
-		        }
+                    }
 	    			
 
-	    }
+                }
 		                    
-	   });
-	};
+            });
+        };
 
 
 
 
 
-function consultarDependencia(elem, request, response){
-	  $.ajax({
-	    url: "<?php echo $urlFinal16?>",
-	    dataType: "json",
-	    data: { valor:$("#<?php echo $this->campoSeguro('sede')?>").val()},
-	    success: function(data){ 
+        function consultarDependencia(elem, request, response){
+            $.ajax({
+                url: "<?php echo $urlFinal16 ?>",
+                dataType: "json",
+                data: { valor:$("#<?php echo $this->campoSeguro('sede') ?>").val()},
+                success: function(data){ 
 
 
 
 
-	        if(data[0]!=" "){
+                    if(data[0]!=" "){
 
-	            $("#<?php echo $this->campoSeguro('dependencia')?>").html('');
-	            $("<option value=''>Seleccione  ....</option>").appendTo("#<?php echo $this->campoSeguro('dependencia')?>");
-	            $.each(data , function(indice,valor){
+                        $("#<?php echo $this->campoSeguro('dependencia') ?>").html('');
+                        $("<option value=''>Seleccione  ....</option>").appendTo("#<?php echo $this->campoSeguro('dependencia') ?>");
+                        $.each(data , function(indice,valor){
 
-	            	$("<option value='"+data[ indice ].ESF_CODIGO_DEP+"'>"+data[ indice ].ESF_DEP_ENCARGADA+"</option>").appendTo("#<?php echo $this->campoSeguro('dependencia')?>");
+                            $("<option value='"+data[ indice ].ESF_CODIGO_DEP+"'>"+data[ indice ].ESF_DEP_ENCARGADA+"</option>").appendTo("#<?php echo $this->campoSeguro('dependencia') ?>");
 	            	
-	            });
+                        });
 	            
-	            $("#<?php echo $this->campoSeguro('dependencia')?>").removeAttr('disabled');
+                        $("#<?php echo $this->campoSeguro('dependencia') ?>").removeAttr('disabled');
 	            
-	            $('#<?php echo $this->campoSeguro('dependencia')?>').width(815);
-	            $("#<?php echo $this->campoSeguro('dependencia')?>").select2();
+                        $('#<?php echo $this->campoSeguro('dependencia') ?>').width(815);
+                        $("#<?php echo $this->campoSeguro('dependencia') ?>").select2();
 	            
 	          
 	            
-		        }
+                    }
 	    			
 
-	    }
+                }
 		                    
-	   });
-	};
+            });
+        };
 
 
-function datosOrdenador(elem, request, response){
-	  $.ajax({
-	    url: "<?php echo $urlFinal6?>",
-	    dataType: "json",
-	    data: { ordenador:$("#<?php echo $this->campoSeguro('asignacionOrdenador')?>").val()},
-	    success: function(data){ 
+        function datosOrdenador(elem, request, response) {
+            $.ajax({
+                url: "<?php echo $urlFinal6 ?>",
+                dataType: "json",
+                data: {ordenador: $("#<?php echo $this->campoSeguro('asignacionOrdenador') ?>").val()},
+                success: function (data) {
 
-	    		if(data[0]!='null'){
-
-	    			$("#<?php echo $this->campoSeguro('nombreOrdenador')?>").val(data[0]);
-	    			$("#<?php echo $this->campoSeguro('id_ordenador')?>").val(data[1]);
-							    			
-		    		}else{
-
-				
+                    if (data[0] != 'null') {
 
 
-			    		
-		    		}
-
-	    }
-		                    
-	   });
-	};
-
-
+                        
+                        $("#<?php echo $this->campoSeguro('nombreOrdenador') ?>").html('');
+                        $("<option value=''>Seleccione  ....</option>").appendTo("#<?php echo $this->campoSeguro('nombreOrdenador') ?>");
+                        $.each(data , function(indice,valor){
+                            $("<option value='"+data[ indice ].org_identificacion+"'>"+data[ indice ].org_nombre+"</option>").appendTo("#<?php echo $this->campoSeguro('nombreOrdenador') ?>");
+		            	
+                        });
+		            
+                        $("#<?php echo $this->campoSeguro('nombreOrdenador') ?>").removeAttr('disabled');
+		            
+                        $('#<?php echo $this->campoSeguro('nombreOrdenador') ?>').width(350);
+                        $("#<?php echo $this->campoSeguro('nombreOrdenador') ?>").select2();
+                    } else {
 
 
 
-    $(function () {
-
-        $("#tablaContenido").jqGrid({
-            url: "<?php echo $urlFinal ?>",
-            datatype: "json",
-            height: 200,
-            width: 930,
-            mtype: "GET",
-            colNames: ["Item", "Cantidad", "Descripción", "Valor Unitario", "Valor Total"],
-            colModel: [
-                {name: "item", width: 90, align: "center", editable: true},
-                {name: "cantidad", width: 80, align: "center", editable: true, editrules: {number: true}, sorttype: 'number', formatter: 'number'},
-                {name: "descripcion", width: 80, align: "center", editable: true},
-                {name: "valor_unitario", width: 80, align: "center", editable: true, editrules: {number: true}, sorttype: 'number', formatter: 'number'},
-                {name: "valor_total", width: 80, align: "center", editable: false, editrules: {number: true}, sorttype: 'number', formatter: 'number'},
-            ],
-            pager: "#barraNavegacion",
-            rowNum: 10,
-            rowList: [10, 20, 30],
-            sortname: "id_items",
-            sortorder: "desc",
-            viewrecords: false,
-            loadtext: "Cargando...",
-            pgtext: "Pagina {0} de {1}",     caption: "Detalle ",
-        }).navGrid('#barraNavegacion',
-                {
-                    add: true,
-                    addtext: 'Añadir Item',
-                    edit: false,
-                    del: true,
-                    deltext: 'Eliminar Item',
-                    alertcap: "Alerta",
-                    alerttext: "Seleccione Item",
-                    search: false,
-                    refresh: true,
-                    refreshstate: 'current',
-                    refreshtext: 'Refrescar Items',
-                },
-                {}, //edit
-                {
-                    caption: "Añadir Item",
-                    addCaption: "Adicionar Item",
-                    width: 390,
-                    height: 252,
-                    mtype: 'GET',
-                    url: '<?php echo $urlFinal2 ?>',
-                    bSubmit: "Agregar",
-                    bCancel: "Cancelar",
-                    bClose: "Close",
-                    saveData: "Data has been changed! Save changes?",
-                    bYes: "Yes",
-                    bNo: "No",
-                    bExit: "Cancel",
-                    closeOnEscape: true,
-                    closeAfterAdd: true,
-                    onclickSubmit: function (params, postdata) {
-                        //save add
-                        var p = params;
-                        var pt = postdata;
-                    },
-                    beforeSubmit: function (postdata, formid) {
-                        var p = postdata;
-                        var id = id;
-                        var success = true;
-                        var message = "continue";
-                        return[success, message];
-                    },
-                    afterSubmit: function (response, postdata)
-                    {
-                        var r = response;
-                        var p = postdata;
-                        var responseText = jQuery.jgrid.parse(response.responseText);
-                        var success = true;
-                        var message = "continue";
-                        return [success, message]
-                    },
-                    afterComplete: function (response, postdata, formid) {
-                        var responseText = jQuery.jgrid.parse(response.responseText);
-                        var r = response;
-                        var p = postdata;
-                        var f = formid;
-                    }}, //add
-        {
-            url: '<?php echo $urlFinal3 ?>',
-            caption: "Eliminar Item",
-            width: 425,
-            height: 150,
-            mtype: 'GET',
-            bSubmit: "Eliminar",
-            bCancel: "Cancelar",
-            bClose: "Close",
-            msg: "Desea Eliminar Item ?",
-            bYes: "Yes",
-            bNo: "No",
-            bExit: "Cancel",
-            closeOnEscape: true,
-            closeAfterAdd: true,
-            refresh: true,
-            onclickSubmit: function (params, postdata, id_items) {
-                //save add
-                var p = params;
-                var pt = postdata;
 
 
-            },
-            beforeSubmit: function (postdata, formid) {
-                var p = postdata;
-                var id = formid;
-                var success = true;
-                var message = "continue";
-                return[success, message];
-            },
-            afterSubmit: function (response, postdata)
+                    }
+
+                }
+
+            });
+        }
+        ;
+
+
+
+
+
+        $(function () {
+
+            $("#tablaContenido").jqGrid({
+                url: "<?php echo $urlFinal ?>",
+                datatype: "json",
+                height: 200,
+                width: 930,
+                mtype: "GET",
+                colNames: ["Item", "Cantidad", "Descripción", "Valor Unitario", "Valor Total"],
+                colModel: [
+                    {name: "item", width: 90, align: "center", editable: true},
+                    {name: "cantidad", width: 80, align: "center", editable: true, editrules: {number: true}, sorttype: 'number', formatter: 'number'},
+                    {name: "descripcion", width: 80, align: "center", editable: true},
+                    {name: "valor_unitario", width: 80, align: "center", editable: true, editrules: {number: true}, sorttype: 'number', formatter: 'number'},
+                    {name: "valor_total", width: 80, align: "center", editable: false, editrules: {number: true}, sorttype: 'number', formatter: 'number'},
+                ],
+                pager: "#barraNavegacion",
+                rowNum: 10,
+                rowList: [10, 20, 30],
+                sortname: "id_items",
+                sortorder: "desc",
+                viewrecords: false,
+                loadtext: "Cargando...",
+                pgtext: "Pagina {0} de {1}",     caption: "Detalle ",
+            }).navGrid('#barraNavegacion',
             {
-                var r = response;
-                var p = postdata;
-                var responseText = jQuery.jgrid.parse(response.responseText);
-                var success = true;
-                var message = "continue";
-                return [success, message]
+                add: true,
+                addtext: 'Añadir Item',
+                edit: false,
+                del: true,
+                deltext: 'Eliminar Item',
+                alertcap: "Alerta",
+                alerttext: "Seleccione Item",
+                search: false,
+                refresh: true,
+                refreshstate: 'current',
+                refreshtext: 'Refrescar Items',
             },
-            afterComplete: function (response, postdata, formid) {
-                var responseText = jQuery.jgrid.parse(response.responseText);
-                var r = response;
-                var p = postdata;
-                var f = formid;
-            }
+            {}, //edit
+            {
+                caption: "Añadir Item",
+                addCaption: "Adicionar Item",
+                width: 390,
+                height: 252,
+                mtype: 'GET',
+                url: '<?php echo $urlFinal2 ?>',
+                bSubmit: "Agregar",
+                bCancel: "Cancelar",
+                bClose: "Close",
+                saveData: "Data has been changed! Save changes?",
+                bYes: "Yes",
+                bNo: "No",
+                bExit: "Cancel",
+                closeOnEscape: true,
+                closeAfterAdd: true,
+                onclickSubmit: function (params, postdata) {
+                    //save add
+                    var p = params;
+                    var pt = postdata;
+                },
+                beforeSubmit: function (postdata, formid) {
+                    var p = postdata;
+                    var id = id;
+                    var success = true;
+                    var message = "continue";
+                    return[success, message];
+                },
+                afterSubmit: function (response, postdata)
+                {
+                    var r = response;
+                    var p = postdata;
+                    var responseText = jQuery.jgrid.parse(response.responseText);
+                    var success = true;
+                    var message = "continue";
+                    return [success, message]
+                },
+                afterComplete: function (response, postdata, formid) {
+                    var responseText = jQuery.jgrid.parse(response.responseText);
+                    var r = response;
+                    var p = postdata;
+                    var f = formid;
+                }}, //add
+            {
+                url: '<?php echo $urlFinal3 ?>',
+                caption: "Eliminar Item",
+                width: 425,
+                height: 150,
+                mtype: 'GET',
+                bSubmit: "Eliminar",
+                bCancel: "Cancelar",
+                bClose: "Close",
+                msg: "Desea Eliminar Item ?",
+                bYes: "Yes",
+                bNo: "No",
+                bExit: "Cancel",
+                closeOnEscape: true,
+                closeAfterAdd: true,
+                refresh: true,
+                onclickSubmit: function (params, postdata, id_items) {
+                    //save add
+                    var p = params;
+                    var pt = postdata;
 
-        }, //del
-        {},
-                {}
+
+                },
+                beforeSubmit: function (postdata, formid) {
+                    var p = postdata;
+                    var id = formid;
+                    var success = true;
+                    var message = "continue";
+                    return[success, message];
+                },
+                afterSubmit: function (response, postdata)
+                {
+                    var r = response;
+                    var p = postdata;
+                    var responseText = jQuery.jgrid.parse(response.responseText);
+                    var success = true;
+                    var message = "continue";
+                    return [success, message]
+                },
+                afterComplete: function (response, postdata, formid) {
+                    var responseText = jQuery.jgrid.parse(response.responseText);
+                    var r = response;
+                    var p = postdata;
+                    var f = formid;
+                }
+
+            }, //del
+            {},
+            {}
         );
 
 
-        $("#<?php echo $this->campoSeguro('numeroContrato')?>").change(function(){
-        	if($("#<?php echo $this->campoSeguro('numeroContrato')?>").val()!=''){
+            $("#<?php echo $this->campoSeguro('numeroContrato') ?>").change(function(){
+                if($("#<?php echo $this->campoSeguro('numeroContrato') ?>").val()!=''){
 
-        		consultarContrato();
-    		}else{
+                    consultarContrato();
+                }else{
     			
-    			}
+                }
 
-    	      });
+            });
         
         
-        $("#<?php echo $this->campoSeguro('sede')?>").change(function(){
-        	if($("#<?php echo $this->campoSeguro('sede')?>").val()!=''){
-            	consultarDependencia();
-    		}else{
-    			$("#<?php echo $this->campoSeguro('dependencia')?>").attr('disabled','');
-    			}
+            $("#<?php echo $this->campoSeguro('sede') ?>").change(function(){
+                if($("#<?php echo $this->campoSeguro('sede') ?>").val()!=''){
+                    consultarDependencia();
+                }else{
+                    $("#<?php echo $this->campoSeguro('dependencia') ?>").attr('disabled','');
+                }
 
-    	      });
+            });
 
 
 
         
-        $("#<?php echo $this->campoSeguro('sedeConsulta')?>").change(function(){
-        	if($("#<?php echo $this->campoSeguro('sedeConsulta')?>").val()!=''){
-        		consultarDependenciaConsultada();
-    		}else{
-    			$("#<?php echo $this->campoSeguro('dependenciaConsulta')?>").attr('disabled','');
-    			}
+            $("#<?php echo $this->campoSeguro('sedeConsulta') ?>").change(function(){
+                if($("#<?php echo $this->campoSeguro('sedeConsulta') ?>").val()!=''){
+                    consultarDependenciaConsultada();
+                }else{
+                    $("#<?php echo $this->campoSeguro('dependenciaConsulta') ?>").attr('disabled','');
+                }
 
-    	      });
+            });
         
         
              
         
-        $("#<?php echo $this->campoSeguro('asignacionOrdenador')?>").change(function(){
+            $("#<?php echo $this->campoSeguro('asignacionOrdenador') ?>").change(function(){
         	
-	    	if($("#<?php echo $this->campoSeguro('asignacionOrdenador')?>").val()!=''){
-	    		datosOrdenador();
-			}else{
-				$("#<?php echo $this->campoSeguro('nombreOrdenador')?>").val('');
-				}
-		      });
+                if($("#<?php echo $this->campoSeguro('asignacionOrdenador') ?>").val()!=''){
+                    datosOrdenador();
+                }else{
+                    $("#<?php echo $this->campoSeguro('nombreOrdenador') ?>").val('');
+                }
+            });
 
 
-		$("#<?php echo $this->campoSeguro('asignacionOrdenador') ?>").select2();
+            $("#<?php echo $this->campoSeguro('asignacionOrdenador') ?>").select2();
+                
+            $("#<?php echo $this->campoSeguro('nombreOrdenador') ?>").width(350);
+            $("#<?php echo $this->campoSeguro('nombreOrdenador') ?>").select2();
 
 
 
@@ -629,43 +638,43 @@ function datosOrdenador(elem, request, response){
 
 		
 
-        $( "#<?php echo $this->campoSeguro('nitproveedor')?>" ).keyup(function() {
+            $( "#<?php echo $this->campoSeguro('nitproveedor') ?>" ).keyup(function() {
 
         	
-        	$('#<?php echo $this->campoSeguro('nitproveedor') ?>').val($('#<?php echo $this->campoSeguro('nitproveedor') ?>').val().toUpperCase());
+                $('#<?php echo $this->campoSeguro('nitproveedor') ?>').val($('#<?php echo $this->campoSeguro('nitproveedor') ?>').val().toUpperCase());
 
         	
-                });
+            });
 
 
 
-        $("#<?php echo $this->campoSeguro('nivel')?>").change(function() {
+            $("#<?php echo $this->campoSeguro('nivel') ?>").change(function() {
         	
-    		if($("#<?php echo $this->campoSeguro('nivel')?>").val()!=''){
+                if($("#<?php echo $this->campoSeguro('nivel') ?>").val()!=''){
 
-    			tipo_bien();	
+                    tipo_bien();	
 
-    		}else{}
+                }else{}
 
 
-     });
+            });
         
 
 
             $("#<?php echo $this->campoSeguro('nitproveedor') ?>").autocomplete({
-            	minChars: 3,
-            	serviceUrl: '<?php echo $urlFinalProveedor; ?>',
-            	onSelect: function (suggestion) {
+                minChars: 3,
+                serviceUrl: '<?php echo $urlFinalProveedor; ?>',
+                onSelect: function (suggestion) {
                 	
-            	        $("#<?php echo $this->campoSeguro('id_proveedor') ?>").val(suggestion.data);
-            	    }
+                    $("#<?php echo $this->campoSeguro('id_proveedor') ?>").val(suggestion.data);
+                }
                         
             });
 
 		
         
 
-    });
+        });
 
 
 </script>

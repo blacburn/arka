@@ -339,6 +339,58 @@ class Sql extends \Sql {
 
                 break;
 
+            case "consultarElementoAux" :
+
+                $cadenaSql = " SELECT DISTINCT eli.id_elemento_ind, eli.placa ,eli.funcionario funcionario_encargado, ";
+                $cadenaSql .= ' "FUN_NOMBRE" as fun_nombre,id_elemento_gen, sas."ESF_SEDE" sede,ad."ESF_DEP_ENCARGADA" dependencia,espacios."ESF_NOMBRE_ESPACIO" ubicacion,tfs.descripcion estado_elemento, ';
+                $cadenaSql .= ' tb.descripcion tipo_bien, ele.tipo_bien id_tipo_bien, catalogo.catalogo_elemento.elemento_nombre nivel, ';
+                $cadenaSql .= ' ele.marca marca, ele.serie serie, elemento_nombre, ele.descripcion descripcion_elemento, cantidad, valor, iva, ajuste, total_iva_con, bodega ';
+                $cadenaSql .= " FROM elemento_individual eli   ";
+                $cadenaSql .= " JOIN elemento ele ON ele.id_elemento =eli .id_elemento_gen  ";
+                $cadenaSql .= " JOIN tipo_bienes tb ON tb.id_tipo_bienes = ele.tipo_bien  ";
+                $cadenaSql .= " JOIN catalogo.catalogo_elemento ON catalogo.catalogo_elemento.elemento_id=nivel  ";
+                $cadenaSql .= " LEFT JOIN estado_elemento est ON est.id_elemento_ind = eli.id_elemento_ind  ";
+                $cadenaSql .= ' LEFT JOIN tipo_falt_sobr tfs ON tfs.id_tipo_falt_sobr = est.tipo_faltsobr ';
+                $cadenaSql .= ' LEFT JOIN arka_parametros.arka_funcionarios fn ON fn."FUN_IDENTIFICACION"= eli.funcionario ';
+                $cadenaSql .= ' LEFT JOIN arka_parametros.arka_espaciosfisicos as espacios ON espacios."ESF_ID_ESPACIO"=eli.ubicacion_elemento ';
+                $cadenaSql .= ' LEFT JOIN arka_parametros.arka_dependencia as ad ON ad."ESF_ID_ESPACIO"=eli.ubicacion_elemento ';
+                $cadenaSql .= ' LEFT JOIN arka_parametros.arka_sedes as sas ON sas."ESF_COD_SEDE"=espacios."ESF_COD_SEDE"  ';
+                $cadenaSql .= ' LEFT JOIN asignar_elementos asl ON asl.id_elemento=eli.id_elemento_ind AND asl.estado = 1  ';
+                $cadenaSql .= ' LEFT JOIN arka_parametros.arka_contratistas crn ON crn."CON_IDENTIFICACION"=asl.contratista ';
+                $cadenaSql .= " LEFT JOIN arka_inventarios.baja_elemento bj ON bj.id_elemento_ind=eli.id_elemento_ind AND bj.estado_registro = TRUE  ";
+                $cadenaSql .= " WHERE tb.id_tipo_bienes <> 1 AND bj.id_elemento_ind IS NULL AND eli.estado_registro = 'TRUE' ";
+
+                if ($variable ['funcionario'] != '') {
+                    $cadenaSql .= " AND eli.funcionario = '" . $variable ['funcionario'] . "'";
+                }
+                if ($variable ['serie'] != '') {
+                    $cadenaSql .= " AND  eli.serie= '" . $variable ['serie'] . "'";
+                }
+                if ($variable ['placa'] != '') {
+                    $cadenaSql .= " AND  eli.placa= '" . $variable ['placa'] . "'";
+                }
+                if ($variable ['sede'] != '') {
+                    $cadenaSql .= ' AND sas."ESF_ID_SEDE" = ';
+                    $cadenaSql .= " '" . $variable ['sede'] . "' ";
+                }
+
+                if ($variable ['dependencia'] != '') {
+                    $cadenaSql .= ' AND ad."ESF_CODIGO_DEP" = ';
+                    $cadenaSql .= " '" . $variable ['dependencia'] . "' ";
+                }
+
+                if ($variable ['ubicacion'] != '') {
+                    $cadenaSql .= ' AND espacios."ESF_ID_ESPACIO" = ';
+                    $cadenaSql .= " '" . $variable ['ubicacion'] . "' ";
+                }
+
+                $cadenaSql .= ' ORDER BY eli.id_elemento_ind DESC';
+            
+                // $cadenaSql .= " LIMIT 10 ;";
+               
+                
+                break;
+
             case "consultarElemento" :
 
                 $cadenaSql = " SELECT elemento_individual.id_elemento_ind, elemento_individual.placa, elemento_individual.funcionario as funcionario_encargado, ";
@@ -397,11 +449,43 @@ class Sql extends \Sql {
                 }
 
                 $cadenaSql .= ' ORDER BY elemento_individual.id_elemento_ind DESC ;';
+                
+
                 // $cadenaSql .= " LIMIT 10 ;";
 
                 break;
+            case "consultarElementoxPlacaAux" :
 
-            case "consultarElementoxPlaca" :
+                $cadenaSql = '  SELECT DISTINCT eli.id_elemento_ind,ele.id_elemento as id_elemento, eli.placa ,eli.funcionario funcionario_encargado, "FUN_NOMBRE" as fun_nombre,id_elemento_gen, sas."ESF_SEDE" sede, ';
+                $cadenaSql .= ' ad."ESF_DEP_ENCARGADA" dependencia,espacios."ESF_NOMBRE_ESPACIO" ubicacion,tfs.descripcion estado_elemento, tb.descripcion tipo_bien, ele.tipo_bien id_tipo_bien, ';
+                $cadenaSql .= ' catalogo.catalogo_elemento.elemento_nombre nivel, catalogo.catalogo_elemento.elemento_id id_catalogo,  ';
+                $cadenaSql .= ' catalogo.catalogo_elemento.elemento_codigo codigo_elemento,ele.marca marca, ele.serie serie, elemento_nombre, ele.descripcion descripcion_elemento, cantidad, valor, iva, ajuste, ';
+                $cadenaSql .= ' total_iva_con, bodega ';
+                $cadenaSql .= " FROM elemento_individual eli    ";
+                $cadenaSql .= " JOIN elemento ele ON ele.id_elemento =eli .id_elemento_gen ";
+                $cadenaSql .= " JOIN tipo_bienes tb ON tb.id_tipo_bienes = ele.tipo_bien  ";
+                // $cadenaSql.= " JOIN tipo_bienes ON tipo_bienes.id_tipo_bienes=tipo_bien ";
+                $cadenaSql .= " JOIN catalogo.catalogo_elemento ON catalogo.catalogo_elemento.elemento_id=nivel  ";
+                $cadenaSql .= ' LEFT JOIN estado_elemento est ON est.id_elemento_ind = eli.id_elemento_ind  ';
+                $cadenaSql .= ' LEFT JOIN tipo_falt_sobr tfs ON tfs.id_tipo_falt_sobr = est.tipo_faltsobr ';
+                $cadenaSql .= ' LEFT JOIN arka_parametros.arka_funcionarios fn ON fn."FUN_IDENTIFICACION"= eli.funcionario  ';
+                $cadenaSql .= ' LEFT JOIN arka_parametros.arka_espaciosfisicos as espacios ON espacios."ESF_ID_ESPACIO"=eli.ubicacion_elemento  ';
+                $cadenaSql .= ' LEFT JOIN arka_parametros.arka_dependencia as ad ON ad."ESF_ID_ESPACIO"=eli.ubicacion_elemento ';
+                $cadenaSql .= ' LEFT JOIN arka_parametros.arka_sedes as sas ON sas."ESF_COD_SEDE"=espacios."ESF_COD_SEDE"  ';
+                $cadenaSql .= " LEFT JOIN asignar_elementos asl ON asl.id_elemento=eli.id_elemento_ind AND asl.estado = 1 ";
+                $cadenaSql .= ' LEFT JOIN arka_parametros.arka_contratistas crn ON crn."CON_IDENTIFICACION"=asl.contratista ';
+                $cadenaSql .= " LEFT JOIN arka_inventarios.baja_elemento bj ON bj.id_elemento_ind=eli.id_elemento_ind AND bj.estado_registro = TRUE ";
+                $cadenaSql .= " WHERE tb.id_tipo_bienes <> 1 AND bj.id_elemento_ind IS NULL AND eli.estado_registro = 'TRUE' ";
+                if ($variable != '') {
+                    $cadenaSql .= " AND  eli.placa= '" . $variable . "'";
+                }
+
+                $cadenaSql .= '  ORDER BY eli.id_elemento_ind DESC;';
+             
+                // $cadenaSql .= " LIMIT 10 ;";
+                break;
+                
+                case "consultarElementoxPlaca" :
 
                 $cadenaSql = " SELECT elemento_individual.id_elemento_ind,elemento.id_elemento as id_elemento, elemento_individual.placa as placa, elemento_individual.funcionario as funcionario_encargado, ";
                 $cadenaSql .= ' arka_parametros.arka_funcionarios."FUN_NOMBRE" as fun_nombre, id_elemento_gen, ';
@@ -428,7 +512,7 @@ class Sql extends \Sql {
                 $cadenaSql .= ' JOIN arka_parametros.arka_funcionarios ON arka_parametros.arka_funcionarios."FUN_IDENTIFICACION" = elemento_individual.funcionario ';
                 $cadenaSql .= " LEFT JOIN arka_inventarios.estado_elemento ON arka_inventarios.estado_elemento.id_elemento_ind=elemento_individual.id_elemento_ind ";
                 $cadenaSql .= " LEFT JOIN arka_inventarios.tipo_falt_sobr ON tipo_falt_sobr.id_tipo_falt_sobr=estado_elemento.tipo_faltsobr ";
-                $cadenaSql .= " WHERE elemento.estado='1'  AND elemento.tipo_bien <> 1 ";
+                $cadenaSql .= " WHERE elemento.tipo_bien <> 1 ";
                 $cadenaSql .= " AND elemento_individual.id_elemento_ind NOT IN (SELECT id_elemento_ind FROM arka_inventarios.estado_elemento WHERE estado_registro='t' AND id_reposicion=0 AND tipo_faltsobr in (2,3))";
                 // $cadenaSql .= "AND entrada.cierre_contable='f' ";
                 // $cadenaSql .= "AND entrada.estado_entrada = 1 ";
@@ -441,6 +525,7 @@ class Sql extends \Sql {
                 }
 
                 $cadenaSql .= ' ORDER BY elemento_individual.id_elemento_ind DESC ;';
+                
                 // $cadenaSql .= " LIMIT 10 ;";
                 break;
 
@@ -514,11 +599,16 @@ class Sql extends \Sql {
                 $cadenaSql .= " descripcion='" . $variable['descripcion'] . "'";
                 $cadenaSql .= " WHERE id_elemento='" . $variable ['id_elemento'] . "' ;";
                 break;
+            case "actualizar_tipo_bien_individual" :
+                $cadenaSql = " UPDATE arka_inventarios.elemento_individual ";
+                $cadenaSql .= "SET serie='" . $variable['serie'] . "'";
+                $cadenaSql .= " WHERE id_elemento_gen=" . $variable['id_elemento']  . " ;";
+           
+                break;
             case "buscarCuenta" :
                 $cadenaSql = " SELECT DISTINCT  id_elemento_ind as id_elemento,  grupo_cuentasalida as cuenta_salida ";
                 $cadenaSql .= " FROM arka_inventarios.elemento_individual ";
                 $cadenaSql .= " JOIN arka_inventarios.elemento ON elemento.id_elemento=elemento_individual.id_elemento_gen ";
-                $cadenaSql .= " JOIN arka_inventarios.salida ON salida.id_salida=elemento_individual.id_salida  ";
                 $cadenaSql .= " JOIN catalogo.catalogo_elemento ON catalogo.catalogo_elemento.elemento_id=nivel ";
                 $cadenaSql .= " JOIN grupo.catalogo_elemento ON cast(grupo.catalogo_elemento.elemento_id as character varying)=catalogo.catalogo_elemento.elemento_grupoc ";
                 $cadenaSql .= " JOIN grupo.grupo_descripcion ON grupo.grupo_descripcion.grupo_id=cast(grupo.catalogo_elemento.elemento_id as character varying)  ";
@@ -526,6 +616,8 @@ class Sql extends \Sql {
                 $cadenaSql .= " AND elemento.estado=TRUE ";
                 $cadenaSql .= " AND id_elemento_ind NOT IN (  SELECT id_elemento_ind FROM estado_elemento )   ";
                 $cadenaSql .= " AND id_elemento_gen=" . $variable ['id_elemento'] . " ;";
+             
+               
 
                 break;
 
@@ -548,12 +640,14 @@ class Sql extends \Sql {
                 $cadenaSql .= "'" . $variable ['fecha'] . "', ";
                 $cadenaSql .= "'Activo' ";
                 $cadenaSql .= ")";
+                
                 break;
 
             case "actualizar_version_tipo_bien" :
                 $cadenaSql = " UPDATE arka_inventarios.tipo_cambio_bien ";
                 $cadenaSql .= "SET estado='Inactivo' ";
-                $cadenaSql .= " WHERE id_elemento='" . $variable ['id_elemento'] . "' ;";
+                $cadenaSql .= " WHERE id_elemento='" . $variable ['id_elemento'] . "'";
+                $cadenaSql .= " AND estado='Activo' ;";
                 break;
             case "funcionario_informacion" :
                 $cadenaSql = "SELECT FUN_IDENTIFICACION,  FUN_NOMBRE  ";

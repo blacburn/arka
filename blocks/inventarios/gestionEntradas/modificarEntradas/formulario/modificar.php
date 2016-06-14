@@ -48,8 +48,7 @@ class registrarForm {
 
         $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 
-        $conexion = "sicapital";
-        $esteRecursoDBO = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
+       
 
         $cadenaSql = $this->miSql->getCadenaSql('consultarEntradaParticular', $_REQUEST ['numero_entrada']);
 

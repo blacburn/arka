@@ -113,16 +113,25 @@ class RegistradorActa {
 		} else {
 			$tipoOrden = 0;
 		}
-		
+            
+	        if($_REQUEST['nombreOrdenador']!=''){
+                $ordenador=(int)$_REQUEST['nombreOrdenador'];    
+                }
+                else {
+                    
+                $ordenador=null;
+                }
+              
 		// Registro del Acta de Recibido
 		
 		$datosActa = array (
 				'sede' => $_REQUEST ['sede'],
 				'dependencia' => $_REQUEST ['dependencia'],
+                                'ubicacion' => $_REQUEST ['ubicacion'],
 				'fecha_registro' => $fechaActual,
 				'tipo_bien' => '0',
 				'nitproveedor' => ($_REQUEST ['id_proveedor'] != '') ? $_REQUEST ['id_proveedor'] : null,
-				'ordenador' => ($_REQUEST ['id_ordenador'] != '') ? $_REQUEST ['id_ordenador'] : null,
+				'ordenador' => $ordenador,
 				'fecha_revision' => $_REQUEST ['fecha_revision'],
 				'revisor' => NUll,
 				'observacion' => $_REQUEST ['observacionesActa'],

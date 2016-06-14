@@ -82,7 +82,6 @@ $urlFinalPlaca = $url . $cadena;
 <script>
 
 
-
     function marcar(obj) {
         elem = obj.elements;
         for (i = 0; i < elem.length; i++)
@@ -123,7 +122,10 @@ $urlFinalPlaca = $url . $cadena;
                     $('#<?php echo $this->campoSeguro('dependencia') ?>').width(210);
                     $("#<?php echo $this->campoSeguro('dependencia') ?>").select2();
 
-
+                    $("#<?php echo $this->campoSeguro('ubicacion') ?>").val(null);
+                    $('#<?php echo $this->campoSeguro('ubicacion') ?>').width(200);
+                    $("#<?php echo $this->campoSeguro('ubicacion') ?>").select2();
+                    $("#<?php echo $this->campoSeguro('ubicacion') ?>").attr('disabled', '');
 
                 }
 
@@ -237,7 +239,10 @@ $urlFinalPlaca = $url . $cadena;
                 $("#<?php echo $this->campoSeguro('responsable') ?>").attr("class", "selectboxdiv  validate[ ]  select2-hidden-accessible");
                 consultarDependencia();
             } else {
+                $("#<?php echo $this->campoSeguro('dependencia') ?>").select2();
                 $("#<?php echo $this->campoSeguro('dependencia') ?>").attr('disabled', '');
+                $("#<?php echo $this->campoSeguro('ubicacion') ?>").select2();
+                $("#<?php echo $this->campoSeguro('ubicacion') ?>").attr('disabled', '');
             }
 
         });

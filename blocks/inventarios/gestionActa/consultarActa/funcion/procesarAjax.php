@@ -1,4 +1,5 @@
 <?php
+
 use inventarios\gestionActa\consultarActa\Sql;
 
 $conexion = "inventarios";
@@ -9,11 +10,11 @@ $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexio
 if ($_REQUEST ['funcion'] == 'SeleccionTipoBien') {
 
 
-	$cadenaSql = $this->sql->getCadenaSql ( 'ConsultaTipoBien', $_REQUEST['valor'] );
-	$resultadoItems = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-	$resultadoItems=$resultadoItems[0];
+    $cadenaSql = $this->sql->getCadenaSql('ConsultaTipoBien', $_REQUEST['valor']);
+    $resultadoItems = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
+    $resultadoItems = $resultadoItems[0];
 
-	echo json_encode($resultadoItems);
+    echo json_encode($resultadoItems);
 }
 
 
@@ -66,7 +67,7 @@ if ($_REQUEST ['funcion'] == 'tablaItems') {
                 $row ['valor_unitario'],
                 $row ['valor_total']
             );
-            $i ++;
+            $i++;
         }
 
         $tabla = json_encode($tabla);
@@ -108,7 +109,7 @@ if ($_REQUEST ['funcion'] == 'AgregarItem') {
             $_GET ['cantidad'],
             $_GET ['descripcion'],
             $_GET ['valor_unitario'],
-            $_GET ['cantidad']*$_GET ['valor_unitario'],
+            $_GET ['cantidad'] * $_GET ['valor_unitario'],
             $_REQUEST ['tiempo']
         );
     } else {
@@ -118,7 +119,7 @@ if ($_REQUEST ['funcion'] == 'AgregarItem') {
             $_GET ['cantidad'],
             $_GET ['descripcion'],
             $_GET ['valor_unitario'],
-            $_GET ['cantidad']*$_GET ['valor_unitario'],
+            $_GET ['cantidad'] * $_GET ['valor_unitario'],
             $_REQUEST ['tiempo']
         );
     }
@@ -144,14 +145,14 @@ if ($_REQUEST ['funcion'] == 'EliminarItem') {
 
 if ($_REQUEST ['funcion'] == 'consultarDependencia') {
 
-	
-	$cadenaSql = $this->sql->getCadenaSql ( 'dependenciasConsultadas', $_REQUEST ['valor'] );
-	
-	$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-	
-	$resultado = json_encode ( $resultado );
-	
-	echo $resultado;
+
+    $cadenaSql = $this->sql->getCadenaSql('dependenciasConsultadas', $_REQUEST ['valor']);
+
+    $resultado = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
+
+    $resultado = json_encode($resultado);
+
+    echo $resultado;
 }
 
 
@@ -159,13 +160,12 @@ if ($_REQUEST ['funcion'] == 'SeleccionOrdenador') {
 
 // 	$conexion = "sicapital";
 // 	$esteRecursoDBO = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+    $cadenaSql = $this->sql->getCadenaSql('informacion_ordenador', $_REQUEST ['ordenador']);
+    $resultadoItems = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
 
-	$cadenaSql = $this->sql->getCadenaSql ( 'informacion_ordenador', $_REQUEST ['ordenador'] );
-	$resultadoItems = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+    $resultado = json_encode($resultadoItems);
 
-	$resultado = json_encode ( $resultadoItems [0] );
-
-	echo $resultado;
+    echo $resultado;
 }
 
 
@@ -179,12 +179,12 @@ if ($_REQUEST ['funcion'] == 'proveedor') {
 
 if ($_REQUEST ['funcion'] == 'consultarInfoContrato') {
 
-	$cadenaSql = $this->sql->getCadenaSql ( 'informacionContrato', $_REQUEST ['valor'] );
-	$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-	$resultado=$resultado[0];
-	$resultado = json_encode ( $resultado );
+    $cadenaSql = $this->sql->getCadenaSql('informacionContrato', $_REQUEST ['valor']);
+    $resultado = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
+    $resultado = $resultado[0];
+    $resultado = json_encode($resultado);
 
-	echo $resultado;
+    echo $resultado;
 }
 
 
@@ -195,19 +195,19 @@ if ($_REQUEST ['funcion'] == 'consultaProveedor') {
 
 
 
-	$cadenaSql = $this->sql->getCadenaSql ( 'buscar_Proveedores', $_GET ['query'] );
+    $cadenaSql = $this->sql->getCadenaSql('buscar_Proveedores', $_GET ['query']);
 
-	$resultadoItems = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+    $resultadoItems = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
 
-	foreach ( $resultadoItems as $key => $values ) {
-		$keys = array (
-				'value',
-				'data'
-		);
-		$resultado [$key] = array_intersect_key ( $resultadoItems [$key], array_flip ( $keys ) );
-	}
+    foreach ($resultadoItems as $key => $values) {
+        $keys = array(
+            'value',
+            'data'
+        );
+        $resultado [$key] = array_intersect_key($resultadoItems [$key], array_flip($keys));
+    }
 
-	echo '{"suggestions":' . json_encode ( $resultado ) . '}';
+    echo '{"suggestions":' . json_encode($resultado) . '}';
 }
 
 
@@ -218,24 +218,12 @@ if ($_REQUEST ['funcion'] == 'consultarIva') {
 
 
 
-	$cadenaSql = $this->sql->getCadenaSql ( 'consultar_tipo_iva' );
+    $cadenaSql = $this->sql->getCadenaSql('consultar_tipo_iva');
 
-	$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+    $resultado = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
 
-	$resultado = json_encode ( $resultado );
+    $resultado = json_encode($resultado);
 
-	echo $resultado;
+    echo $resultado;
 }
-
-
- 
-
-
-
-
-
-
-
-
-
 ?>

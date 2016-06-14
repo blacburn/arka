@@ -89,12 +89,19 @@ class registrarForm {
 		} else {
 			$entrada = '';
 		}
-		
+		if (isset ( $_REQUEST ['serie'] ) && $_REQUEST ['serie'] != '') {
+			$serie = $_REQUEST ['serie'];
+		} else {
+			$serie = '';
+		}
 		if (isset ( $_REQUEST ['id_placa'] ) && $_REQUEST ['id_placa'] != '') {
 			$elemento = $_REQUEST ['id_placa'];
 		} else {
 			$elemento = '';
 		}
+                
+                
+                
 		
 		$datos = array (
 				'entrada' => $entrada,
@@ -105,6 +112,7 @@ class registrarForm {
 				'fechainicial' => $fecha_inicio,
 				'fechafinal' => $fecha_final,
 				'elemento' => $elemento,
+                                'serie' => $serie,
 				'numero_entrada' => $entrada 
 		);
 		
@@ -160,6 +168,7 @@ class registrarForm {
 			<thead>
                                 <tr>
                                     <th>Placa</th>
+                                    <th>Serie</th>
                                     <th>Descripción</th>
                                     <th>Sede</th>
                                     <th>Dependencia</th>

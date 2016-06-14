@@ -42,8 +42,7 @@ class registrarForm {
 		$conexion = "inventarios";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
-		$conexion = "sicapital";
-		$esteRecursoDBO = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		
 		
 		for($j = 0; $j <= 10000; $j ++) {
 			if (isset ( $_REQUEST ['item_' . $j] )) {

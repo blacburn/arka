@@ -196,7 +196,7 @@ class registrarForm {
 		$atributos ['validar'] = '';
 		$atributos ['limitar'] = true;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['anchoEtiqueta'] = 165;
+		$atributos ['anchoEtiqueta'] = 150;
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['seleccion'] = $_REQUEST [$esteCampo];
 		} else {

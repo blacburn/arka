@@ -1153,7 +1153,7 @@ class registrarForm {
 						if (isset ( $_REQUEST [$esteCampo] )) {
 							$atributos ['seleccion'] = $_REQUEST [$esteCampo];
 						} else {
-							$atributos ['seleccion'] = - 1;
+							$atributos ['seleccion'] =2 ;
 						}
 						$atributos ['deshabilitado'] = false;
 						$atributos ['columnas'] = 2;
@@ -1200,7 +1200,7 @@ class registrarForm {
 						if (isset ( $_REQUEST [$esteCampo] )) {
 							$atributos ['valor'] = $_REQUEST [$esteCampo];
 						} else {
-							$atributos ['valor'] = '';
+							$atributos ['valor'] = 'asfsagasg';
 						}
 						$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 						$atributos ['deshabilitado'] = false;

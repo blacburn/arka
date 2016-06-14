@@ -47,9 +47,7 @@ class registrarForm {
 		// -------------------------------------------------------------------------------------------------
 		$conexion = "inventarios";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
-		
-		$conexion = "sicapital";
-		$esteRecursoDBO = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+
 		
 		if (isset ( $_REQUEST ['vigencia'] ) && $_REQUEST ['vigencia'] != '') {
 			$vigencia = $_REQUEST ['vigencia'];

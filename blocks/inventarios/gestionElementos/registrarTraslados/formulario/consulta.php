@@ -42,9 +42,7 @@ class registrarForm {
 		$conexion = "inventarios";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
-		$conexion = "sicapital";
-		$esteRecursoDBO = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
-		
+	
 		// Limpia Items Tabla temporal
 		
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
@@ -130,7 +128,7 @@ class registrarForm {
 		$atributos ['tab'] = $tab;
 		$atributos ['tamanno'] = 1;
 		$atributos ['estilo'] = 'jqueryui';
-		$atributos ['validar'] = '';
+		$atributos ['validar'] = "required";
 		$atributos ['limitar'] = true;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 		$atributos ['anchoEtiqueta'] = 150;

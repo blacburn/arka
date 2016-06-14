@@ -65,7 +65,13 @@ class RegistradorOrden {
 		
 		$fechaActual = date ( 'Y-m-d' );
 		// Actualizar Acta de Recibido
-		
+		if($_REQUEST['nombreOrdenador']!=''){
+                $ordenador= (int)$_REQUEST['nombreOrdenador'];    
+                }
+                else {
+                    
+                $ordenador=null;
+                }
 		if ($archivo['name']!='') {
 			
 			$datosActa = array (
@@ -74,7 +80,7 @@ class RegistradorOrden {
 					'fecha_registro' => $fechaActual,
 					'tipo_bien' => 0,
 					'nit_proveedor' => ($_REQUEST ['id_proveedor']=='')?'NULL':"'".$_REQUEST ['id_proveedor']."'",
-					'ordenador' => $_REQUEST ['id_ordenador'],
+					'ordenador' => $ordenador,
 					'fecha_revision' => $_REQUEST ['fecha_revision'],
 					'revisor' => NULL,
 					'observaciones' => $_REQUEST ['observacionesacta'],
@@ -98,7 +104,7 @@ class RegistradorOrden {
 					'fecha_registro' => $fechaActual,
 					'tipo_bien' => 0,
 					'nit_proveedor' => ($_REQUEST ['id_proveedor']=='')?'NULL':"'".$_REQUEST ['id_proveedor']."'",
-					'ordenador' => $_REQUEST ['id_ordenador'],
+					'ordenador' =>$ordenador,
 					'fecha_revision' => $_REQUEST ['fecha_revision'],
 					'revisor' => NULL,
 					'observaciones' => $_REQUEST ['observacionesacta'],

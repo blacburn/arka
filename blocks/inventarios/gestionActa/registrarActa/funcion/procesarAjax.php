@@ -161,12 +161,25 @@ if ($_REQUEST ['funcion'] == 'consultarDependencia') {
 	echo $resultado;
 }
 
+if ($_REQUEST ['funcion'] == 'consultarUbicacion') {
+
+    $cadenaSql = $this->sql->getCadenaSql('ubicacionesConsultadas', array(
+        $_REQUEST ['valorD'],
+        $_REQUEST ['valorS']
+            ));
+    $resultado = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
+
+    $resultado = json_encode($resultado);
+
+    echo $resultado;
+}
+
 if ($_REQUEST ['funcion'] == 'SeleccionOrdenador') {
 	
 	$cadenaSql = $this->sql->getCadenaSql ( 'informacion_ordenador', $_REQUEST ['ordenador'] );
 	$resultadoItems = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 	
-	$resultado = json_encode ( $resultadoItems [0] );
+	$resultado = json_encode ( $resultadoItems );
 	
 	echo $resultado;
 }

@@ -86,10 +86,11 @@ class registrarForm {
             $aItems = '';
             $sPhotos = '';
         }
-
+ 
         $cadenaSql = $this->miSql->getCadenaSql('consultarElementoParticular', $_REQUEST ['elemento']);
         $elemento = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
-
+        
+      
         if ($elemento == false) {
             $elemento [0] = array(
                 'Información Elemento' => 'Sin información registrada'

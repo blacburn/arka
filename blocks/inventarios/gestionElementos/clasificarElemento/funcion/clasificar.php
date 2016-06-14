@@ -71,11 +71,19 @@ class RegistradorOrden {
 
         $cadenaSql = $this->miSql->getCadenaSql('buscarCuenta', $arreglo);
         $cuentaOrigen = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
-
+  
         $cadenaSql = $this->miSql->getCadenaSql('actualizar_tipo_bien', $arreglo);
         $contratista = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", $arreglo, "actualizar_tipo_bien");
+         
+        $arregloSerie = array(
+            'serie' => $_REQUEST['serie'],
+            'id_elemento' => $_REQUEST['idElemento']
+        );
+        
+        $cadenaSql = $this->miSql->getCadenaSql('actualizar_tipo_bien_individual', $arreglo);
+        $elindivi = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", $arreglo, "actualizar_tipo_bien2");
 
-
+    
 
         $arreglo2 = array(
             'marca' => $_REQUEST['marca'],
@@ -91,7 +99,6 @@ class RegistradorOrden {
         );
         $cadenaSql = $this->miSql->getCadenaSql('actualizar_version_tipo_bien', $arreglo2);
         $versionBien = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", $arreglo, "actualizar_version_tipo_bien");
-
         $cadenaSql = $this->miSql->getCadenaSql('insertar_version_tipo_bien', $arreglo2);
         $contratista = $esteRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
 
