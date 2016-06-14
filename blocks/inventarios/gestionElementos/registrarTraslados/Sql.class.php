@@ -270,9 +270,31 @@ class Sql extends \Sql {
 
             case "consultarElementoID" :
 
-                
-
+                $cadenaSql = ' SELECT DISTINCT id_elemento_ind ';
+                $cadenaSql .= ' FROM elemento_individual ';
+                $cadenaSql .= ' WHERE ';
+                $cadenaSql .= ' placa = ';
+                $cadenaSql .= " '" . $variable . "' ";
                 break;
+
+            case "consultarElementoBaja" :
+
+                $cadenaSql = ' SELECT DISTINCT id_elemento_ind ';
+                $cadenaSql .= ' FROM baja_elemento ';
+                $cadenaSql .= ' WHERE ';
+                $cadenaSql .= ' id_elemento_ind = ';
+                $cadenaSql .= " " . $variable . " ";
+                break;
+            case "consultarElementoEstado" :
+
+                $cadenaSql = ' SELECT DISTINCT id_elemento_ind ';
+                $cadenaSql .= ' FROM estado_elemento ';
+                $cadenaSql .= ' WHERE ';
+                $cadenaSql .= ' id_elemento_ind = ';
+                $cadenaSql .= " " . $variable . " ";
+                break;
+
+
 
             case "elemento_informacion" :
 

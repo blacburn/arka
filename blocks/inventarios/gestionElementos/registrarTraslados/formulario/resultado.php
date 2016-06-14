@@ -102,8 +102,8 @@ class registrarForm {
         $cadenaSql = $this->miSql->getCadenaSql('consultarElemento', $arreglo);
 
         $elemento = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
-        
-        
+
+
 
         // ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
         $esteCampo = $esteBloque ['nombre'];
@@ -360,25 +360,72 @@ class registrarForm {
             echo $this->miFormulario->formulario($atributos);
         } else {
             
+            $opc=0;
+
             $cadenaSql = $this->miSql->getCadenaSql('consultarElementoID', $placa);
             $elemento_id = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
-        
-             
 
-            $mensaje = "No Se Encontraron<br>Elementos Asociados.";
+            $elemento_individual = (int) $elemento_id[0][0];
 
-            // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-            $esteCampo = 'mensajeRegistro';
-            $atributos ['id'] = $esteCampo;
-            $atributos ['tipo'] = 'error';
-            $atributos ['estilo'] = 'textoCentrar';
-            $atributos ['mensaje'] = $mensaje;
+            $cadenaSql = $this->miSql->getCadenaSql('consultarElementoBaja', $elemento_id[0][0]);
+            $baja_elemento = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
 
-            $tab++;
+            if (!empty($baja_elemento)) {
+                $mensaje = "Elemento en estado<br>Solicitud de Baja.";
 
-            // Aplica atributos globales al control
-            $atributos = array_merge($atributos, $atributosGlobales);
-            echo $this->miFormulario->cuadroMensaje($atributos);
+                // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+                $esteCampo = 'mensajeRegistro';
+                $atributos ['id'] = $esteCampo;
+                $atributos ['tipo'] = 'error';
+                $atributos ['estilo'] = 'textoCentrar';
+                $atributos ['mensaje'] = $mensaje;
+
+                $tab++;
+
+                // Aplica atributos globales al control
+                $atributos = array_merge($atributos, $atributosGlobales);
+                echo $this->miFormulario->cuadroMensaje($atributos);
+                $opc=1;
+            }
+
+            $cadenaSql = $this->miSql->getCadenaSql('consultarElementoEstado', $elemento_id[0][0]);
+            $estado_elemento = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
+
+            if (!empty($estado_elemento)) {
+                $mensaje = "Elemento en estado<br>Faltante.";
+
+                // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+                $esteCampo = 'mensajeRegistro';
+                $atributos ['id'] = $esteCampo;
+                $atributos ['tipo'] = 'error';
+                $atributos ['estilo'] = 'textoCentrar';
+                $atributos ['mensaje'] = $mensaje;
+
+                $tab++;
+
+                // Aplica atributos globales al control
+                $atributos = array_merge($atributos, $atributosGlobales);
+                echo $this->miFormulario->cuadroMensaje($atributos);
+                $opc=1;
+            } 
+            
+            if ($opc==0){
+                $mensaje = "Elemento no encontrado<br>para traslados.";
+
+                // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+                $esteCampo = 'mensajeRegistro';
+                $atributos ['id'] = $esteCampo;
+                $atributos ['tipo'] = 'error';
+                $atributos ['estilo'] = 'textoCentrar';
+                $atributos ['mensaje'] = $mensaje;
+
+                $tab++;
+
+                // Aplica atributos globales al control
+                $atributos = array_merge($atributos, $atributosGlobales);
+                echo $this->miFormulario->cuadroMensaje($atributos);
+            }
+
             // --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
         }
 
