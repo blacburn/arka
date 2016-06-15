@@ -236,7 +236,7 @@
           
           $("#<?php echo $this->campoSeguro('sede')?>").select2();
           
-          $("#<?php echo $this->campoSeguro('asignacionOrdenador')?>").select2();
+          
           
                  
              $('#<?php echo $this->campoSeguro('fecha_contrato')?>').datepicker({

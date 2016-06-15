@@ -1,27 +1,26 @@
 <?php
 /**
  *
-* Los datos del bloque se encuentran en el arreglo $esteBloque.
-*/
-
+ * Los datos del bloque se encuentran en el arreglo $esteBloque.
+ */
 // URL base
-$url = $this->miConfigurador->getVariableConfiguracion ( "host" );
-$url .= $this->miConfigurador->getVariableConfiguracion ( "site" );
+$url = $this->miConfigurador->getVariableConfiguracion("host");
+$url .= $this->miConfigurador->getVariableConfiguracion("site");
 $url .= "/index.php?";
 
 // Variables
-$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
 $cadenaACodificar .= "&procesarAjax=true";
 $cadenaACodificar .= "&action=index.php";
 $cadenaACodificar .= "&bloqueNombre=" . $esteBloque ["nombre"];
 $cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 $cadenaACodificar .= "&funcion=SeleccionTipoBien";
-$cadenaACodificar .="&tiempo=".$_REQUEST['tiempo'];
+$cadenaACodificar .="&tiempo=" . $_REQUEST['tiempo'];
 
 
 // Codificar las variables
-$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
-$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
+$enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
+$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
 
 // URL definitiva
 $urlFinal = $url . $cadena;
@@ -30,7 +29,7 @@ $urlFinal = $url . $cadena;
 
 
 // Variables
-$cadenaACodificarProveedor = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+$cadenaACodificarProveedor = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
 $cadenaACodificarProveedor .= "&procesarAjax=true";
 $cadenaACodificarProveedor .= "&action=index.php";
 $cadenaACodificarProveedor .= "&bloqueNombre=" . $esteBloque ["nombre"];
@@ -41,8 +40,8 @@ $cadenaACodificarProveedor .= "&tiempo=" . $_REQUEST ['tiempo'];
 
 
 // Codificar las variables
-$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
-$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificarProveedor, $enlace );
+$enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
+$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificarProveedor, $enlace);
 
 // URL definitiva
 $urlFinalProveedor = $url . $cadena;
@@ -50,7 +49,7 @@ $urlFinalProveedor = $url . $cadena;
 
 
 // Variables
-$cadenaACodificariva = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+$cadenaACodificariva = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
 $cadenaACodificariva .= "&procesarAjax=true";
 $cadenaACodificariva .= "&action=index.php";
 $cadenaACodificariva .= "&bloqueNombre=" . $esteBloque ["nombre"];
@@ -59,109 +58,101 @@ $cadenaACodificariva .= "&funcion=consultarIva";
 $cadenaACodificariva .= "&tiempo=" . $_REQUEST ['tiempo'];
 
 // Codificar las variables
-$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
-$cadenaiva = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificariva, $enlace );
+$enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
+$cadenaiva = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificariva, $enlace);
 
 // URL definitiva
 $urlFinaliva = $url . $cadenaiva;
-
-
-
-
-
-
-
-
 ?>
 <script type='text/javascript'>
 
 
-function resetIva(elem, request, response){
-	  $.ajax({
-	    url: "<?php echo $urlFinaliva?>",
-	    dataType: "json",
-	    success: function(data){ 
+    function resetIva(elem, request, response){
+        $.ajax({
+            url: "<?php echo $urlFinaliva ?>",
+            dataType: "json",
+            success: function(data){ 
 
 
 
 
-	        if(data[0]!=" "){
+                if(data[0]!=" "){
 
-	            $("#<?php echo $this->campoSeguro('iva')?>").html('');
-	            $("<option value=''>Seleccione  ....</option>").appendTo("#<?php echo $this->campoSeguro('iva')?>");
-	            $.each(data , function(indice,valor){
+                    $("#<?php echo $this->campoSeguro('iva') ?>").html('');
+                    $("<option value=''>Seleccione  ....</option>").appendTo("#<?php echo $this->campoSeguro('iva') ?>");
+                    $.each(data , function(indice,valor){
 
-	            	$("<option value='"+data[ indice ].id_iva+"'>"+data[ indice ].descripcion+"</option>").appendTo("#<?php echo $this->campoSeguro('iva')?>");
+                        $("<option value='"+data[ indice ].id_iva+"'>"+data[ indice ].descripcion+"</option>").appendTo("#<?php echo $this->campoSeguro('iva') ?>");
 	            	
-	            });
+                    });
 	            
 	            
-	            $('#<?php echo $this->campoSeguro('iva')?>').width(150);
-	            $("#<?php echo $this->campoSeguro('iva')?>").select2();
+                    $('#<?php echo $this->campoSeguro('iva') ?>').width(150);
+                    $("#<?php echo $this->campoSeguro('iva') ?>").select2();
 	            
 	          
 	            
-		        }
+                }
 	    			
 
-	    }
+            }
 		                    
-	   });
-	}; 
+        });
+    }; 
 
 
-function tipo_bien(elem, request, response){
-	  $.ajax({
-	    url: "<?php echo $urlFinal?>",
-	    dataType: "json",
-	    data: { valor:$("#<?php echo $this->campoSeguro('nivel')?>").val()},
-	    success: function(data){ 
+    function tipo_bien(elem, request, response){
+        $.ajax({
+            url: "<?php echo $urlFinal ?>",
+            dataType: "json",
+            data: { valor:$("#<?php echo $this->campoSeguro('nivel') ?>").val()},
+            success: function(data){ 
 
 
-	    			$("#<?php echo $this->campoSeguro('id_tipo_bien')?>").val(data[0]);
-	    			$("#<?php echo $this->campoSeguro('tipo_bien')?>").val(data[1]);
+                $("#<?php echo $this->campoSeguro('id_tipo_bien') ?>").val(data[0]);
+                $("#<?php echo $this->campoSeguro('tipo_bien') ?>").val(data[1]);
 
-	    			  switch($("#<?php echo $this->campoSeguro('id_tipo_bien')?>").val())
-	    	            {
+                switch($("#<?php echo $this->campoSeguro('id_tipo_bien') ?>").val())
+                {
 	    	                           
 	    	                
-	    	                case '2':
+                    case '2':
 
 
-	    	                    $("#<?php echo $this->campoSeguro('devolutivo')?>").css('display','none');
-	    	                    $("#<?php echo $this->campoSeguro('consumo_controlado')?>").css('display','block');   
-	    	                 $("#<?php echo $this->campoSeguro('cantidad')?>").val('1');
-	    	                 $('#<?php echo $this->campoSeguro('cantidad')?>').attr('disabled','');
+                        $("#<?php echo $this->campoSeguro('devolutivo') ?>").css('display','none');
+                        $("#<?php echo $this->campoSeguro('consumo_controlado') ?>").css('display','block');   
+                        $("#<?php echo $this->campoSeguro('cantidad') ?>").val('1');
+                        $('#<?php echo $this->campoSeguro('cantidad') ?>').attr('disabled','');
 
-	    	                 break;
+                        break;
 	    	                
-	    	                case '3':
+                    case '3':
 
-	    	                    $("#<?php echo $this->campoSeguro('devolutivo')?>").css('display','block');
-	    	                    $("#<?php echo $this->campoSeguro('consumo_controlado')?>").css('display','none');
-	    	                    $("#<?php echo $this->campoSeguro('tipo_poliza')?>").select2();
+                        $("#<?php echo $this->campoSeguro('devolutivo') ?>").css('display','block');
+                        $("#<?php echo $this->campoSeguro('consumo_controlado') ?>").css('display','none');
+                        $("#<?php echo $this->campoSeguro('tipo_poliza') ?>").select2();
 	    	         
-	    	                 $("#<?php echo $this->campoSeguro('cantidad')?>").val('1');
-	    	                 $('#<?php echo $this->campoSeguro('cantidad')?>').attr('disabled','');
+                        $("#<?php echo $this->campoSeguro('cantidad') ?>").val('1');
+                        $('#<?php echo $this->campoSeguro('cantidad') ?>').attr('disabled','');
 	    	                    
-	    	                break;
+                        break;
 	    	                                
 	    	           
-	    	                break;
+                        break;
 	    	                
 
-	    	                default:
+                    default:
 
-	    	                    $("#<?php echo $this->campoSeguro('devolutivo')?>").css('display','none');
-	    	                    $("#<?php echo $this->campoSeguro('consumo_controlado')?>").css('display','none');   
+                        $("#<?php echo $this->campoSeguro('devolutivo') ?>").css('display','none');
+                        $("#<?php echo $this->campoSeguro('consumo_controlado') ?>").css('display','none');   
 	    	                    
 	    	                 
-	    	                 $("#<?php echo $this->campoSeguro('cantidad')?>").val('');
-	    	                 $('#<?php echo $this->campoSeguro('cantidad')?>').removeAttr('disabled');
+                        $("#<?php echo $this->campoSeguro('cantidad') ?>").val('');
+                        $('#<?php echo $this->campoSeguro('cantidad') ?>').removeAttr('disabled');
 	    	                 
-	    	                break;
+                        break;
 	    	                
-	    	                }
+                    }
 
 
 
@@ -170,58 +161,91 @@ function tipo_bien(elem, request, response){
 
 	    			
 
-	    }
+                }
 		                    
-	   });
-	};
+            });
+        };
 
 
-$(function() {
+        $(function() {
 
 
 
 
-    $( "#<?php echo $this->campoSeguro('proveedor')?>" ).keyup(function() {
+            $( "#<?php echo $this->campoSeguro('proveedor') ?>" ).keyup(function() {
 
     	
-	$('#<?php echo $this->campoSeguro('proveedor') ?>').val($('#<?php echo $this->campoSeguro('proveedor') ?>').val().toUpperCase());
+                $('#<?php echo $this->campoSeguro('proveedor') ?>').val($('#<?php echo $this->campoSeguro('proveedor') ?>').val().toUpperCase());
 
 	
-        });
+            });
 
 
 
 
-    $("#<?php echo $this->campoSeguro('proveedor') ?>").autocomplete({
-    	minChars: 3,
-    	serviceUrl: '<?php echo $urlFinalProveedor; ?>',
-    	onSelect: function (suggestion) {
+            $("#<?php echo $this->campoSeguro('proveedor') ?>").autocomplete({
+                minChars: 3,
+                serviceUrl: '<?php echo $urlFinalProveedor; ?>',
+                onSelect: function (suggestion) {
         	
-    	        $("#<?php echo $this->campoSeguro('id_proveedor') ?>").val(suggestion.data);
-    	    }
+                    $("#<?php echo $this->campoSeguro('id_proveedor') ?>").val(suggestion.data);
+                }
                 
-    });
+            });
     
 	
 
 	
-    $("#<?php echo $this->campoSeguro('nivel')?>").change(function() {
+            $("#<?php echo $this->campoSeguro('nivel') ?>").change(function() {
     	
-		if($("#<?php echo $this->campoSeguro('nivel')?>").val()!=''){
+                if($("#<?php echo $this->campoSeguro('nivel') ?>").val()!=''){
 
-			tipo_bien();	
+                    tipo_bien();	
 
-		}else{}
+                }else{}
 
 
- });
+            });
+            
+            
+            $('#tablaTitulos').ready(function() {
+
+                $('#tablaTitulos').dataTable( {
+                    "language": {
+                        "sProcessing":     "Procesando...",
+                        "sLengthMenu":     "Mostrar _MENU_ registros",
+                        "sZeroRecords":    "No se encontraron resultados",
+                        "sSearch":         "Buscar:",
+                        "sLoadingRecords": "Cargando...",
+                        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                        "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                        "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                        "oPaginate": {
+                            "sFirst":    "Primero",
+                            "sLast":     "Ãšltimo",
+                            "sNext":     "Siguiente",
+                            "sPrevious": "Anterior"
+                        }
+                    },
+                    "scrollY":"20px",
+                    "scrollCollapse": false, 
+                    "pagingType": "full_numbers",
+                    "bLengthChange": false,
+                    "bPaginate": false
+
+                   
+                    
+                });
+                  
+            });
 
 
 
 	
   
     
-});
+        });
 
 </script>
 

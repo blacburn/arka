@@ -321,9 +321,7 @@ $("#<?php echo $this->campoSeguro('tipo_poliza')?>").select2();
 			
 	   });
 	   
-	          $('#tablaTitulos').dataTable( {
-                "sPaginationType": "full_numbers"
-                 } );
+	        
 	   
           
 

@@ -1,3 +1,4 @@
+
 <?php
 $this->idioma ["noDefinido"] = "Etiqueta no esta definida en locale/es_es/Mensaje.php";
 
@@ -251,12 +252,12 @@ $this->idioma ["dependenciaTitulo"] ="Seleccione Supervisora";
 $this->idioma ["supervisor"] ="Supervisor : ";
 $this->idioma ["asignacionOrdenadorTitulo"] ="Ingrese Supervisor";
 
-$this->idioma ["asignacionOrdenador"] ="Asignación : ";
-$this->idioma ["asignacionOrdenadorTitulo"] ="Ingrese Asignación de Ordenador del Gasto";
+$this->idioma ["asignacionOrdenadorAux"] ="Asignación : ";
+$this->idioma ["asignacionOrdenadorAuxTitulo"] ="Ingrese Asignación de Ordenador del Gasto";
 
 
-$this->idioma ["nombreOrdenador"] ="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNombre y Apellidos : ";
-$this->idioma ["nombreOrdenadorTitulo"] =" Nombre y Apellidos Ordenador ";
+$this->idioma ["nombreOrdenadorAux"] ="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNombre y Apellidos : ";
+$this->idioma ["nombreOrdenadorAuxTitulo"] =" Nombre y Apellidos Ordenador ";
 
 
 $this->idioma ["ordenadorGasto"] ="Ordenador Gasto";
