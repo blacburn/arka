@@ -223,12 +223,12 @@ class RegistradorOrden {
 				$_REQUEST ['numero_entrada'],
 				"Estado_entrada" => '1',
 				(isset ( $_REQUEST ['acta_recibido'] ) && $_REQUEST ['acta_recibido'] != '') ? $_REQUEST ['acta_recibido'] : 0,
-				($_REQUEST ['id_ordenador'] == '') ? 'NULL' : $_REQUEST ['id_ordenador'],
+				($_REQUEST ['nombreOrdenadorAux'] == '') ? 'NULL' : $_REQUEST ['nombreOrdenadorAux'],
 				$_REQUEST ['sede'],
 				$_REQUEST ['dependencia'],
 				$_REQUEST ['supervisor'],
-				($_REQUEST ['tipo_ordenador'] == '') ? 'NULL' : $_REQUEST ['tipo_ordenador'],
-				($_REQUEST ['identificacion_ordenador'] == '') ? 'NULL' : $_REQUEST ['identificacion_ordenador'],
+				($_REQUEST ['asignacionOrdenadorAux'] == '') ? 'NULL' : $_REQUEST ['asignacionOrdenadorAux'],
+				($_REQUEST ['nombreOrdenadorAux'] == '') ? 'NULL' : $_REQUEST ['nombreOrdenadorAux'],
 				$_REQUEST ['clase_info'] 
 		);
 		

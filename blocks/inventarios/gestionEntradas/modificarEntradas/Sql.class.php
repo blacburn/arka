@@ -279,7 +279,7 @@ class Sql extends \Sql {
                 $cadenaSql .= " AND    \"ESF_COD_SEDE\" >  0 ";
 
                 break;
-            case "informacion_ordenador" :
+            case "informacion_ordenador2" :
                 $cadenaSql = " SELECT \"ORG_NOMBRE\",\"ORG_IDENTIFICACION\",\"ORG_TIPO_ORDENADOR\",\"ORG_IDENTIFICACION\" as identificacion   ";
                 $cadenaSql .= " FROM arka_parametros.arka_ordenadores ";
                 $cadenaSql .= " WHERE  \"ORG_IDENTIFICACION\"='" . $variable [0] . "' ";

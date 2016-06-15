@@ -65,7 +65,7 @@ class registrarForm {
                 $datosEntrada [0] ['tipo_ordenador']
             );
 
-            $cadenaSql = $this->miSql->getCadenaSql('informacion_ordenador', $arregloOrdenador);
+            $cadenaSql = $this->miSql->getCadenaSql('informacion_ordenador2', $arregloOrdenador);
 
             $ordenador = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
         }

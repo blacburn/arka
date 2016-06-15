@@ -213,6 +213,7 @@ $urlFinalProveedor = $url . $cadena;
 
 
     function datosOrdenador(elem, request, response) {
+     
         $.ajax({
             url: "<?php echo $urlFinal6 ?>",
             dataType: "json",
@@ -232,7 +233,7 @@ $urlFinalProveedor = $url . $cadena;
 
                     $("#<?php echo $this->campoSeguro('nombreOrdenadorAux') ?>").removeAttr('disabled');
 
-                    $('#<?php echo $this->campoSeguro('nombreOrdenadorAux') ?>').width(350);
+
                     $("#<?php echo $this->campoSeguro('nombreOrdenadorAux') ?>").select2();
                 } else {
 
