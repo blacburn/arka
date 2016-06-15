@@ -74,7 +74,9 @@
           
           $("#<?php echo $this->campoSeguro('sede')?>").select2();
           $("#<?php echo $this->campoSeguro('dependencia')?>").select2();
-          $("#<?php echo $this->campoSeguro('asignacionOrdenador')?>").select2();
+          $("#<?php echo $this->campoSeguro('asignacionOrdenadorAux')?>").select2();
+          
+          $("#<?php echo $this->campoSeguro('nombreOrdenadorAux')?>").select2();
           
           $("#<?php echo $this->campoSeguro('acta_recibido')?>").select2();
 
@@ -116,7 +118,7 @@
                    $("#<?php echo $this->campoSeguro('inf_contr')?>").css('display',' none');
                    $("#<?php echo $this->campoSeguro('inf_provee')?>").css('display','block');
                    $("#<?php echo $this->campoSeguro('cuadro_ordenador')?>").css('display','block');
-                   $("#<?php echo $this->campoSeguro('asignacionOrdenador')?>").select2();
+                   $("#<?php echo $this->campoSeguro('asignacionOrdenadorAux')?>").select2();
     
               	 
                  
@@ -154,7 +156,7 @@
                    $("#<?php echo $this->campoSeguro('inf_contr')?>").css('display',' none');
                    $("#<?php echo $this->campoSeguro('inf_provee')?>").css('display','block');
                    $("#<?php echo $this->campoSeguro('cuadro_ordenador')?>").css('display','block');
-                   $("#<?php echo $this->campoSeguro('asignacionOrdenador')?>").select2();
+                   $("#<?php echo $this->campoSeguro('asignacionOrdenadorAux')?>").select2();
 
                    estado();
                 break;
@@ -207,7 +209,7 @@
                    $("#<?php echo $this->campoSeguro('inf_contr')?>").css('display',' none');
                    $("#<?php echo $this->campoSeguro('inf_provee')?>").css('display','none');
                    $("#<?php echo $this->campoSeguro('cuadro_ordenador')?>").css('display','block');
-                   $("#<?php echo $this->campoSeguro('asignacionOrdenador')?>").select2();
+                   $("#<?php echo $this->campoSeguro('asignacionOrdenadorAux')?>").select2();
 
              
                    estado();
@@ -225,7 +227,7 @@
                    $("#<?php echo $this->campoSeguro('tipo_cotr')?>").css('display',' none');
                    $("#<?php echo $this->campoSeguro('inf_contr')?>").css('display',' none');
                    $("#<?php echo $this->campoSeguro('inf_provee')?>").css('display','none');
-                   $("#<?php echo $this->campoSeguro('asignacionOrdenador')?>").select2();
+                   $("#<?php echo $this->campoSeguro('asignacionOrdenadorAux')?>").select2();
 
                    
                    estado();
@@ -244,7 +246,7 @@
                    $("#<?php echo $this->campoSeguro('inf_contr')?>").css('display',' block');
                    $("#<?php echo $this->campoSeguro('inf_provee')?>").css('display','block');
                    $("#<?php echo $this->campoSeguro('cuadro_ordenador')?>").css('display','block');
-                   $("#<?php echo $this->campoSeguro('asignacionOrdenador')?>").select2();
+                   $("#<?php echo $this->campoSeguro('asignacionOrdenadorAux')?>").select2();
 	
                    
                    estado();
@@ -264,7 +266,7 @@
                    $("#<?php echo $this->campoSeguro('inf_contr')?>").css('display',' none');
                    $("#<?php echo $this->campoSeguro('inf_provee')?>").css('display','block');
                    $("#<?php echo $this->campoSeguro('cuadro_ordenador')?>").css('display','block');
-                   $("#<?php echo $this->campoSeguro('asignacionOrdenador')?>").select2();
+                   $("#<?php echo $this->campoSeguro('asignacionOrdenadorAux')?>").select2();
 			
              
                    

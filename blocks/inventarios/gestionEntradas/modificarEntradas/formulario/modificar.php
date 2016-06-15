@@ -48,7 +48,7 @@ class registrarForm {
 
         $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 
-       
+     
 
         $cadenaSql = $this->miSql->getCadenaSql('consultarEntradaParticular', $_REQUEST ['numero_entrada']);
 
@@ -69,6 +69,7 @@ class registrarForm {
 
             $ordenador = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
         }
+        
 
         $ordenador [0] [2] = (($datosEntrada [0] ['identificacion_ordenador'] != null) ? $ordenador [0] [2] : - 1);
         $ordenador [0] [0] = (($datosEntrada [0] ['identificacion_ordenador'] != null) ? $ordenador [0] [0] : '');
@@ -1351,18 +1352,18 @@ class registrarForm {
                     echo $this->miFormulario->agrupacion('inicio', $atributos); {
 
                         // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-                        $esteCampo = 'asignacionOrdenador';
+                        $esteCampo = 'asignacionOrdenadorAux';
                         $atributos ['nombre'] = $esteCampo;
                         $atributos ['id'] = $esteCampo;
                         $atributos ['etiqueta'] = $this->lenguaje->getCadena($esteCampo);
-                        $atributos ["etiquetaObligatorio"] = true;
-                        $atributos ['tab'] = $tab ++;
+                        $atributos ["etiquetaObligatorio"] = false;
+                        $atributos ['tab'] = $tab++;
                         $atributos ['anchoEtiqueta'] = 180;
                         $atributos ['evento'] = '';
                         if (isset($_REQUEST [$esteCampo])) {
                             $atributos ['seleccion'] = $_REQUEST [$esteCampo];
                         } else {
-                            $atributos ['seleccion'] = - 1;
+                            $atributos ['seleccion'] = $datosEntrada [0] ['tipo_ordenador'] ;
                         }
                         $atributos ['deshabilitado'] = false;
                         $atributos ['columnas'] = 2;
@@ -1370,7 +1371,7 @@ class registrarForm {
                         $atributos ['ajax_function'] = "";
                         $atributos ['ajax_control'] = $esteCampo;
                         $atributos ['estilo'] = "jqueryui";
-                        $atributos ['validar'] = "required";
+                        $atributos ['validar'] = " ";
                         $atributos ['limitar'] = true;
                         $atributos ['anchoCaja'] = 25;
                         $atributos ['miEvento'] = '';
@@ -1392,35 +1393,43 @@ class registrarForm {
                         unset($atributos);
 
                         // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-                        $esteCampo = 'nombreOrdenador';
+                        $esteCampo = 'nombreOrdenadorAux';
                         $atributos ['id'] = $esteCampo;
                         $atributos ['nombre'] = $esteCampo;
-                        $atributos ['tipo'] = 'text';
-                        $atributos ['estilo'] = 'jqueryui';
-                        $atributos ['marco'] = true;
-                        $atributos ['estiloMarco'] = '';
-                        $atributos ["etiquetaObligatorio"] = false;
-                        $atributos ['columnas'] = 2;
-                        $atributos ['dobleLinea'] = 0;
-                        $atributos ['tabIndex'] = $tab;
                         $atributos ['etiqueta'] = $this->lenguaje->getCadena($esteCampo);
-                        $atributos ['validar'] = 'required, minSize[1],maxSize[2000]';
-
+                        $atributos ["etiquetaObligatorio"] = false;
+                        $atributos ['tab'] = $tab;
+                        $atributos ['anchoEtiqueta'] = 180;
+                        $atributos ['evento'] = '';
                         if (isset($_REQUEST [$esteCampo])) {
-                            $atributos ['valor'] = $_REQUEST [$esteCampo];
+                            $atributos ['seleccion'] = $_REQUEST [$esteCampo];
                         } else {
-                            $atributos ['valor'] = '';
+                            $atributos ['seleccion'] = $datosEntrada [0] ['identificacion_ordenador'];
                         }
-                        $atributos ['titulo'] = $this->lenguaje->getCadena($esteCampo . 'Titulo');
-                        $atributos ['deshabilitado'] = false;
-                        $atributos ['tamanno'] = 25;
-                        $atributos ['maximoTamanno'] = '';
-                        $atributos ['anchoEtiqueta'] = 190;
-                        $tab ++;
+                        $atributos ['deshabilitado'] = true;
+                        $atributos ['columnas'] = 2;
+                        $atributos ['tamanno'] = 1;
+                        $atributos ['ajax_function'] = "";
+                        $atributos ['ajax_control'] = $esteCampo;
+                        $atributos ['estilo'] = "jqueryui";
+                        $atributos ['validar'] = " ";
+                        $atributos ['limitar'] = true;
+                        $atributos ['anchoCaja'] = 25;
+                        $atributos ['miEvento'] = '';
+                        $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("OrdenadorGasto");
+                        $matrizItems = array(
+                            array(
+                                0,
+                                ' '
+                            )
+                        );
+                        $matrizItems = $esteRecursoDB->ejecutarAcceso($atributos ['cadena_sql'], "busqueda");
+                        $atributos ['matrizItems'] = $matrizItems;
+                        $tab++;
 
                         // Aplica atributos globales al control
                         $atributos = array_merge($atributos, $atributosGlobales);
-                        echo $this->miFormulario->campoCuadroTexto($atributos);
+                        echo $this->miFormulario->campoCuadroLista($atributos);
                         unset($atributos);
 
                         $esteCampo = 'id_ordenador';
