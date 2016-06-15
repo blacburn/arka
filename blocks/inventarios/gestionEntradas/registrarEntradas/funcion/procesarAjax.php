@@ -42,7 +42,7 @@ if ($_REQUEST ['funcion'] == 'SeleccionOrdenador') {
 
     $resultado = json_encode($resultadoItems);
 
-    echo $resultadoItems;
+    echo $resultado;
 }
 
 

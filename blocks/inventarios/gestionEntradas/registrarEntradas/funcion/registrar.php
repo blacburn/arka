@@ -26,6 +26,8 @@ class RegistradorOrden {
 	function procesarFormulario() {
 		// var_dump ( $_REQUEST );
 		// exit ();
+            
+                var_dump($_REQUEST);
 		$conexion = "inventarios";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
@@ -243,12 +245,12 @@ class RegistradorOrden {
 				($_REQUEST ['fecha_factura'] != '') ? $_REQUEST ['fecha_factura'] : NULL, // donacion
 				($_REQUEST ['observaciones_entrada'] == '') ? "NULL" : "'" . $_REQUEST ['observaciones_entrada'] . "'",
 				$_REQUEST ['numero_acta'],
-				($_REQUEST ['id_ordenador'] == '') ? NULL : $_REQUEST ['id_ordenador'], // obligatorio donacion
+				($_REQUEST ['nombreOrdenadorAux'] == '') ? NULL : $_REQUEST ['nombreOrdenadorAux'], // obligatorio donacion
 				$_REQUEST ['sede'], // obligatorio
 				$_REQUEST ['dependencia'], // obligatorio
 				$_REQUEST ['supervisor'],
-				($_REQUEST ['tipo_ordenador'] == '') ? NULL : $_REQUEST ['tipo_ordenador'], // obligatorio donacion
-				($_REQUEST ['identificacion_ordenador'] == '') ? NULL : $_REQUEST ['identificacion_ordenador'], // obligatorio donacion
+				($_REQUEST ['asignacionOrdenadorAux'] == '') ? NULL : $_REQUEST ['asignacionOrdenadorAux'], // obligatorio donacion
+				($_REQUEST ['nombreOrdenadorAux'] == '') ? NULL : $_REQUEST ['nombreOrdenadorAux'], // obligatorio donacion
 				$idEntradamax 
 		);
 		

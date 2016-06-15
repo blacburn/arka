@@ -703,7 +703,8 @@ class Sql extends \Sql {
                 $cadenaSql = " SELECT DISTINCT \"ORG_NOMBRE\" as ORG_NOMBRE,\"ORG_IDENTIFICACION\" as ORG_IDENTIFICACION ";
                 $cadenaSql .= " FROM arka_parametros.arka_ordenadores ";
                 $cadenaSql .= " WHERE  \"ORG_TIPO_ORDENADOR\"='" . $variable . "' ";
-
+                echo $cadenaSql;
+                exit;
                 break;
             case "OrdenadorGasto" :
                 $cadenaSql = " SELECT DISTINCT \"ORG_IDENTIFICACION\" as ORG_IDENTIFICACION,\"ORG_NOMBRE\" as ORG_NOMBRE ";

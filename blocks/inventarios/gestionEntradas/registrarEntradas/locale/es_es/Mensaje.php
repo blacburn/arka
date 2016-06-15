@@ -256,8 +256,8 @@ $this->idioma ["asignacionOrdenadorAux"] ="Asignación : ";
 $this->idioma ["asignacionOrdenadorAuxTitulo"] ="Ingrese Asignación de Ordenador del Gasto";
 
 
-$this->idioma ["nombreOrdenadorAux"] ="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNombre y Apellidos : ";
-$this->idioma ["nombreOrdenadorAuxTitulo"] =" Nombre y Apellidos Ordenador ";
+$this->idioma ["nombreOrdenadorAux"] ="Nombre y Apellidos : ";
+$this->idioma ["nombreOrdenadorTAuxitulo"] ="Nombre y Apellidos Ordenador ";
 
 
 $this->idioma ["ordenadorGasto"] ="Ordenador Gasto";

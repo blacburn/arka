@@ -101,7 +101,7 @@ $cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($caden
 // URL definitiva
 $urlFinalProveedor = $url . $cadena;
 ?>
-<script type='text/javascript'>
+<script>
 
 
 
@@ -130,8 +130,8 @@ $urlFinalProveedor = $url . $cadena;
                     $("#<?php echo $this->campoSeguro('numero_contrato') ?>").val(data['numero_contrato']);
                     $("#<?php echo $this->campoSeguro('fecha_contrato') ?>").val(data['fecha_contrato']);
 
-              
-              
+     
+                     datosOrdenador();
 
 
                 }
@@ -212,22 +212,19 @@ $urlFinalProveedor = $url . $cadena;
 
 
     function datosOrdenador(elem, request, response) {
-     
-        $.ajax({
+            $.ajax({
                 url: "<?php echo $urlFinal6 ?>",
                 dataType: "json",
                 data: {ordenador: $("#<?php echo $this->campoSeguro('asignacionOrdenadorAux') ?>").val()},
                 success: function (data) {
-                  
-
+                 
                     if (data[0] != 'null') {
 
-
+                       
                         
                         $("#<?php echo $this->campoSeguro('nombreOrdenadorAux') ?>").html('');
                         $("<option value=''>Seleccione  ....</option>").appendTo("#<?php echo $this->campoSeguro('nombreOrdenadorAux') ?>");
                         $.each(data , function(indice,valor){
-                           
                             $("<option value='"+data[ indice ].org_identificacion+"'>"+data[ indice ].org_nombre+"</option>").appendTo("#<?php echo $this->campoSeguro('nombreOrdenadorAux') ?>");
 		            	
                         });
@@ -247,8 +244,8 @@ $urlFinalProveedor = $url . $cadena;
                 }
 
             });
-    }
-    ;
+        }
+        ;
 
     $(function () {
 
@@ -298,11 +295,6 @@ $urlFinalProveedor = $url . $cadena;
                 $("#<?php echo $this->campoSeguro('proveedor') ?> option[value=" + '' + "]").attr("selected", true);
 
 
-
-                $("#<?php echo $this->campoSeguro('asignacionOrdenador') ?> option[value=" + '' + "]").attr("selected", true);
-                $("#<?php echo $this->campoSeguro('asignacionOrdenador') ?>").select2();
-
-                $("#<?php echo $this->campoSeguro('nombreOrdenador') ?>").val('');
                 $("#<?php echo $this->campoSeguro('id_ordenador') ?>").val('');
                 $("#<?php echo $this->campoSeguro('tipo_ordenador') ?>").val('');
                 $("#<?php echo $this->campoSeguro('identificacion_ordenador') ?>").val('');
@@ -328,6 +320,7 @@ $urlFinalProveedor = $url . $cadena;
         $("#<?php echo $this->campoSeguro('asignacionOrdenadorAux') ?>").change(function () {
 
             if ($("#<?php echo $this->campoSeguro('asignacionOrdenadorAux') ?>").val() != '') {
+                $("#<?php echo $this->campoSeguro('nombreOrdenadorAux') ?>").removeAttr('disabled');
                 datosOrdenador();
             } else {
                 $("#<?php echo $this->campoSeguro('nombreOrdenadorAux') ?>").val('');
