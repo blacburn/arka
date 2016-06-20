@@ -59,8 +59,7 @@ class registrarForm {
 
         $cadenaSql = $this->miSql->getCadenaSql('consulta_elementos', $_REQUEST ['numero_entrada']);
         $elementos = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
-        
-       
+  
         $cadenaSql = $this->miSql->getCadenaSql('consulta_elementos_validar', $_REQUEST ['numero_entrada']);
         $elementos_validacion = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
 
@@ -331,9 +330,9 @@ class registrarForm {
 
                         if ($elementos) {
 
-                            echo "<table id='tablaTitulos'>";
+                            echo '<table id="tablaReportes" class="display" cellspacing="0" width="100%">';
 
-                            echo "<thead>
+                            echo '<thead style="display: table-row-group">
 				                                <tr>
                                                                     <th>Nivel Inventarios</th>
                                                                     <th>Cantidad</th>
@@ -343,17 +342,16 @@ class registrarForm {
 								    <th>Selección Items</th>
 							        </tr>
                                                               </thead>
-					                      <tbody>";
+					                      <tbody>';
 
                             for ($i = 0; $i < count($elementos); $i ++) {
 
                                 $arreglo_nombreItems [] = $elementos [$i] [1];
-                             
 
-                                $mostrarHtml = "<tr>
-						                    <td><center> " . $elementos[$i] ['item'] . "</center></td>
-						                    <td><center> " . $elementos[$i]['cantidad_por_asignar'] . "</center></td>
-						                    <td><center>";
+                                $mostrarHtml = '<tr>
+						                    <td><center> ' . $elementos [$i] ['item'] . '</center></td>
+						                    <td><center> ' . $elementos[$i]['cantidad_por_asignar'] . '</center></td>
+						                    <td><center>';
 
                                 $atributos ["id"] = "botones";
                                 $atributos ["estilo"] = "marcoBotones";
@@ -381,17 +379,16 @@ class registrarForm {
                                 $atributos ['maximoTamanno'] = '';
                                 $atributos ['anchoEtiqueta'] = 0;
                                 $tab ++;
-                                
+
                                 // Aplica atributos globales al control
                                 $atributos = array_merge($atributos, $atributosGlobales);
                                 $mostrarHtml .= ($elementos[$i]['cantidad_por_asignar'] == 1) ? ' ' : $this->miFormulario->campoCuadroTexto($atributos);
-                              
+
                                 $mostrarHtml .= $this->miFormulario->division('fin');
-                                $mostrarHtml .= "</center></td>        
-                                   
-			     							 <td><center>" . $elementos [$i] ['descripcion'] . "</center></td>
-			     							 <td><center>" . $elementos [$i] ['marca'] ." ".$elementos [$i] ['serie']. "</center></td>
-				   							<td><center>";
+                                $mostrarHtml .= '</center></td>
+			     							 <td><center>' . $elementos [$i] ['descripcion'] . '</center></td>
+			     							 <td><center>' . $elementos [$i] ['marca'] ." ".$elementos [$i] ['serie']. '</center></td>
+				   							<td><center>';
 
                                 // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
                                 $nombre = 'item' . $i;
@@ -417,18 +414,17 @@ class registrarForm {
                                 $atributos = array_merge($atributos, $atributosGlobales);
                                 $mostrarHtml .= $this->miFormulario->campoCuadroSeleccion($atributos);
 
-                                $mostrarHtml .= "</center></td>
-                    						</tr>";
-                                var_dump($mostrarHtml);
-                                 echo $mostrarHtml;
+                                $mostrarHtml .= '</center></td>
+                    						</tr>';
+                                echo $mostrarHtml;
                                 unset($mostrarHtml);
                                 unset($variable);
                                 //}
                             }
 
-                            echo "</tbody>";
+                            echo '</tbody>';
 
-                            echo "</table>";
+                            echo '</table>';
                         }
                     }
                     echo $this->miFormulario->agrupacion('fin');

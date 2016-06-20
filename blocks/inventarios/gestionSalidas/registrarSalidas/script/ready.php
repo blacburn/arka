@@ -25,7 +25,16 @@
             });
         });
 
-                    
+                     $('#tablaTitulos').dataTable( {
+                "sPaginationType": "full_numbers",
+                "aLengthMenu": [[10,25, 50,100,-1], [10,25, 50,100,'Todos']]
+                 } );
+                 
+                  $('#tablaReportes').dataTable( {
+                "sPaginationType": "full_numbers",
+                "aLengthMenu": [[10,25, 50,100,-1], [10,25, 50,100,'Todos']]
+                 } );
+
 
                      
                      
