@@ -68,9 +68,10 @@ class RegistradorActa {
         $directorio .= $this->miConfigurador->getVariableConfiguracion("site") . "/index.php?";
         $directorio .= $this->miConfigurador->getVariableConfiguracion("enlace");
 
-        $rutaBloque = $this->miConfigurador->getVariableConfiguracion("host");
-        $rutaBloque .= $this->miConfigurador->getVariableConfiguracion("site") . "/blocks/";
-        $rutaBloque .= $esteBloque ['grupo'] . "/" . $esteBloque ['nombre'];
+        $rutaBloque = $this->miConfigurador->getVariableConfiguracion("raizDocumento");
+        $rutaBloque .= "/blocks/";
+        $rutaBloque .= $esteBloque ['grupo'] . "" . $esteBloque ['nombre'];
+        
 
         $fecha = date('d-m-Y');
         $dias = array('Domingo, ', 'Lunes, ', 'Martes, ', 'Miercoles, ', 'Jueves, ', 'Viernes, ', 'Sábado, ');

@@ -101,6 +101,10 @@ class RegistradorOrden {
 				$cadenaSql = $this->miSql->getCadenaSql ( 'mostrarInfoDepreciar_elemento', $valor );
 				$elemento = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 			
+                                
+                                
+                                var_dump($elemento);
+                                
 				$cantidad = 1;
 				$meses = intval ( $elemento [0] ['grupo_vidautil'] );
 				$precio = $elemento [0] ['valor'];
@@ -218,10 +222,12 @@ class RegistradorOrden {
 						17 => date ( 'Y-m-d' ),
 						'fregistro' => date ( 'Y-m-d' ) 
 				);
+                                
+                               
 				
 				$cadenaSql = $this->miSql->getCadenaSql ( 'registrarDepreciacion', $datos_calculada );
 				$registro_depreciacion = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda", $datos_calculada, "registrarDepreciacion" );
-			
+			      var_dump($registro_depreciacion);
 				$datosAprobar = array (
 						'id_aprobacion' => $idAprobacion [0] [0],
 						'id_elemento' => $valor,
@@ -233,6 +239,8 @@ class RegistradorOrden {
 				 
 				$asignar = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "acceso", $datosAprobar, "actualizarAprobar" );
 				$a ++;
+                                  var_dump($asignar);
+                                  exit;
                                 
 			}
 		}

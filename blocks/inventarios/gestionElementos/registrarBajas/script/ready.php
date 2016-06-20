@@ -392,10 +392,7 @@ $("#<?php echo $this->campoSeguro('tipo_mueble')?>").select2();
 			
 	   });
 	   
-	          $('#tablaTitulos').dataTable( {
-                "sPaginationType": "full_numbers"
-                 } );
-	   
+	        
           
 
 

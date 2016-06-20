@@ -41,10 +41,7 @@ class registrarForm {
 		// -------------------------------------------------------------------------------------------------
 		$conexion = "inventarios";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
-		
-		$conexion = "sicapital";
-		$esteRecursoDBO = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
-		
+	
 		// Limpia Items Tabla temporal
 		
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------

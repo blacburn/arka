@@ -41,9 +41,7 @@ class registrarForm {
 		// lineas para conectar base de d atos-------------------------------------------------------------------------------------------------
 		$conexion = "inventarios";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
-		
-		$conexion = "sicapital";
-		$esteRecursoDBO = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+	
 		
 		$seccion ['tiempo'] = $tiempo;
 		

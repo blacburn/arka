@@ -46,7 +46,8 @@ class registrarForm {
         $conexion = "inventarios";
         $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 
-    
+        $conexion = "sicapital";
+        $esteRecursoDBO = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 
 
         // Limpia Items Tabla temporal
@@ -79,8 +80,6 @@ class registrarForm {
             echo $this->miFormulario->marcoAgrupacion('inicio', $atributos);
 //-------------------------------------------------------------------------------------------------
             // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-            
-  
             $esteCampo = 'placa';
             $atributos ['id'] = $esteCampo;
             $atributos ['nombre'] = $esteCampo;

@@ -44,11 +44,9 @@ class registrarForm {
 		
 		// lineas para conectar base de d atos-------------------------------------------------------------------------------------------------
 		$conexion = "inventarios";
-		
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
-		$conexion = "sicapital";
-		$esteRecursoDBO = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		
 		
 		$funcionario = $_REQUEST ['funcionario'];
 		$cadenaSql = $this->miSql->getCadenaSql ( 'funcionario_informacion_fn', $funcionario );

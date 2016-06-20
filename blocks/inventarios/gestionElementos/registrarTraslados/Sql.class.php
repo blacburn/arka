@@ -326,14 +326,15 @@ class Sql extends \Sql {
             case "insertar_historico" :
 
                 $cadenaSql = " INSERT INTO historial_elemento_individual( ";
-                $cadenaSql .= "fecha_registro, elemento_individual, funcionario,descripcion_funcionario, destino, observaciones)  ";
+                $cadenaSql .= "fecha_registro, elemento_individual, funcionario,descripcion_funcionario, destino, observaciones,usuario)  ";
                 $cadenaSql .= " VALUES (";
                 $cadenaSql .= "'" . $variable [0] . "',";
                 $cadenaSql .= "'" . $variable [1] . "',";
                 $cadenaSql .= "'" . $variable [2] . "',";
                 $cadenaSql .= "'" . $variable [3] . "',";
                 $cadenaSql .= "'" . $variable [4] . "',";
-                $cadenaSql .= "'" . $variable [5] . "') ";
+                $cadenaSql .= "'" . $variable [5] . "',";
+                $cadenaSql .= "'" . $variable [6] . "') ";
                 $cadenaSql .= "RETURNING  id_evento; ";
                 break;
 

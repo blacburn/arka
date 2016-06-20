@@ -293,7 +293,7 @@ class Sql extends \Sql {
 			
 
 			case "consulta_elementos" :
-				$cadenaSql = "SELECT e.id_elemento, ce.elemento_codigo||' - '||ce.elemento_nombre AS item, e.cantidad, e.descripcion ,  cantidad_por_asignar, ";
+				$cadenaSql = "SELECT e.id_elemento, ce.elemento_nombre||' - '||ce.elemento_codigo AS item, e.cantidad, e.descripcion ,  cantidad_por_asignar, ";
 				$cadenaSql .= "  (cantidad-cantidad_por_asignar) cantidad_asignada, 
 						        CASE e.marca WHEN 'null' THEN ' ' ELSE e.marca END marca,
 						        CASE e.serie WHEN 'null' THEN ' '  ELSE e.serie END serie ";
@@ -301,7 +301,7 @@ class Sql extends \Sql {
 				$cadenaSql .= " JOIN  catalogo.catalogo_elemento  ce ON ce.elemento_id = e.nivel ";
 				$cadenaSql .= "JOIN catalogo.catalogo_lista cl ON cl.lista_id = ce.elemento_catalogo  ";
 				$cadenaSql .= "WHERE e.id_entrada='" . $variable . "' ";
-				$cadenaSql .= "AND cantidad_por_asignar <> 0 ;";
+				$cadenaSql .= "AND cantidad_por_asignar <> 0 ORDER BY id_elemento ASC;";
 				
 				break;
 			

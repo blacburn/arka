@@ -113,7 +113,8 @@ class RegistradorOrden {
                 'fecha' => $fechaActual,
                 'sede' => $elemento[0]['cod_sede'],
                 'ubicacion' => $elemento[0]['cod_ubicacion'],
-                'tipo_baja' => $_REQUEST['tipoBaja']
+                'tipo_baja' => $_REQUEST['tipoBaja'],
+                'usuario' => $_REQUEST ['usuario']
             );
 
 

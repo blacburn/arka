@@ -260,7 +260,8 @@ class Sql extends \Sql {
                 $cadenaSql = " SELECT DISTINCT ";
                 $cadenaSql .= " elemento_individual.funcionario as funcionario_Documento, ";
                 $cadenaSql .= 'arka_parametros.arka_funcionarios."FUN_NOMBRE" funcionario_Nombre, ';
-                $cadenaSql .= ' dependencia."ESF_DEP_ENCARGADA" dependencia';
+                $cadenaSql .= ' dependencia."ESF_DEP_ENCARGADA" dependencia, ';  
+                $cadenaSql .= ' ubicacion."ESF_NOMBRE_ESPACIO" espacio'; 
                 $cadenaSql .= " FROM arka_inventarios.elemento   ";
                 $cadenaSql .= " JOIN arka_inventarios.elemento_individual ON arka_inventarios.elemento_individual.id_elemento_gen=arka_inventarios.elemento.id_elemento ";
                 $cadenaSql .= " LEFT JOIN salida ON salida.id_salida=elemento_individual.id_salida ";
@@ -275,7 +276,7 @@ class Sql extends \Sql {
                 $cadenaSql .= " WHERE 1=1 ";
                 $cadenaSql .= " AND elemento_individual.id_elemento_ind= '" . $variable . "'";
                 break;
-
+            
             case "consultar_tipo_bien" :
 
                 $cadenaSql = "SELECT id_tipo_bienes, descripcion ";
@@ -317,7 +318,9 @@ class Sql extends \Sql {
                 $cadenaSql .= ' arka_parametros.arka_dependencia."ESF_DEP_ENCARGADA" dependencia, ';
                 $cadenaSql .= ' pasado."FUN_NOMBRE" as funcionario_anterior, ';
                 $cadenaSql .= ' actual."FUN_NOMBRE" as funcionario_siguiente, ';
-                $cadenaSql .= " historial_elemento_individual.observaciones observaciones_traslados ";
+                $cadenaSql .= " historial_elemento_individual.observaciones observaciones_traslados, ";
+                $cadenaSql .= " historial_elemento_individual.id_evento,  ";
+                $cadenaSql .= " historial_elemento_individual.observaciones as observacion ";
                 $cadenaSql .= " FROM arka_inventarios.elemento_individual";
                 $cadenaSql .= " JOIN arka_inventarios.elemento ON id_elemento_gen = elemento.id_elemento";
                 $cadenaSql .= " JOIN arka_inventarios.historial_elemento_individual ON historial_elemento_individual.elemento_individual = elemento_individual.id_elemento_ind ";
@@ -328,7 +331,7 @@ class Sql extends \Sql {
                 $cadenaSql .= ' JOIN arka_parametros.arka_dependencia ON arka_parametros.arka_dependencia."ESF_CODIGO_DEP" = salida.dependencia ';
                 $cadenaSql .= " JOIN catalogo.catalogo_lista ON catalogo.catalogo_elemento.elemento_catalogo=catalogo.catalogo_lista.lista_id";
                 $cadenaSql .= " WHERE elemento_individual.id_elemento_ind='" . $variable . "' ";
-                $cadenaSql .= " ORDER BY historial_elemento_individual.fecha_registro ASC; ";
+                $cadenaSql .= " ORDER BY historial_elemento_individual.id_evento DESC; ";
                 break;
 
             case "consultar_estado":

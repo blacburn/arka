@@ -49,6 +49,8 @@ class registrarForm {
         $conexion = "inventarios";
         $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 
+ 
+
         $tab = 1;
 
         // ---------------- SECCION: Parámetros Globales del Formulario ----------------------------------

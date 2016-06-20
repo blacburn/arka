@@ -163,7 +163,6 @@ class Sql extends \Sql {
                 $cadenaSql.= " FROM grupo.catalogo_elemento ";
                 $cadenaSql.= " JOIN grupo.catalogo_lista ON grupo.catalogo_lista.lista_id=elemento_catalogo ";
                 $cadenaSql.= " WHERE elemento_id>0 ";
-                $cadenaSql.= " AND catalogo_elemento.elemento_tipobien <>1 ";
                 $cadenaSql.= " AND lista_activo=1 ) as consulta";
                 $cadenaSql.= " WHERE value LIKE '%" . $variable . "%' ";
 
@@ -267,7 +266,6 @@ class Sql extends \Sql {
                 $cadenaSql .= " JOIN grupo.grupo_descripcion ON grupo.grupo_descripcion.grupo_id=cast(grupo.catalogo_elemento.elemento_id as character varying)   ";
                 $cadenaSql .= " WHERE catalogo.catalogo_elemento.elemento_id>0   ";
                 $cadenaSql .= " AND catalogo.catalogo_lista.lista_activo=1    ";
-                $cadenaSql .= " AND elemento.tipo_bien <> 1  ";
                 $cadenaSql .= " AND elemento.estado=TRUE   ";
                 $cadenaSql .= " AND entrada.estado_entrada <> 3 ";
                 $cadenaSql .= " AND id_elemento_ind NOT IN (     ";

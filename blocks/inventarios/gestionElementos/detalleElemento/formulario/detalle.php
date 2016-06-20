@@ -86,7 +86,6 @@ class registrarForm {
             $aItems = '';
             $sPhotos = '';
         }
- 
         $cadenaSql = $this->miSql->getCadenaSql('consultarElementoParticular', $_REQUEST ['elemento']);
         $elemento = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
         
@@ -106,6 +105,8 @@ class registrarForm {
             );
         }
 
+//        
+       
         // if ($elemento == false) {
         // redireccion::redireccionar('noExiste');
         // }
@@ -120,7 +121,7 @@ class registrarForm {
         } else {
             foreach ($elemento_traslado as $key => $values) {
                 $elemento_traslado [$key] = array(
-                    'Traslado Registrado' => $elemento_traslado [$key] ['funcionario_anterior'] . ' a ' . $elemento_traslado [$key] ['funcionario_siguiente'] . ' el día ' . $elemento_traslado [$key] ['fecha_registro']
+                    'Traslado Registrado' => $elemento_traslado [$key] ['funcionario_anterior'] . ' a ' . $elemento_traslado [$key] ['funcionario_siguiente'] . ' el día ' . $elemento_traslado [$key] ['fecha_registro'] . ' observación :' . $elemento_traslado [$key] ['observacion']
                 );
             }
         }
@@ -536,6 +537,7 @@ class registrarForm {
                                 }
                             }
 
+                         
                             // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
                             $esteCampo = 'informacion';
                             $atributos ['id'] = $esteCampo;

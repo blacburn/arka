@@ -59,7 +59,8 @@ class registrarForm {
 
         $cadenaSql = $this->miSql->getCadenaSql('consulta_elementos', $_REQUEST ['numero_entrada']);
         $elementos = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
-
+        
+       
         $cadenaSql = $this->miSql->getCadenaSql('consulta_elementos_validar', $_REQUEST ['numero_entrada']);
         $elementos_validacion = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
 
@@ -347,9 +348,10 @@ class registrarForm {
                             for ($i = 0; $i < count($elementos); $i ++) {
 
                                 $arreglo_nombreItems [] = $elementos [$i] [1];
+                             
 
                                 $mostrarHtml = "<tr>
-						                    <td><center> " . $elementos [$i] ['item'] . "</center></td>
+						                    <td><center> " . $elementos[$i] ['item'] . "</center></td>
 						                    <td><center> " . $elementos[$i]['cantidad_por_asignar'] . "</center></td>
 						                    <td><center>";
 
@@ -379,13 +381,14 @@ class registrarForm {
                                 $atributos ['maximoTamanno'] = '';
                                 $atributos ['anchoEtiqueta'] = 0;
                                 $tab ++;
-
+                                
                                 // Aplica atributos globales al control
                                 $atributos = array_merge($atributos, $atributosGlobales);
                                 $mostrarHtml .= ($elementos[$i]['cantidad_por_asignar'] == 1) ? ' ' : $this->miFormulario->campoCuadroTexto($atributos);
-
+                              
                                 $mostrarHtml .= $this->miFormulario->division('fin');
-                                $mostrarHtml .= "</center></td>
+                                $mostrarHtml .= "</center></td>        
+                                   
 			     							 <td><center>" . $elementos [$i] ['descripcion'] . "</center></td>
 			     							 <td><center>" . $elementos [$i] ['marca'] ." ".$elementos [$i] ['serie']. "</center></td>
 				   							<td><center>";
@@ -416,7 +419,8 @@ class registrarForm {
 
                                 $mostrarHtml .= "</center></td>
                     						</tr>";
-                                echo $mostrarHtml;
+                                var_dump($mostrarHtml);
+                                 echo $mostrarHtml;
                                 unset($mostrarHtml);
                                 unset($variable);
                                 //}
