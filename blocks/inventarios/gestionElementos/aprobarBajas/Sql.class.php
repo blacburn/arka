@@ -476,7 +476,6 @@ class Sql extends \Sql {
 				// $cadenaSql.= " AND grupo.grupo_descripcion.grupo_depreciacion='t' ";
 				$cadenaSql .= " AND elemento.estado=TRUE   ";
 				$cadenaSql .= " AND id_elemento_ind='" . $variable . "'";
-                              
 				break;
 			
 			case "registrarDepreciacion" :
@@ -521,7 +520,6 @@ class Sql extends \Sql {
 				$cadenaSql .= "'" . $variable ['estado'] . "', ";
 				$cadenaSql .= "'" . $variable ['fregistro'] . "') ";
 				$cadenaSql .= " RETURNING dep_id; ";
-                                  echo $cadenaSql;
 				break;
 			
 			case "insertar_historico" :
