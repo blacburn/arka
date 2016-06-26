@@ -292,9 +292,9 @@ class Sql extends \Sql {
 				break;
 			
 			case "funcionarios" :
-				$cadenaSql = "SELECT \"FUN_IDENTIFICACION\", \"FUN_IDENTIFICACION\" ||' - '||  \"FUN_NOMBRE\" ";
+				$cadenaSql = "SELECT DISTINCT \"FUN_IDENTIFICACION\", \"FUN_IDENTIFICACION\" ||' - '||  \"FUN_NOMBRE\" ";
 				$cadenaSql .= "FROM  arka_parametros.arka_funcionarios ";
-				// $cadenaSql .= "WHERE \"FUN_ESTADO\"='A' ";
+//				$cadenaSql .= "WHERE \"FUN_ESTADO\"='A' ";
 				
 				break;
 			

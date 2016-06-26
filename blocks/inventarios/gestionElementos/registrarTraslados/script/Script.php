@@ -43,5 +43,6 @@ if (isset ( $funcion [0] )) {
 }
 
 include ("ajax.php");
+include ("procesar_tabla.php");
 
 ?>

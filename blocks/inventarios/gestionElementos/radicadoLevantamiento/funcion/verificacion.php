@@ -48,10 +48,7 @@ class RegistradorOrden {
 			
 			$cadenaSql = $this->miSql->getCadenaSql ( 'Registrar_Radicacion', $valor );
 			
-			
 			$estado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "acceso", $valor, "Registrar_Radicacion" );
-			
-			
 			
 			
 			

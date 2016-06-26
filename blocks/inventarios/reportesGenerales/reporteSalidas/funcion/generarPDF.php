@@ -130,7 +130,7 @@ class RegistradorActa {
             $contenido.= "<td style='text-align:center'>" . $datos_elementos[$key]['cantidad'] . "</td> ";
             $contenido.= "<td style='text-align:center'>" . $datos_elementos[$key]['tipo_bien'] . "</td> ";
             $contenido.= "<td style='text-align:center'>" . $datos_elementos[$key]['placa'] . "</td> ";
-            $contenido.= "<td style='text-align:center' >" . wordwrap($datos_elementos[$key]['descripcion'], 80, "<br>") . "</td> ";
+            $contenido.= "<td style='text-align:center' >" . wordwrap($datos_elementos[$key]['descripcion'], 40, "<br>") . "</td> ";
             $contenido.= "<td style='text-align:center' >" . wordwrap($datos_elementos[$key]['marca']." - ".$datos_elementos[$key]['serie'], 80, "<br>") . "</td> ";
             $contenido.= "<td style='text-align:right' >&nbsp;$&nbsp;" . number_format($datos_elementos[$key]['valor'], 2, ",", ".") . "</td> ";
             $contenido.= "<td style='text-align:right' >&nbsp;$&nbsp;" . number_format($datos_elementos[$key]['subtotal_sin_iva'], 2, ",", ".") . "</td> ";
@@ -207,9 +207,6 @@ class RegistradorActa {
     <table align='center'>
         <thead>
             <tr>
-                <th style=\"width:10px;\" colspan=\"1\">
-                    
-                </th>
                 <th style=\"width:845px;font-size:11px;\" colspan=\"1\">
                     <br>UNIVERSIDAD DISTRITAL FRANCISCO JOSÉ DE CALDAS
                     <br> NIT 899999230-7<br>

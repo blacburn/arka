@@ -49,22 +49,18 @@ $(function() {
 
              $('#tablaTitulos').dataTable( {
 //              	 serverSide: true,
-				language: {
-                url: "<?php echo $urlDirectorio?>"
-            			},
-             	processing: true,
-		"aLengthMenu": [[10,25, 50,100,300,500,1000,-1], [10,25, 50,100,300,500,1000,'Todos']],
-//                   ordering: true,
-                  searching: true,
-//                deferRender: true,
-      //             sScrollY: 500	,
-        //          bScrollCollapse: true,
-                  info:true,
-//                   lengthChange:true,
-   		    "pagingType": "full_numbers",
-//                   stateSave: true,
-         //          renderer: "bootstrap",
-         //          retrieve: true,
+		
+             	language: {
+                    url: "<?php echo $urlDirectorio ?>"
+                },
+                processing: true,
+                searching: true,
+                info:true,
+                "scrollY":"400px",
+                "scrollCollapse": false, 
+                "pagingType": "full_numbers",
+                "bLengthChange": false,
+                "bPaginate": false,
                   ajax:{
                       url:"<?php echo $urlFinal?>",
                       dataSrc:"data"                                                                  

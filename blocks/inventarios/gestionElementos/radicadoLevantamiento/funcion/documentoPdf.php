@@ -40,15 +40,12 @@ class RegistradorOrden {
 		
 		$resultado_sedes = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		
-		
-		
-		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'jefe_recursos_fisicos' );
-		// echo $cadenaSql;
+		
 		$jefe = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		$jefe = $jefe [0];
 		
-		$directorio = $this->miConfigurador->getVariableConfiguracion ( 'rutaUrlBloque' );
+		$directorio = $this->miConfigurador->getVariableConfiguracion ( 'rutaBloque' );
 		
 		$contenidoPagina = '';
 		
@@ -143,7 +140,7 @@ class RegistradorOrden {
 				
 				if ($sede ['codigo_sede'] == $valor ['codigo_sede']) {
 					
-					if (is_null($valor ['radicacion'])== true) {
+					if (is_null ( $valor ['radicacion'] ) == true) {
 						$num_no_radicados = $num_no_radicados + 1;
 						$num_no_radicados_global = $num_no_radicados_global + 1;
 					} else {
@@ -152,7 +149,7 @@ class RegistradorOrden {
 						$num_radicados_global = $num_radicados_global + 1;
 					}
 					
-					$valor ['radicacion'] = (is_null($valor ['radicacion'])== true) ? 'No Radicado':'Radicado';
+					$valor ['radicacion'] = (is_null ( $valor ['radicacion'] ) == true) ? 'No Radicado' : 'Radicado';
 					
 					$contenidoPagina .= " 
 								<tr>
@@ -169,7 +166,7 @@ class RegistradorOrden {
 			
 			$total_inventario = $num_radicados + $num_no_radicados;
 			
-			$porcentaje_avance =round(($num_radicados / $total_inventario) * 100,3);
+			$porcentaje_avance = round ( ($num_radicados / $total_inventario) * 100, 3 );
 			
 			$contenidoPagina .= "
 			
@@ -206,14 +203,10 @@ class RegistradorOrden {
 			";
 		}
 		
-		$total_inventario_global = count($resultado);
+		$total_inventario_global = count ( $resultado );
 		
-		$porcentaje_avance_global = round(($num_radicados_global / $total_inventario_global) * 100,3);
-			
-
-
-
-
+		$porcentaje_avance_global = round ( ($num_radicados_global / $total_inventario_global) * 100, 3 );
+		
 		$contenidoPagina .= "
 		
 			<page_footer  backbottom='10mm'>
@@ -238,19 +231,19 @@ class RegistradorOrden {
 			<table style='width:100%;border=none;'>
             <tr>
 			<td style='width:50%;text-align:center;'><b>TOTAL RADICADO GLOBAL:</b></td>
-			<td style='width:50%;text-align:center;'><b>".$num_radicados_global."</b></td>
+			<td style='width:50%;text-align:center;'><b>" . $num_radicados_global . "</b></td>
  		 	</tr>
 			<tr>
 			<td style='width:50%;text-align:center;'><b>TOTAL NO RADICADOS GLOBAL:</b></td>
-			<td style='width:50%;text-align:center;'><b>".$num_no_radicados_global."</b></td>
+			<td style='width:50%;text-align:center;'><b>" . $num_no_radicados_global . "</b></td>
  		 	</tr>
 			<tr>
 			<td style='width:50%;text-align:center;'><b>TOTAL INVENTARIOS:</b></td>
-			<td style='width:50%;text-align:center;'><b>".$total_inventario_global."</b></td>
+			<td style='width:50%;text-align:center;'><b>" . $total_inventario_global . "</b></td>
  		 	</tr>
 			<tr>
 			<td style='width:50%;text-align:center;'><b>% AVANCE:</b></td>
-			<td style='width:50%;text-align:center;'><b>".$porcentaje_avance_global." %</b></td>
+			<td style='width:50%;text-align:center;'><b>" . $porcentaje_avance_global . " %</b></td>
  		 	</tr>
 			</table>
 			</page_footer>
@@ -271,7 +264,7 @@ $html2pdf = new \HTML2PDF ( 'L', 'LETTER', 'es', true, 'UTF-8', array (
 		1,
 		2,
 		2,
-		10
+		10 
 ) );
 $html2pdf->pdf->SetDisplayMode ( 'fullpage' );
 $html2pdf->WriteHTML ( $textos );

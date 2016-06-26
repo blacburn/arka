@@ -212,15 +212,15 @@ class registrarForm {
 
             echo "<thead>
                 <tr>
-                    <th># Número Placa</th>
-                    <th>Descripción Elemento</th>
+                    <th># Número<br>Placa</th>
+                    <th>Descripción<br>Elemento</th>
                     <th>Sede</th>
                     <th>Dependencia</th>
 		    <th>Ubicación<br>Especifica</th>
-                    <th>Nombre Funcionario</th>
+                    <th>Nombre<br>Funcionario</th>
 		    <th>Identificación<br>Funcionario</th>
-                    <th>Tipo Bien</th>
-		    <th>Trasladar Elemento</th>
+                    <th>Tipo<br>Bien</th>
+		    <th>Trasladar<br>Elemento</th>
                 </tr>
             </thead>
             <tbody>";
@@ -274,7 +274,7 @@ class registrarForm {
             echo "</tbody>";
 
             echo "</table>";
-
+            echo $this->miFormulario->marcoAgrupacion('fin');
             // ------------------Division para los botones-------------------------
             $atributos ["id"] = "botones";
             $atributos ["estilo"] = "marcoBotones";
@@ -302,7 +302,7 @@ class registrarForm {
 
             echo $this->miFormulario->division('fin');
 
-            echo $this->miFormulario->marcoAgrupacion('fin');
+
 
             // ---------------- FIN SECCION: Controles del Formulario -------------------------------------------
             // ----------------FINALIZAR EL FORMULARIO ----------------------------------------------------------
@@ -359,8 +359,8 @@ class registrarForm {
             $atributos ['tipoEtiqueta'] = 'fin';
             echo $this->miFormulario->formulario($atributos);
         } else {
-            
-            $opc=0;
+
+            $opc = 0;
 
             $cadenaSql = $this->miSql->getCadenaSql('consultarElementoID', $placa);
             $elemento_id = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
@@ -385,7 +385,7 @@ class registrarForm {
                 // Aplica atributos globales al control
                 $atributos = array_merge($atributos, $atributosGlobales);
                 echo $this->miFormulario->cuadroMensaje($atributos);
-                $opc=1;
+                $opc = 1;
             }
 
             $cadenaSql = $this->miSql->getCadenaSql('consultarElementoEstado', $elemento_id[0][0]);
@@ -406,10 +406,10 @@ class registrarForm {
                 // Aplica atributos globales al control
                 $atributos = array_merge($atributos, $atributosGlobales);
                 echo $this->miFormulario->cuadroMensaje($atributos);
-                $opc=1;
-            } 
-            
-            if ($opc==0){
+                $opc = 1;
+            }
+
+            if ($opc == 0) {
                 $mensaje = "Elemento no encontrado<br>para traslados.";
 
                 // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------

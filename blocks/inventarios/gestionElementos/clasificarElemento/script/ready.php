@@ -398,9 +398,7 @@ $("#<?php echo $this->campoSeguro('tipo_bien_select')?>").select2();
 			
 	   });
 	   
-	          $('#tablaTitulos').dataTable( {
-                "sPaginationType": "full_numbers"
-                 } );
+	          
 	   
           
 

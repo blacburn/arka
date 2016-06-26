@@ -399,8 +399,7 @@ class Sql extends \Sql {
                 $cadenaSql.= ' GROUP BY salida.id_salida, salida.fecha_registro, salida.dependencia, salida.sede, salida.funcionario,salida.observaciones,  ';
                 $cadenaSql.= ' entrada.consecutivo,arka_parametros.arka_funcionarios."FUN_NOMBRE", sedes."ESF_SEDE", ';
                 $cadenaSql.= ' dependencias."ESF_DEP_ENCARGADA", espacios."ESF_NOMBRE_ESPACIO"  ';
-                echo $cadenaSql;
-                exit;
+                
                 break;
 
             case "consultarSalida_pdf":
@@ -419,7 +418,7 @@ class Sql extends \Sql {
                 $cadenaSql .= ' tipo_bienes.descripcion objeto_final, ';
                 $cadenaSql .= ' proveedor, ';
                 $cadenaSql .= ' "PRO_RAZON_SOCIAL" nombre_proveedor ';
-                $cadenaSql .= ' FROM salida  ';
+                $cadenaSql .= ' FROM arka_inventarios.salida  ';
                 $cadenaSql .= ' JOIN arka_inventarios.entrada ON salida.id_entrada=entrada.id_entrada  ';
                 $cadenaSql .= ' JOIN arka_inventarios.salida_contable ON salida.id_salida=salida_contable.salida_general  ';
                 $cadenaSql .= ' JOIN arka_inventarios.tipo_bienes ON tipo_bienes.id_tipo_bienes=salida_contable.tipo_bien  ';

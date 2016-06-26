@@ -2,7 +2,7 @@
 
 // Asociar el widget de validación al formulario
 $("#registrarTraslados").validationEngine({
-promptPosition : "centerRight", 
+promptPosition : "topLeft:180,10",  
 scroll: false,
 autoHidePrompt: true,
 autoHideDelay: 2000

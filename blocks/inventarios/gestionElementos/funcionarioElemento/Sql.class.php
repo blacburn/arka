@@ -248,10 +248,9 @@ class Sql extends \Sql {
 			
 			case "funcionarios" :
 				
-				$cadenaSql = "SELECT \"FUN_IDENTIFICACION\", \"FUN_IDENTIFICACION\" ||' - '||  \"FUN_NOMBRE\" ";
+				$cadenaSql = "SELECT DISTINCT \"FUN_IDENTIFICACION\", \"FUN_IDENTIFICACION\" ||' - '||  \"FUN_NOMBRE\" ";
 				$cadenaSql .= "FROM  arka_parametros.arka_funcionarios ";
-                               
-				// $cadenaSql .= "WHERE \"FUN_ESTADO\"='A' ";
+//				$cadenaSql .= "WHERE \"FUN_ESTADO\"='A' ";
 				
 				break;
 			
@@ -331,7 +330,8 @@ class Sql extends \Sql {
 					$cadenaSql .= ' AND espacios."ESF_ID_ESPACIO" = ';
 					$cadenaSql .= " '" . $variable ['ubicacion'] . "' ";
 				}
-				$cadenaSql .= " ORDER BY dependencia DESC   ;  ";
+				$cadenaSql .= " ORDER BY dependencia DESC, placa ASC;  ";
+				
 				
 				break;
 			

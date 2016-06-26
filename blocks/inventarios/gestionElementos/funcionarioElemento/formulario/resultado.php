@@ -250,7 +250,6 @@ class registrarForm {
 					
 					echo "<a id='abrir'><B><u>Instrucciones</u></B></a>";
 				}
-				
 				// ------------------Division para los botones-------------------------
 				$atributos ["id"] = "SeleccionRegistro";
 				echo $this->miFormulario->division ( "inicio", $atributos );
@@ -304,6 +303,8 @@ class registrarForm {
 				}
 				echo $this->miFormulario->division ( 'fin' );
 				unset ( $atributos );
+				
+				
 				
 				$mostrarHtml = "<table id='tablaTitulos'>
 			<thead>
@@ -482,6 +483,15 @@ class registrarForm {
 		if (isset ( $_REQUEST ['dependencia'] )) {
 			
 			$valorCodificado .= "&dependencia=" . $_REQUEST ['dependencia'];
+		}
+                if (isset ( $_REQUEST ['sede'] )) {
+			
+			$valorCodificado .= "&sede=" . $_REQUEST ['sede'];
+		}
+		
+		if (isset ( $_REQUEST ['ubicacion'] )) {
+			
+			$valorCodificado .= "&ubicacion=" . $_REQUEST ['ubicacion'];
 		}
 		
 		if ($resultado_periodo) {

@@ -72,7 +72,7 @@ class registrarForm {
 		$atributos ["leyenda"] = "Consulta de Inventario Funcionario";
 		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 		
-             
+
 		
 		$esteCampo = "funcionario";
 		$atributos ['nombre'] = $esteCampo;

@@ -405,8 +405,5 @@ $("#<?php echo $this->campoSeguro('responsable_reci')?>").select2();
 			
 	   });
 	   
-	          $('#tablaTitulos').dataTable( {
-                "sPaginationType": "full_numbers"
-                 } );
-	   
+	         
          
