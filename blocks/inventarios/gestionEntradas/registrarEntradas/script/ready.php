@@ -24,10 +24,7 @@
             });
         });
 
-                               $('#tablaTitulos').dataTable( {
-                "sPaginationType": "full_numbers"
-                 } );
-
+                    
                  
                  $("#<?php echo $this->campoSeguro('supervisor')?>").select2({
              	 placeholder: "Ingrese Mínimo 3 Caracteres de Búsqueda",

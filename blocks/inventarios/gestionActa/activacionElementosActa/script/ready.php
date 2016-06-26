@@ -23,11 +23,7 @@
             });
         });
 
-                     $('#tablaTitulos').dataTable( {
-                "sPaginationType": "full_numbers",
-                "aLengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Todos"]]
-                 } );
-
+           
   	   
 	   
         $('#<?php echo $this->campoSeguro('fecha_recibido')?>').datepicker({

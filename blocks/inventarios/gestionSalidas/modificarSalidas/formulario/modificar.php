@@ -79,7 +79,7 @@ class registrarForm {
 		
 		
 		$elementos = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-		
+//		var_dump($elementos);
 		// }
 		// }
 		

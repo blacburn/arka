@@ -25,10 +25,7 @@
             });
         });
 
-	          $('#tablaTitulos').dataTable( {
-                "sPaginationType": "full_numbers",
-                 } );
-
+	        
 
              	$("#<?php echo $this->campoSeguro('estado')?>").select2();
              	$('#<?php echo $this->campoSeguro('estado_contable')?>').width(200);

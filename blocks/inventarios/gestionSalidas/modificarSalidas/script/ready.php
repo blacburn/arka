@@ -25,11 +25,7 @@
             });
         });
 
-                     $('#tablaTitulos').dataTable( {
-                      "scrollY":"350px",
-        			  "scrollCollapse": true,
-        			  "paging":false
-			        	          } );
+              
 
                      
                  $("#<?php echo $this->campoSeguro('funcionarioP')?>").select2({

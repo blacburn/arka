@@ -59,9 +59,7 @@ class registrarForm {
 
         $cadenaSql = $this->miSql->getCadenaSql('consulta_elementos', $_REQUEST ['numero_entrada']);
         $elementos = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
-     
-     
-  
+
         $cadenaSql = $this->miSql->getCadenaSql('consulta_elementos_validar', $_REQUEST ['numero_entrada']);
         $elementos_validacion = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
 
@@ -332,57 +330,28 @@ class registrarForm {
 
                         if ($elementos) {
 
-                            echo '<table id="tablaReportes" class="display" cellspacing="0" width="100%">';
+                            echo "<table id='tablaTitulos'>";
 
-                            echo '<thead style="display: table-row-group">
+                            echo "<thead>
 				                                <tr>
-                                                                    <th>Selección Items</th>
                                                                     <th>Nivel Inventarios</th>
                                                                     <th>Cantidad</th>
                                                                     <th>Cantidad Asignar</th>			
                                                                     <th>Nombre</th>
-                            					    <th>Marca-Serie</th>
-								    
+                            										<th>Marca-Serie</th>
+								    <th>Selección Items</th>
 							        </tr>
                                                               </thead>
-					                      <tbody>';
+					                      <tbody>";
 
                             for ($i = 0; $i < count($elementos); $i ++) {
 
                                 $arreglo_nombreItems [] = $elementos [$i] [1];
 
-                                $mostrarHtml = '<tr>
-                                    <td><center> ';
-
-                                // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-                                $nombre = 'item' . $i;
-                                $atributos ['id'] = $nombre;
-                                $atributos ['nombre'] = $nombre;
-                                $atributos ['marco'] = true;
-                                $atributos ['estiloMarco'] = true;
-                                $atributos ["etiquetaObligatorio"] = true;
-                                $atributos ['columnas'] = 1;
-                                $atributos ['dobleLinea'] = 1;
-                                $atributos ['tabIndex'] = $tab;
-                                $atributos ['etiqueta'] = '';
-                                if (isset($_REQUEST [$esteCampo])) {
-                                    $atributos ['valor'] = $_REQUEST [$esteCampo];
-                                } else {
-                                    $atributos ['valor'] = $elementos [$i] [0];
-                                }
-
-                                $atributos ['deshabilitado'] = false;
-                                $tab ++;
-
-                                // Aplica atributos globales al control
-                                $atributos = array_merge($atributos, $atributosGlobales);
-                                $mostrarHtml .= $this->miFormulario->campoCuadroSeleccion($atributos);
-
-                                $mostrarHtml .= '<center> </td>
-<td><center> ' . $elementos[$i]['cantidad_por_asignar'] . '</center></td>						                    
-<td><center> ' . $elementos [$i] ['item'] . '</center></td>
-						                    
-						                    <td><center>';
+                                $mostrarHtml = "<tr>
+						                    <td><center> " . $elementos [$i] ['item'] . "</center></td>
+						                    <td><center> " . $elementos[$i]['cantidad_por_asignar'] . "</center></td>
+						                    <td><center>";
 
                                 $atributos ["id"] = "botones";
                                 $atributos ["estilo"] = "marcoBotones";
@@ -416,20 +385,46 @@ class registrarForm {
                                 $mostrarHtml .= ($elementos[$i]['cantidad_por_asignar'] == 1) ? ' ' : $this->miFormulario->campoCuadroTexto($atributos);
 
                                 $mostrarHtml .= $this->miFormulario->division('fin');
-                                $mostrarHtml .= '</center></td>
-			     							 <td><center>' . $elementos [$i] ['descripcion'] . '</center></td>
-			     							 <td><center>' . $elementos [$i] ['marca'] ." ".$elementos [$i] ['serie']. '</center></td>
-				   							
-                    						</tr>';
+                                $mostrarHtml .= "</center></td>
+			     							 <td><center>" . $elementos [$i] ['descripcion'] . "</center></td>
+			     							 <td><center>" . $elementos [$i] ['marca'] ." ".$elementos [$i] ['serie']. "</center></td>
+				   							<td><center>";
+
+                                // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+                                $nombre = 'item' . $i;
+                                $atributos ['id'] = $nombre;
+                                $atributos ['nombre'] = $nombre;
+                                $atributos ['marco'] = true;
+                                $atributos ['estiloMarco'] = true;
+                                $atributos ["etiquetaObligatorio"] = true;
+                                $atributos ['columnas'] = 1;
+                                $atributos ['dobleLinea'] = 1;
+                                $atributos ['tabIndex'] = $tab;
+                                $atributos ['etiqueta'] = '';
+                                if (isset($_REQUEST [$esteCampo])) {
+                                    $atributos ['valor'] = $_REQUEST [$esteCampo];
+                                } else {
+                                    $atributos ['valor'] = $elementos [$i] [0];
+                                }
+
+                                $atributos ['deshabilitado'] = false;
+                                $tab ++;
+
+                                // Aplica atributos globales al control
+                                $atributos = array_merge($atributos, $atributosGlobales);
+                                $mostrarHtml .= $this->miFormulario->campoCuadroSeleccion($atributos);
+
+                                $mostrarHtml .= "</center></td>
+                    						</tr>";
                                 echo $mostrarHtml;
                                 unset($mostrarHtml);
                                 unset($variable);
                                 //}
                             }
 
-                            echo '</tbody>';
+                            echo "</tbody>";
 
-                            echo '</table>';
+                            echo "</table>";
                         }
                     }
                     echo $this->miFormulario->agrupacion('fin');

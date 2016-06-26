@@ -1,0 +1,165 @@
+﻿--DROP DATABASE IF EXISTS inventarios;
+
+-- Creación Base de Datos
+CREATE DATABASE inventarios;
+
+
+
+
+
+-- Tabla Funcionarios
+
+DROP TABLE IF EXISTS funcionarios ;
+
+CREATE TABLE funcionarios
+(
+  identificacion integer NOT NULL,
+  nombres character varying(50),
+  apellidos character varying(50),
+  estado_registro boolean default true,
+  CONSTRAINT pk_identificacion PRIMARY KEY (identificacion)
+);
+
+
+
+
+
+-- Tabla Funcionarios
+
+DROP TABLE IF EXISTS funcionarios ;
+
+CREATE TABLE funcionarios
+(
+  identificacion integer NOT NULL,
+  nombres character varying(50),
+  apellidos character varying(50),
+  estado_registro boolean default true,
+  CONSTRAINT pk_funcionario PRIMARY KEY (identificacion)
+);
+
+
+-- Tabla Sede 
+DROP TABLE IF EXISTS sede ;
+
+CREATE TABLE sede
+(
+  codigo character varying(4) NOT NULL,
+  nombre character varying(50),
+  direccion character varying(64),
+  estado_registro boolean default true,
+  CONSTRAINT pk_sede PRIMARY KEY (codigo)
+);
+
+
+
+
+
+--Tabla Dependencia
+
+DROP TABLE IF EXISTS dependencia ;
+
+CREATE TABLE dependencia
+(
+  codigo character varying NOT NULL,
+  cod_sede character varying(4) ,
+  nombre character varying,
+  estado_registro boolean default true,
+  CONSTRAINT pk_dependencia  PRIMARY KEY (codigo),
+  CONSTRAINT fk_sede FOREIGN KEY (cod_sede) REFERENCES sede (codigo)
+);
+
+
+
+--Tabla proveedor
+
+DROP TABLE IF EXISTS proveedor ;
+
+CREATE TABLE proveedor
+(
+  identificacion integer NOT NULL,
+  razon_social character varying,
+  estado_registro boolean default true,
+  CONSTRAINT pk_proveedor  PRIMARY KEY (identificacion)
+);
+
+
+
+
+
+--Tabla entrada
+
+DROP TABLE IF EXISTS entrada ;
+
+
+CREATE TABLE entrada
+(
+  consecutivo serial NOT NULL,
+  fecha_registro date,
+  numero_contrato character varying,
+  fecha_contrato date,
+  proveedor integer,
+  estado_registro boolean DEFAULT true,
+  CONSTRAINT pk_entrada PRIMARY KEY (consecutivo),
+  CONSTRAINT fk_proveedor FOREIGN KEY (proveedor) REFERENCES proveedor (identificacion)
+  
+);
+
+
+--Tabla elemento
+
+DROP TABLE IF EXISTS elemento ;
+
+
+CREATE TABLE elemento
+(
+  placa character varying NOT NULL ,
+  descripcion character varying,
+  cantidad numeric,
+  valor numeric,
+  con_entrada integer,
+  CONSTRAINT pk_elemento PRIMARY KEY (placa),
+  CONSTRAINT fk_entrada FOREIGN KEY (con_entrada) REFERENCES entrada (consecutivo)
+  
+);
+
+
+
+--Tabla elemento
+
+DROP TABLE IF EXISTS salida ;
+
+
+CREATE TABLE salida
+(
+  consecutivo serial NOT NULL,
+  fecha_registro date, 
+  elemento character varying NOT NULL ,
+  funcionario integer NOT NULL,
+  cod_dependencia character varying NOT NULL,
+  CONSTRAINT pk_salida PRIMARY KEY (consecutivo),
+  CONSTRAINT fk_elemento FOREIGN KEY (elemento) REFERENCES elemento (placa),
+  CONSTRAINT fk_funcionario_salida FOREIGN KEY (funcionario) REFERENCES funcionarios (placa)
+  
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

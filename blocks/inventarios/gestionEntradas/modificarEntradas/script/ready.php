@@ -25,11 +25,7 @@
             });
         });
 
-                     $('#tablaTitulos').dataTable( {
-                "sPaginationType": "full_numbers"
-                 } );
-
-                     
+                  
                      
                      
          $("#<?php echo $this->campoSeguro('supervisor')?>").select2({

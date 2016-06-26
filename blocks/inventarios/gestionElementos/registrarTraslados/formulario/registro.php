@@ -73,14 +73,7 @@ class registrarForm {
 		}
 		
 		
-		foreach ( $items as $key => $values ) {
-			$cadenaSql = $this->miSql->getCadenaSql ( 'elemento_informacion', $items [$key] );
-			$elemento = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			
-			$elementos_info [$key] = $elemento [0];
-		}
-		
-		// var_dump($funcionario);
+
 		$seccion ['tiempo'] = $tiempo;
 		
 		// ___________________________________________________________________________________
@@ -423,7 +416,7 @@ class registrarForm {
 			$valorCodificado .= "&opcion=registrar";
 			$valorCodificado .= "&fun_anterior=" . $funcionario;
 			$valorCodificado .= "&usuario=".$_REQUEST['usuario']; 
-			$valorCodificado .= "&informacion_elementos=" .serialize ( $elementos_info ) ;
+			$valorCodificado .= "&informacion_elementos=" .serialize ( $items ) ;
 			
 			/**
 			 * SARA permite que los nombres de los campos sean dinámicos.

@@ -44,9 +44,18 @@ class RegistradorOrden {
         $cadenaSql = $this->miSql->getCadenaSql('funcionario_informacion_fn', $_REQUEST ['responsable_reci']);
 
         $funcionario_enviar = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
+         
+        
+        $items=unserialize($_REQUEST ['informacion_elementos']);
+        
+        foreach ($items as $key => $values) {
+            $cadenaSql = $this->miSql->getCadenaSql('elemento_informacion', $items [$key]);
+            $elemento = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
 
+            $elementos_traslado [$key] = $elemento [0];
+        }
         $fechaActual = date('Y-m-d');
-        $elementos_traslado = unserialize($_REQUEST ['informacion_elementos']);
+//        $elementos_traslado = unserialize($_REQUEST ['informacion_elementos']);
 
         if (!isset($_REQUEST ['responsable_reci']) || !isset($_REQUEST ['ubicacion']) || $_REQUEST ['responsable_reci'] == '' || $_REQUEST ['ubicacion'] == '') {
             redireccion::redireccionar('noInserto', false);
@@ -54,6 +63,7 @@ class RegistradorOrden {
         }
         // trasladar cada elementos
         foreach ($elementos_traslado as $key => $values) {
+            
             $datos = array(
                 $fechaActual,
                 $elementos_traslado [$key] ['id'],
