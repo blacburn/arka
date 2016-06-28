@@ -150,7 +150,7 @@ class Formulario {
                 $atributos ['titulo'] = $this->lenguaje->getCadena($esteCampo . 'Titulo');
                 $atributos ['deshabilitado'] = false;
                 $atributos ['tamanno'] = 20;
-                $atributos ['maximoTamanno'] = '10';
+                $atributos ['maximoTamanno'] = '15';
                 $tab ++;
 
                 // Aplica atributos globales al control

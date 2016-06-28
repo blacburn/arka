@@ -331,8 +331,7 @@ class Sql extends \Sql {
 					$cadenaSql .= " '" . $variable ['ubicacion'] . "' ";
 				}
 				$cadenaSql .= " ORDER BY dependencia DESC, placa ASC;  ";
-				
-				
+			
 				break;
 			
 			case "consultarElementoParticular" :

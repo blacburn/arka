@@ -321,9 +321,7 @@ $("#<?php echo $this->campoSeguro('tipo_poliza')?>").select2();
 			
 	   });
 	   
-	        
-	   
-          
+	         
 
 
 

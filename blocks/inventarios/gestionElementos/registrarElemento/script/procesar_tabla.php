@@ -72,7 +72,7 @@ $urlFinal = $url . $cadena;
         $('#tablaTitulos').ready(function() {
 
             var table =$('#tablaTitulos').dataTable( {
-                 "language": {
+                "language": {
                     "sProcessing": "Procesando...",
                     "sLengthMenu": "Mostrar _MENU_ registros",
                     "sZeroRecords": "No se encontraron resultados",
@@ -99,16 +99,12 @@ $urlFinal = $url . $cadena;
                
                 
                 "aoColumns" : [
-                    { sWidth: "18%" },
-                    { sWidth: "10%" },
-                    { sWidth: "15%" },
-                    { sWidth: "7%" },
-                    { sWidth: "10%" },
-                    { sWidth: "5%" },
-                    { sWidth: "5%" },
-                    { sWidth: "5%" },
-                    { sWidth: "15%" },
-                    { sWidth: "10%" }
+                    { sWidth: "16%" },
+                    { sWidth: "16%" },
+                    { sWidth: "16%" },
+                    { sWidth: "16%" },
+                    { sWidth: "20%" },
+                    { sWidth: "16%" }
                 ]
              
             });

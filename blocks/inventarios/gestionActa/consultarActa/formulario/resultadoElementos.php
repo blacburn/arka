@@ -54,7 +54,6 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'consultarElementosActa', $_REQUEST ['numero_acta'] );
 		$ActaElementos = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		
-		
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
 		$esteCampo = $esteBloque ['nombre'];
 		$atributos ['id'] = $esteCampo;

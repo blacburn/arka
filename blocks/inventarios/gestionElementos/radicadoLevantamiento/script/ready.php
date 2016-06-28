@@ -31,7 +31,7 @@
 
 
                $('#tablaTitulos').dataTable( {
-					"sScrollY": "350px",
+					"sScrollY": "400px",
 					 "bScrollCollapse": true,
 					   "bPaginate": false,
                  } );

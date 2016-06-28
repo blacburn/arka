@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace inventarios\gestionElementos\funcionarioElemento\funcion;
 
