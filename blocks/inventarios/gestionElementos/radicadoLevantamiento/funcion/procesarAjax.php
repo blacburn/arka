@@ -78,9 +78,13 @@ if ($_REQUEST ['funcion'] == 'Consulta') {
 
 
 if ($_REQUEST ['funcion'] == 'consultarDependencia') {
-
+        
+       $arreglo = array (
+           'valor'=>$_REQUEST['valor'],
+           'funcionario'=>$_REQUEST['funcionario'],
+       );
 	
-	$cadenaSql = $this->sql->getCadenaSql ( 'dependenciasConsultadas', $_REQUEST['valor'] );
+	$cadenaSql = $this->sql->getCadenaSql ( 'dependenciasConsultadas', $arreglo );
 	
 	$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 
@@ -90,7 +94,34 @@ if ($_REQUEST ['funcion'] == 'consultarDependencia') {
 	echo $resultado;
 }
 
+if ($_REQUEST ['funcion'] == 'consultarSede') {
 
+	
+	$cadenaSql = $this->sql->getCadenaSql ( 'sedesConsultadas', $_REQUEST['funcionario'] );
+	
+	$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+
+
+	$resultado = json_encode ( $resultado);
+
+	echo $resultado;
+}
+
+if ($_REQUEST ['funcion'] == 'consultarUbicacion') {
+
+	$arreglo = array (
+           'dependencia'=>$_REQUEST['valor'],
+           'funcionario'=>$_REQUEST['funcionario'],
+       );
+	$cadenaSql = $this->sql->getCadenaSql ( 'UbicacionesConsultadas', $arreglo);
+	
+	$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+
+
+	$resultado = json_encode ( $resultado);
+
+	echo $resultado;
+}
 if ($_REQUEST ['funcion'] == 'SeleccionTipoBien') {
 
 

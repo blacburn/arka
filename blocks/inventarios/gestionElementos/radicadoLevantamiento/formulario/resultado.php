@@ -176,6 +176,7 @@ class registrarForm {
 					<th>Nombre Funcionario </th>
 					<th>Sede</th>
 					<th>Dependencia</th>
+                                        <th>Espacio</th>
 					<th>Número Elementos</th>
 					<th>Radicación <br>Inventario Físico</th> 
 					 </tr>
@@ -190,6 +191,7 @@ class registrarForm {
                     <td><center>" . $resultado [$i] ['funcionario'] . "</center></td>
                     <td><center>" . $resultado [$i] ['sede'] . "</center></td>
                     <td><center>" . $resultado [$i] ['dependencia'] . "</center></td>
+                    <td><center>" . $resultado [$i] ['nombre_espacio'] . "</center></td>
                     <td><center>" . $resultado [$i] ['num_ele'] . "</center></td>
                     <td><center>		
 					";

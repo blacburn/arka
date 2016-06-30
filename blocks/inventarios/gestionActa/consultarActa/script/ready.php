@@ -23,8 +23,6 @@
             });
         });
 
-                    
-
   	   
 	   
         $('#<?php echo $this->campoSeguro('fecha_recibido')?>').datepicker({
