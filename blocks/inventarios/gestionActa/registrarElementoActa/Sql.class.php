@@ -407,6 +407,9 @@ class Sql extends \Sql {
 				$cadenaSql .= (is_null ( $variable [12] ) == true) ? ' NULL , ' : "'" . $variable [12] . "',";
 				$cadenaSql .= "'" . $variable [13] . "') ";
 				$cadenaSql .= "RETURNING  id_elemento_ac ";
+                                echo $cadenaSql;
+                           
+                                
 				break;
 			
 			case "ingresar_elemento_tipo_2" :

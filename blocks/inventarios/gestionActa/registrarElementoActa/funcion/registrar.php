@@ -232,6 +232,8 @@ class RegistradorOrden {
 					
 					$trozos = explode ( ".", $archivo ['name'] );
 					$extension = end ( $trozos );
+                                        
+                                         
 					
 					if ($extension == 'xlsx') {
 						
@@ -258,8 +260,10 @@ class RegistradorOrden {
 								exit ();
 							}
 						}
-						
+					
 						if (file_exists ( $ruta_absoluta )) {
+                                                    
+                                                    	  
 							
 							// Cargando la hoja de cálculo
 							
@@ -276,9 +280,12 @@ class RegistradorOrden {
 							$objWorksheet = $objPHPExcel->setActiveSheetIndex ( 0 );
 							
 							$highestRow = $objWorksheet->getHighestRow ();
-							
+                                                        
+                                                     
 							for($i = 2; $i <= $highestRow; $i ++) {
+                        
 								
+                                                                
 								$datos [$i] ['Nivel'] = $objPHPExcel->getActiveSheet ()->getCell ( 'A' . $i )->getCalculatedValue ();
 								if (is_null ( $datos [$i] ['Nivel'] ) == true) {
 									
@@ -363,7 +370,7 @@ class RegistradorOrden {
 							}
 							
 							for($i = 2; $i <= $highestRow; $i ++) {
-								
+								 
 								// "1";0;"Exento";
 								// "2";0;"Tarifa de Cero";
 								// "3";0.05;"5%";
@@ -408,9 +415,12 @@ class RegistradorOrden {
 										
 										break;
 								}
+                                                                
+                                                                     
 								
 								if ($datos [$i] ['Tipo_Bien'] == 1) {
 									
+                                                                     
 									$arreglo = array (
 											$fechaActual,
 											$datos [$i] ['Nivel'],
@@ -431,12 +441,12 @@ class RegistradorOrden {
 									
 									$elemento_id = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda", $arreglo, 'ingresar_elemento_tipo_1' );
 								} else if ($datos [$i] ['Tipo_Bien'] == 2) {
-									
+                                                                        
 									$arreglo = array (
 											$fechaActual,
 											$datos [$i] ['Nivel'],
 											$datos [$i] ['Tipo_Bien'],
-											trim ( $datos [$i] ['Descripcion'], "'" ),
+											$datos [$i] ['Descripcion'],
 											1,
 											trim ( $datos [$i] ['Unidad_Medida'], "'" ),
 											$datos [$i] ['Valor_Precio'],
@@ -452,8 +462,12 @@ class RegistradorOrden {
 									$cadenaSql = $this->miSql->getCadenaSql ( 'ingresar_elemento_tipo_1', $arreglo );
 									
 									$elemento_id = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda", $arreglo, 'ingresar_elemento_tipo_1' );
+                                                                        var_dump($elemento_id);
+                                                                        echo 'siii';
+                                                                        
+                                                                        
 								} else if ($datos [$i] ['Tipo_Bien'] == 3) {
-									
+								
 									if ($datos [$i] ['Tipo_poliza'] == 0) {
 										
 										$arreglo = array (
@@ -510,6 +524,7 @@ class RegistradorOrden {
 									$_REQUEST ['usuario'] 
 							);
 							
+                                                        
 							if ($elemento_id && $_REQUEST ['numero_acta']) {
 								$this->miConfigurador->setVariableConfiguracion ( "cache", true );
 								redireccion::redireccionar ( 'inserto_cargue_masivo', $datos );

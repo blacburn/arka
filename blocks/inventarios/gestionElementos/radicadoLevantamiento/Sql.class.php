@@ -303,7 +303,7 @@ class Sql extends \Sql {
                 $cadenaSql = 'SELECT eli_cla.*,rc.id_radicado radicacion ';
                 $cadenaSql .= 'FROM (SELECT eli.funcionario identificacion,fun."FUN_NOMBRE" funcionario,sas."ESF_SEDE" sede,sas."ESF_ID_SEDE" codigo_sede,ad."ESF_CODIGO_DEP" codigo_dependencia, ad."ESF_DEP_ENCARGADA" dependencia,espacios."ESF_ID_ESPACIO" codigo_espacio,espacios."ESF_NOMBRE_ESPACIO" nombre_espacio, count(placa) num_ele  ';
                 $cadenaSql .= 'FROM elemento_individual eli ';
-                $cadenaSql .= 'JOIN arka_parametros.arka_funcionarios fun ON fun."FUN_IDENTIFICACION"=eli.funcionario ';
+                $cadenaSql .= 'JOIN (SELECT DISTINCT "FUN_IDENTIFICACION","FUN_NOMBRE" from arka_parametros.arka_funcionarios) fun ON fun."FUN_IDENTIFICACION"=eli.funcionario ';
                 $cadenaSql .= 'JOIN arka_parametros.arka_espaciosfisicos as espacios ON espacios."ESF_ID_ESPACIO"=eli.ubicacion_elemento ';
                 $cadenaSql .= 'JOIN arka_parametros.arka_dependencia as ad ON ad."ESF_ID_ESPACIO"=eli.ubicacion_elemento ';
                 $cadenaSql .= 'JOIN arka_parametros.arka_sedes as sas ON sas."ESF_COD_SEDE"=espacios."ESF_COD_SEDE" ';

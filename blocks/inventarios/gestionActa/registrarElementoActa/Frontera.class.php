@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace inventarios\gestionActa\registrarElementoActa;
 

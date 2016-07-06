@@ -393,7 +393,7 @@ class Sql extends \Sql {
 
             case "consultarElemento" :
 
-                $cadenaSql = " SELECT elemento_individual.id_elemento_ind, elemento_individual.placa, elemento_individual.funcionario as funcionario_encargado, ";
+                $cadenaSql = " SELECT DISTINCT elemento_individual.id_elemento_ind, elemento_individual.placa, elemento_individual.funcionario as funcionario_encargado, ";
                 $cadenaSql .= ' arka_parametros.arka_funcionarios."FUN_NOMBRE" as fun_nombre, id_elemento_gen, ';
                 $cadenaSql .= ' sedes."ESF_SEDE" sede, ';
                 $cadenaSql .= ' dependencias."ESF_DEP_ENCARGADA" dependencia, ';
