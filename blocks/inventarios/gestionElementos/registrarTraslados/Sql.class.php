@@ -20,7 +20,7 @@ class Sql extends \Sql {
         $this->miConfigurador = \Configurador::singleton();
     }
 
-    function getCadenaSql($tipo, $variable = "") {
+    function getCadenaSql($tipo, $variable = "", $auxiliar = '') {
 
         /**
          * 1.
@@ -328,14 +328,30 @@ class Sql extends \Sql {
 
                 $cadenaSql = " INSERT INTO historial_elemento_individual( ";
                 $cadenaSql .= "fecha_registro, elemento_individual, funcionario,descripcion_funcionario, destino, observaciones,usuario)  ";
-                $cadenaSql .= " VALUES (";
-                $cadenaSql .= "'" . $variable [0] . "',";
-                $cadenaSql .= "'" . $variable [1] . "',";
-                $cadenaSql .= "'" . $variable [2] . "',";
-                $cadenaSql .= "'" . $variable [3] . "',";
-                $cadenaSql .= "'" . $variable [4] . "',";
-                $cadenaSql .= "'" . $variable [5] . "',";
-                $cadenaSql .= "'" . $variable [6] . "') ";
+                $cadenaSql .= " VALUES ";
+
+                $tamaño = sizeof($variable);
+                foreach ($variable as $key => $values) {
+
+                    if ($tamaño == 1) {
+                        $cadenaSql .= "('" . $auxiliar [0] . "',";
+                        $cadenaSql .= "'" . $variable [$key] ['id'] . "',";
+                        $cadenaSql .= "'" . $auxiliar [1] . "',";
+                        $cadenaSql .= "'" . $variable [$key] ['funcionario'] . "',";
+                        $cadenaSql .= "'" . $variable [2] . "',";
+                        $cadenaSql .= "'" . $variable [3] . "',";
+                        $cadenaSql .= "'" . $variable [4] . "') ";
+                    } else {
+                        $cadenaSql .= "('" . $auxiliar [0] . "',";
+                        $cadenaSql .= "'" . $variable [$key] ['id'] . "',";
+                        $cadenaSql .= "'" . $auxiliar [1] . "',";
+                        $cadenaSql .= "'" . $variable [$key] ['funcionario'] . "',";
+                        $cadenaSql .= "'" . $variable [2] . "',";
+                        $cadenaSql .= "'" . $variable [3] . "',";
+                        $cadenaSql .= "'" . $variable [4] . "'), ";
+                    }
+                    $tamaño--;
+                }
                 $cadenaSql .= "RETURNING  id_evento; ";
                 break;
 
