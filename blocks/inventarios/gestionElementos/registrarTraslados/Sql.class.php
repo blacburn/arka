@@ -20,7 +20,7 @@ class Sql extends \Sql {
         $this->miConfigurador = \Configurador::singleton();
     }
 
-    function getCadenaSql($tipo, $variable = "", $auxiliar = '') {
+    function getCadenaSql($tipo, $variable = "", $auxiliar = "") {
 
         /**
          * 1.
@@ -338,35 +338,54 @@ class Sql extends \Sql {
                         $cadenaSql .= "'" . $variable [$key] ['id'] . "',";
                         $cadenaSql .= "'" . $auxiliar [1] . "',";
                         $cadenaSql .= "'" . $variable [$key] ['funcionario'] . "',";
-                        $cadenaSql .= "'" . $variable [2] . "',";
-                        $cadenaSql .= "'" . $variable [3] . "',";
-                        $cadenaSql .= "'" . $variable [4] . "') ";
+                        $cadenaSql .= "'" . $auxiliar [2] . "',";
+                        $cadenaSql .= "'" . $auxiliar [3] . "',";
+                        $cadenaSql .= "'" . $auxiliar [4] . "') ";
                     } else {
                         $cadenaSql .= "('" . $auxiliar [0] . "',";
                         $cadenaSql .= "'" . $variable [$key] ['id'] . "',";
                         $cadenaSql .= "'" . $auxiliar [1] . "',";
                         $cadenaSql .= "'" . $variable [$key] ['funcionario'] . "',";
-                        $cadenaSql .= "'" . $variable [2] . "',";
-                        $cadenaSql .= "'" . $variable [3] . "',";
-                        $cadenaSql .= "'" . $variable [4] . "'), ";
+                        $cadenaSql .= "'" . $auxiliar [2] . "',";
+                        $cadenaSql .= "'" . $auxiliar [3] . "',";
+                        $cadenaSql .= "'" . $auxiliar [4] . "'), ";
                     }
                     $tamaño--;
                 }
                 $cadenaSql .= "RETURNING  id_evento; ";
+
+
                 break;
 
-            case "eliminar_historico" :
 
-                $cadenaSql = " DELETE FROM historial_elemento_individual( ";
-                $cadenaSql .= "WHERE  id_evento='" . $variable . "'";
+            case "eliminar_historico" :
+                $tamaño = sizeof($variable);
+                foreach ($variable as $key => $values) {
+                    $cadenaSql = " DELETE FROM historial_elemento_individual( ";
+                    $cadenaSql .= "WHERE  fecha_registro='" . $auxiliar [0] . "' AND elemento_individual=" . $variable [$key] ['id'] . " ; ";
+                    $tamaño--;
+                }
+
                 break;
 
             case "actualizar_salida" :
+                $tamaño = sizeof($variable);
+   
 
-                $cadenaSql = " UPDATE elemento_individual ";
-                $cadenaSql .= " SET funcionario='" . $variable [1] . "', ";
-                $cadenaSql .= " ubicacion_elemento='" . $variable [4] . "' ";
-                $cadenaSql .= " WHERE id_elemento_ind='" . $variable [0] . "' ;";
+                $cadenaSql = " UPDATE arka_inventarios.elemento_individual ";
+                $cadenaSql .= " SET funcionario=" . $auxiliar ['recibe'] . ", ";
+                $cadenaSql .= " ubicacion_elemento='" . $auxiliar ['ubicacion'] . "' ";
+                $cadenaSql .= " WHERE id_elemento_ind IN (";
+                foreach ($variable as $key => $values) {
+                    if ($tamaño == 1) {
+                        $cadenaSql .=  $variable [$key] ['id'] . ")";
+                    } else {
+                        $cadenaSql .=  $variable [$key] ['id'] . ", ";
+                        
+                    }
+                    $tamaño--;
+                }
+
                 break;
 
             case "actualizar_registro_salida" :
@@ -376,7 +395,7 @@ class Sql extends \Sql {
                 $cadenaSql .= " sede='" . $variable [2] . "' ,";
                 $cadenaSql .= " dependencia='" . $variable [3] . "' ,";
                 $cadenaSql .= " ubicacion='" . $variable [4] . "' ";
-                $cadenaSql .= " WHERE id_salida ='" . $variable [0] . "' ;";
+                $cadenaSql .= " WHERE id_salida ='" . $variable [0] . "'";
 
                 break;
 
