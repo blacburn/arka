@@ -326,7 +326,7 @@ class Sql extends \Sql {
 
             case "insertar_historico" :
 
-                $cadenaSql = " INSERT INTO historial_elemento_individual( ";
+                $cadenaSql = " INSERT INTO arka_inventarios.historial_elemento_individual( ";
                 $cadenaSql .= "fecha_registro, elemento_individual, funcionario,descripcion_funcionario, destino, observaciones,usuario)  ";
                 $cadenaSql .= " VALUES ";
 
@@ -352,25 +352,23 @@ class Sql extends \Sql {
                     }
                     $tamaño--;
                 }
-                $cadenaSql .= "RETURNING  id_evento; ";
+                
 
 
                 break;
 
 
             case "eliminar_historico" :
-                $tamaño = sizeof($variable);
-                foreach ($variable as $key => $values) {
-                    $cadenaSql = " DELETE FROM historial_elemento_individual( ";
-                    $cadenaSql .= "WHERE  fecha_registro='" . $auxiliar [0] . "' AND elemento_individual=" . $variable [$key] ['id'] . " ; ";
-                    $tamaño--;
-                }
+                $cadenaSql = " DELETE FROM arka_inventarios.historial_elemento_individual ";
+                $cadenaSql .= "WHERE  fecha_registro='" . $auxiliar [0]. "' AND elemento_individual=" . $variable . "";
+               
+
 
                 break;
 
             case "actualizar_salida" :
                 $tamaño = sizeof($variable);
-   
+
 
                 $cadenaSql = " UPDATE arka_inventarios.elemento_individual ";
                 $cadenaSql .= " SET funcionario=" . $auxiliar ['recibe'] . ", ";
@@ -378,10 +376,9 @@ class Sql extends \Sql {
                 $cadenaSql .= " WHERE id_elemento_ind IN (";
                 foreach ($variable as $key => $values) {
                     if ($tamaño == 1) {
-                        $cadenaSql .=  $variable [$key] ['id'] . ")";
+                        $cadenaSql .= $variable [$key] ['id'] . ")";
                     } else {
-                        $cadenaSql .=  $variable [$key] ['id'] . ", ";
-                        
+                        $cadenaSql .= $variable [$key] ['id'] . ", ";
                     }
                     $tamaño--;
                 }
