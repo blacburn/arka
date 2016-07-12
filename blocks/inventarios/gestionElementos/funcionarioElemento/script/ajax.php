@@ -128,8 +128,8 @@ $urlFinal4 = $url . $cadena4;
         $.ajax({
             url: "<?php echo $urlFinal4 ?>",
             dataType: "json",
-            data: {valorD: $("#<?php echo $this->campoSeguro('dependencia') ?>").val(),
-                valorS: $("#<?php echo $this->campoSeguro('sede') ?>").val(), },
+            data: {valor: $("#<?php echo $this->campoSeguro('dependencia') ?>").val(),
+                funcionario: $("#<?php echo $this->campoSeguro('funcionario') ?>").val()},
             success: function (data) {
 
 
@@ -332,7 +332,6 @@ $urlFinal4 = $url . $cadena4;
             }
 
         });
-
 
 
         $("#<?php echo $this->campoSeguro('nivel') ?>").change(function () {
