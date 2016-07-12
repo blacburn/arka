@@ -146,7 +146,7 @@ $urlFinal4 = $url . $cadena4;
 
                     $("#<?php echo $this->campoSeguro('ubicacion') ?>").removeAttr('disabled');
 
-                    $('#<?php echo $this->campoSeguro('ubicacion') ?>').width(500);
+                    $('#<?php echo $this->campoSeguro('ubicacion') ?>').width(300);
                     $("#<?php echo $this->campoSeguro('ubicacion') ?>").select2();
 
 
@@ -251,8 +251,18 @@ $urlFinal4 = $url . $cadena4;
 
                     $("#<?php echo $this->campoSeguro('sede') ?>").removeAttr('disabled');
 
-                    $('#<?php echo $this->campoSeguro('sede') ?>').width(260);
+                    $('#<?php echo $this->campoSeguro('sede') ?>').width(300);
                     $("#<?php echo $this->campoSeguro('sede') ?>").select2();
+                    
+                    $("#<?php echo $this->campoSeguro('ubicacion') ?>").val(null);
+                    $('#<?php echo $this->campoSeguro('ubicacion') ?>').width(300);
+                    $("#<?php echo $this->campoSeguro('ubicacion') ?>").attr('disabled', '');
+                    $("#<?php echo $this->campoSeguro('ubicacion') ?>").select2();
+
+                    $("#<?php echo $this->campoSeguro('dependencia') ?>").val(null);
+                    $('#<?php echo $this->campoSeguro('dependencia') ?>').width(300);
+                    $("#<?php echo $this->campoSeguro('dependencia') ?>").attr('disabled', '');
+                    $("#<?php echo $this->campoSeguro('dependencia') ?>").select2();
 
 
 
@@ -286,11 +296,11 @@ $urlFinal4 = $url . $cadena4;
 
                     $("#<?php echo $this->campoSeguro('dependencia') ?>").removeAttr('disabled');
 
-                    $('#<?php echo $this->campoSeguro('dependencia') ?>').width(260);
+                    $('#<?php echo $this->campoSeguro('dependencia') ?>').width(300);
                     $("#<?php echo $this->campoSeguro('dependencia') ?>").select2();
 
                     $("#<?php echo $this->campoSeguro('ubicacion') ?>").val(null);
-                    $('#<?php echo $this->campoSeguro('ubicacion') ?>').width(500);
+                    $('#<?php echo $this->campoSeguro('ubicacion') ?>').width(300);
                     $("#<?php echo $this->campoSeguro('ubicacion') ?>").select2();
                     $("#<?php echo $this->campoSeguro('ubicacion') ?>").attr('disabled', '');
 

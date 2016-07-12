@@ -55,6 +55,22 @@ $cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($caden
 
 // URL definitiva
 $urlFinalPlaca = $url . $cadena;
+
+// Variables
+$cadenaACodificar18 = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
+$cadenaACodificar18 .= "&procesarAjax=true";
+$cadenaACodificar18 .= "&action=index.php";
+$cadenaACodificar18 .= "&bloqueNombre=" . $esteBloque ["nombre"];
+$cadenaACodificar18 .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+$cadenaACodificar18 .= $cadenaACodificar18 . "&funcion=consultarSede";
+$cadenaACodificar18 .= "&tiempo=" . $_REQUEST ['tiempo'];
+
+// Codificar las variables
+$enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
+$cadena18 = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar18, $enlace);
+
+// URL definitiva
+$urlFinal18 = $url . $cadena18;
 ?>
 
 
@@ -81,9 +97,8 @@ $urlFinalPlaca = $url . $cadena;
         $.ajax({
             url: "<?php echo $urlFinal16 ?>",
             dataType: "json",
-            data: {valor: $("#<?php echo $this->campoSeguro('sede') ?>").val()},
+            data: {valor: $("#<?php echo $this->campoSeguro('sede') ?>").val(), funcionario: $("#<?php echo $this->campoSeguro('responsable') ?>").val()},
             success: function (data) {
-
 
 
                 if (data[0] != " ") {
@@ -98,12 +113,18 @@ $urlFinalPlaca = $url . $cadena;
 
                     $("#<?php echo $this->campoSeguro('dependencia') ?>").removeAttr('disabled');
 
-                    $('#<?php echo $this->campoSeguro('dependencia') ?>').width(210);
+                    $('#<?php echo $this->campoSeguro('dependencia') ?>').width(270);
                     $("#<?php echo $this->campoSeguro('dependencia') ?>").select2();
+
+                    $("#<?php echo $this->campoSeguro('ubicacion') ?>").val(null);
+                    $('#<?php echo $this->campoSeguro('ubicacion') ?>').width(270);
+                    $("#<?php echo $this->campoSeguro('ubicacion') ?>").select2();
+                    $("#<?php echo $this->campoSeguro('ubicacion') ?>").attr('disabled', '');
 
 
 
                 }
+
 
 
             }
@@ -121,8 +142,8 @@ $urlFinalPlaca = $url . $cadena;
         $.ajax({
             url: "<?php echo $urlFinal4 ?>",
             dataType: "json",
-            data: {valorD: $("#<?php echo $this->campoSeguro('dependencia') ?>").val(),
-                valorS: $("#<?php echo $this->campoSeguro('sede') ?>").val(), },
+            data: {valor: $("#<?php echo $this->campoSeguro('dependencia') ?>").val(),
+                funcionario: $("#<?php echo $this->campoSeguro('responsable') ?>").val()},
             success: function (data) {
 
 
@@ -139,7 +160,7 @@ $urlFinalPlaca = $url . $cadena;
 
                     $("#<?php echo $this->campoSeguro('ubicacion') ?>").removeAttr('disabled');
 
-                    $('#<?php echo $this->campoSeguro('ubicacion') ?>').width(200);
+                    $('#<?php echo $this->campoSeguro('ubicacion') ?>').width(270);
                     $("#<?php echo $this->campoSeguro('ubicacion') ?>").select2();
 
 
@@ -153,8 +174,60 @@ $urlFinalPlaca = $url . $cadena;
     }
     ;
 
+    function consultarSede(elem, request, response) {
+        $.ajax({
+            url: "<?php echo $urlFinal18 ?>",
+            dataType: "json",
+            data: {funcionario: $("#<?php echo $this->campoSeguro('responsable') ?>").val()},
+            success: function (data) {
+
+
+                if (data[0] != " ") {
+
+                    $("#<?php echo $this->campoSeguro('sede') ?>").html('');
+                    $("<option value=''>Seleccione  ....</option>").appendTo("#<?php echo $this->campoSeguro('sede') ?>");
+                    $.each(data, function (indice, valor) {
+
+                        $("<option value='" + data[ indice ].ESF_ID_SEDE + "'>" + data[ indice ].ESF_SEDE + "</option>").appendTo("#<?php echo $this->campoSeguro('sede') ?>");
+
+                    });
+
+                    $("#<?php echo $this->campoSeguro('sede') ?>").removeAttr('disabled');
+
+                    $('#<?php echo $this->campoSeguro('sede') ?>').width(270);
+                    $("#<?php echo $this->campoSeguro('sede') ?>").select2();
+
+                    $("#<?php echo $this->campoSeguro('ubicacion') ?>").val(null);
+                    $('#<?php echo $this->campoSeguro('ubicacion') ?>').width(270);
+                    $("#<?php echo $this->campoSeguro('ubicacion') ?>").attr('disabled', '');
+                    $("#<?php echo $this->campoSeguro('ubicacion') ?>").select2();
+
+                    $("#<?php echo $this->campoSeguro('dependencia') ?>").val(null);
+                    $('#<?php echo $this->campoSeguro('dependencia') ?>').width(270);
+                    $("#<?php echo $this->campoSeguro('dependencia') ?>").attr('disabled', '');
+                    $("#<?php echo $this->campoSeguro('dependencia') ?>").select2();
+
+
+
+                }
+
+
+
+            }
+
+        });
+    }
+    ;
+
     $(function () {
 
+        $("#<?php echo $this->campoSeguro('responsable') ?>").change(function () {
+
+            if ($("#<?php echo $this->campoSeguro('responsable') ?>").val() != '') {
+                consultarSede();
+            } else {
+            }
+        });
 
 
 
@@ -190,12 +263,15 @@ $urlFinalPlaca = $url . $cadena;
 
         });
 
+
         $("#<?php echo $this->campoSeguro('sede') ?>").change(function () {
             if ($("#<?php echo $this->campoSeguro('sede') ?>").val() != '') {
-
                 consultarDependencia();
             } else {
+                $("#<?php echo $this->campoSeguro('dependencia') ?>").select2();
                 $("#<?php echo $this->campoSeguro('dependencia') ?>").attr('disabled', '');
+                $("#<?php echo $this->campoSeguro('ubicacion') ?>").select2();
+                $("#<?php echo $this->campoSeguro('ubicacion') ?>").attr('disabled', '');
             }
 
         });
@@ -211,7 +287,7 @@ $urlFinalPlaca = $url . $cadena;
         });
 
 
-      
+
 
 
     });

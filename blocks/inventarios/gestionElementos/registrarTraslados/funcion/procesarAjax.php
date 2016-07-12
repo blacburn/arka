@@ -5,25 +5,35 @@ $conexion = "inventarios";
 $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 
 if ($_REQUEST ['funcion'] == 'consultarDependencia') {
-	
-	$cadenaSql = $this->sql->getCadenaSql ( 'dependenciasConsultadas', $_REQUEST ['valor'] );
-	$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-	
-	$resultado = json_encode ( $resultado );
-	
-	echo $resultado;
+
+    $arreglo = array(
+        'valor' => $_REQUEST['valor'],
+        'funcionario' => $_REQUEST['funcionario']
+    );
+
+    $cadenaSql = $this->sql->getCadenaSql('dependenciasConsultadas', $arreglo);
+
+    $resultado = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
+
+
+    $resultado = json_encode($resultado);
+
+    echo $resultado;
 }
 
 if ($_REQUEST ['funcion'] == 'consultarUbicacion') {
+
+	$arreglo = array (
+           'dependencia'=>$_REQUEST['valor'],
+           'funcionario'=>$_REQUEST['funcionario'],
+       );
+	$cadenaSql = $this->sql->getCadenaSql ( 'UbicacionesConsultadas', $arreglo);
 	
-	$cadenaSql = $this->sql->getCadenaSql ( 'ubicacionesConsultadas',  array (
-			$_REQUEST ['valorD'],
-			$_REQUEST ['valorS'] 
-	) );
 	$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-	
-	$resultado = json_encode ( $resultado );
-	
+
+
+	$resultado = json_encode ( $resultado);
+
 	echo $resultado;
 }
 
@@ -43,6 +53,18 @@ if ($_REQUEST ['funcion'] == 'consultaPlaca') {
 	}
 
 	echo '{"suggestions":' . json_encode ( $resultado ) . '}';
+}
+if ($_REQUEST ['funcion'] == 'consultarSede') {
+
+
+    $cadenaSql = $this->sql->getCadenaSql('sedesConsultadas', $_REQUEST['funcionario']);
+
+    $resultado = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
+
+
+    $resultado = json_encode($resultado);
+
+    echo $resultado;
 }
 
 ?>
